@@ -1,1 +1,60 @@
+body{
+  margin:0;
+  font-family:Montserrat;
+  background:#f5f2ed;
+}
 
+/* ENVELOPE */
+.envelope{
+  position:fixed;
+  inset:0;
+  background:#eae5de;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  cursor:pointer;
+  z-index:1000;
+  transition:1s;
+}
+.envelope.open{
+  transform:translateY(-100%);
+}
+
+/* HERO */
+.hero{
+  height:100vh;
+  background:url('assets/bg.jpg') center/cover;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+}
+
+.content{
+  opacity:0;
+  transform:translateY(50px);
+  transition:1s;
+}
+
+.content.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* NAMES */
+.names{
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+}
+
+/* DETAILS */
+.details{
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+}
