@@ -1,4 +1,3 @@
-/* RESET */
 * {
   margin: 0;
   padding: 0;
@@ -9,9 +8,10 @@ body {
   font-family: "Georgia", serif;
   background: #f4eee6;
   overflow-x: hidden;
+  color: #2b2b2b;
 }
 
-/* SCROLL SYSTEM */
+/* SCROLL ENGINE */
 .story {
   height: 100vh;
   overflow-y: scroll;
@@ -19,47 +19,64 @@ body {
 }
 
 /* SCENES */
-.panel {
+.scene {
   height: 100vh;
   scroll-snap-align: start;
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  position: relative;
+  text-align: center;
 }
 
-/* LAYERS (IMPORTANT FOR DEPTH) */
+/* LAYERS */
 .layer {
   position: absolute;
   width: 100%;
   height: 100%;
 }
 
-/* BACKGROUND */
+/* BACKGROUND DEPTH */
 .bg {
-  background: radial-gradient(circle at center, #ffffff, #e7d8c9);
+  background: radial-gradient(circle at center, #fff, #e7d8c9);
   z-index: 1;
 }
 
-/* ENVELOPE LAYER */
+.glow {
+  background: radial-gradient(circle, rgba(255,255,255,0.7), transparent 60%);
+  filter: blur(80px);
+  z-index: 2;
+}
+
+/* ENVELOPE OBJECT */
 .envelope {
-  width: 320px;
-  height: 200px;
-  background: #dcc8b4;
-  border-radius: 10px;
-  z-index: 3;
-  box-shadow: 0 30px 80px rgba(0,0,0,0.15);
+  width: 340px;
+  height: 220px;
+  background: linear-gradient(145deg, #e7d8c9, #d6c1ad);
+  border-radius: 12px;
+  z-index: 5;
+  box-shadow: 0 40px 100px rgba(0,0,0,0.15);
 }
 
 /* TEXT */
-.title {
-  z-index: 5;
-  font-size: 24px;
+.text {
+  z-index: 6;
+  margin-top: 30px;
 }
 
 /* LETTER */
-.letter, .experience, .cta {
+.paper, .letter, .experience, .immersive, .cta {
   opacity: 0;
-  transform: translateY(50px);
+  transform: translateY(60px);
+}
+
+/* BUTTON */
+button {
+  margin-top: 20px;
+  padding: 12px 24px;
+  border-radius: 40px;
+  border: 1px solid #2b2b2b;
+  background: transparent;
+  cursor: pointer;
 }
