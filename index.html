@@ -1,351 +1,636 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hy">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Envelope Invitation | Belle Amé Style</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <title>Բացեք ծրարը | VQ հարսանիքի հրավեր</title>
+    <!-- Google Fonts & Premium Serif -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- Font Awesome 6 (free icons for images / timeline) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            user-select: none; /* avoid accidental text selection while clicking */
         }
 
         body {
-            min-height: 100vh;
-            background: linear-gradient(145deg, #f9e7d2 0%, #f5d0b8 100%);
+            background: #f7efe2;  /* soft beige base */
+            background-image: radial-gradient(circle at 25% 40%, rgba(235, 215, 185, 0.2) 2%, transparent 2.5%),
+                              radial-gradient(circle at 70% 85%, rgba(210, 180, 140, 0.15) 1.8%, transparent 2%);
+            background-size: 48px 48px, 32px 32px;
+            font-family: 'Cormorant Garamond', 'Georgia', serif;
+            color: #2e241f;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        /* paper texture overlay */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJmIj48ZmVUdXJidWxlbmNlIHR5cGU9ImZyYWN0YWxOb2lzZSIgYmFzZUZyZXF1ZW5jeT0iLjQiIG51bU9jdGF2ZXM9IjMiLz48L2ZpbHRlcj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWx0ZXI9InVybCgjZikiIG9wYWNpdHk9IjAuMDYiLz48L3N2Zz4=');
+            background-repeat: repeat;
+            opacity: 0.35;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem 5rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* envelope section */
+        .envelope-stage {
             display: flex;
             justify-content: center;
             align-items: center;
-            font-family: 'Segoe UI', 'Playfair Display', 'Georgia', 'Times New Roman', serif;
-            padding: 20px;
-            cursor: default;
+            margin-bottom: 2rem;
+            perspective: 1000px;
         }
 
-        /* main container */
-        .invitation-container {
-            perspective: 1200px;
-            width: 100%;
-            max-width: 600px;
-            margin: 20px auto;
-        }
-
-        /* envelope wrapper */
         .envelope-wrapper {
             position: relative;
             width: 100%;
-            transition: all 0.4s ease;
+            max-width: 560px;
             cursor: pointer;
+            transition: transform 0.4s ease;
+            filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.15));
         }
 
-        /* envelope base */
         .envelope {
             position: relative;
-            width: 100%;
-            background: #fffef7;
-            border-radius: 12px;
-            box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.35), 0 4px 12px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
+            background: #fffaf3;
+            border-radius: 16px;
+            box-shadow: 0 12px 28px -8px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255,255,240,0.8);
+            transition: all 0.3s;
             overflow: hidden;
         }
 
-        .envelope:hover {
-            transform: translateY(-5px);
+        /* breathing animation */
+        .envelope-wrapper {
+            animation: softFloat 4s ease-in-out infinite;
         }
 
-        /* envelope flap (top part that folds down) */
+        @keyframes softFloat {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-6px); }
+            100% { transform: translateY(0px); }
+        }
+
         .flap {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
-            height: 50%;
-            background: #fff3e8;
-            border-bottom: 2px solid #e9cba7;
+            height: 52%;
+            background: linear-gradient(145deg, #fef7e8, #faeedc);
+            border-bottom: 2px solid #e4cfb0;
             transform-origin: top;
-            transition: transform 0.7s cubic-bezier(0.23, 1, 0.32, 1);
-            z-index: 3;
-            border-radius: 12px 12px 0 0;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            transition: transform 0.9s cubic-bezier(0.23, 1, 0.32, 1);
+            z-index: 10;
+            border-radius: 16px 16px 0 0;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.05);
             pointer-events: none;
         }
 
-        /* decorative triangle fold effect */
         .flap::after {
-            content: "";
+            content: "✧";
             position: absolute;
-            bottom: -20px;
+            bottom: 12px;
             left: 50%;
             transform: translateX(-50%);
-            width: 0;
-            height: 0;
-            border-left: 35px solid transparent;
-            border-right: 35px solid transparent;
-            border-top: 25px solid #fff3e8;
-            filter: drop-shadow(0 1px 1px rgba(0,0,0,0.1));
+            font-size: 1.5rem;
+            color: #c6a27a;
+            opacity: 0.7;
         }
 
-        /* envelope body content (address style) */
         .envelope-body {
-            padding: 45px 30px 35px;
+            padding: 55px 30px 40px;
             text-align: center;
-            background: #fffef7;
-            border-radius: 12px;
-            position: relative;
-            z-index: 1;
+            background: #fffcf7;
+            border-radius: 16px;
         }
 
-        .recipient {
-            font-family: 'Courier New', monospace;
-            font-size: 1rem;
-            letter-spacing: 1px;
-            color: #b37b48;
-            margin-top: 20px;
-            border-top: 1px dashed #e2c7a8;
-            padding-top: 20px;
-            display: inline-block;
-            font-style: italic;
-        }
-
-        .stamp {
-            position: absolute;
-            top: 20px;
-            right: 25px;
-            width: 65px;
-            height: 70px;
-            background: #fae7cf;
-            border: 1px solid #dbbd91;
-            border-radius: 4px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            font-size: 10px;
-            font-weight: bold;
-            color: #9e6a3a;
-            transform: rotate(8deg);
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        .envelope-seal {
             font-family: monospace;
-        }
-
-        .stamp span:first-child {
-            font-size: 20px;
-        }
-
-        /* invitation card inside (hidden until envelope opens) */
-        .invitation-card {
-            background: #ffffff;
-            margin: 0 20px 30px 20px;
-            padding: 30px 20px;
-            border-radius: 18px;
-            box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.2);
-            text-align: center;
-            position: relative;
-            z-index: 5;
-            transform: translateY(20px);
-            opacity: 0;
-            transition: all 0.6s ease 0.2s;
-            pointer-events: none;
-            border: 1px solid #f7e2ca;
-            background: linear-gradient(135deg, #fffdf9 0%, #fffaf2 100%);
-        }
-
-        .invitation-card h1 {
-            font-family: 'Playfair Display', 'Georgia', serif;
-            font-size: 2.2rem;
-            color: #a1562b;
-            margin-bottom: 10px;
-            letter-spacing: 2px;
-        }
-
-        .invitation-card .subhead {
-            font-size: 1rem;
-            text-transform: uppercase;
+            font-size: 0.9rem;
             letter-spacing: 3px;
-            color: #c48653;
-            border-bottom: 1px solid #f0dbc4;
+            color: #b48b54;
+            border-top: 1px dashed #e9d3b5;
             display: inline-block;
-            padding-bottom: 5px;
-            margin-bottom: 20px;
+            padding-top: 18px;
+            margin-top: 20px;
         }
 
-        .invitation-card .event-details {
-            margin: 20px 0;
-            font-size: 1.1rem;
-            line-height: 1.5;
-            color: #4f2f19;
-        }
-
-        .invitation-card .date {
-            font-size: 1.3rem;
-            font-weight: bold;
-            color: #b45f2b;
-            margin: 15px 0;
-        }
-
-        .invitation-card .rsvp {
-            background: #eedbc8;
-            display: inline-block;
-            padding: 8px 20px;
-            border-radius: 40px;
-            font-size: 0.8rem;
-            font-weight: bold;
-            color: #784a21;
-            margin-top: 15px;
-            letter-spacing: 1px;
-        }
-
-        .invitation-card .floral-icon {
-            font-size: 2rem;
-            margin: 15px 0 5px;
-            color: #c18354;
+        .invitation-reveal {
+            margin-top: 40px;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s ease 0.3s;
+            pointer-events: none;
         }
 
         /* opened state */
-        .envelope-wrapper.open .flap {
+        body.envelope-opened .flap {
             transform: rotateX(180deg);
-            pointer-events: none;
         }
 
-        .envelope-wrapper.open .invitation-card {
-            transform: translateY(0);
+        body.envelope-opened .invitation-reveal {
             opacity: 1;
+            transform: translateY(0);
             pointer-events: auto;
         }
 
-        /* instruction hint */
-        .hint {
-            text-align: center;
-            margin-top: 25px;
-            font-family: 'Segoe UI', sans-serif;
-            font-size: 0.85rem;
-            color: #b38b65;
-            background: rgba(255,245,235,0.7);
-            display: inline-block;
-            width: auto;
-            padding: 6px 16px;
-            border-radius: 50px;
-            backdrop-filter: blur(2px);
-            letter-spacing: 0.5px;
+        body.envelope-opened .envelope-wrapper {
+            animation: none;
+            filter: drop-shadow(0 8px 18px rgba(0,0,0,0.1));
         }
 
-        button.reset-btn {
-            background: #dbb28b;
-            border: none;
-            padding: 8px 18px;
-            border-radius: 40px;
-            color: white;
+        /* invitation card inner content */
+        .invitation-card {
+            background: rgba(255, 252, 245, 0.96);
+            border-radius: 32px;
+            padding: 2rem 1.8rem;
+            margin: 2rem 0 1rem;
+            backdrop-filter: blur(2px);
+            box-shadow: 0 25px 40px -12px rgba(0,0,0,0.2);
+            border: 1px solid #eedfcb;
+        }
+
+        /* couple hero */
+        .couple-hero {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .couple-img {
+            width: 100%;
+            max-width: 380px;
+            border-radius: 28px;
+            box-shadow: 0 20px 30px -8px rgba(0,0,0,0.2);
+            transition: transform 0.5s ease;
+            filter: sepia(0.1) brightness(1.02);
+        }
+
+        .initials-overlay {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            letter-spacing: 8px;
+            margin-top: -60px;
+            background: linear-gradient(135deg, #c7a26b, #e7cba5);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            font-weight: 600;
+        }
+
+        /* scroll reveal sections */
+        .scroll-section {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s cubic-bezier(0.2, 0.9, 0.4, 1), transform 0.7s ease;
+            margin: 4rem 0;
+            padding: 2rem 0;
+            border-bottom: 1px solid #eedbc8;
+        }
+
+        .scroll-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 500;
+            font-family: 'Playfair Display', serif;
+            color: #b47c48;
+            text-align: center;
+            margin-bottom: 2rem;
+            letter-spacing: 1px;
+        }
+
+        .story-text {
+            font-size: 1.5rem;
+            line-height: 1.5;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            font-style: italic;
+            color: #3e2a21;
+        }
+
+        /* calendar */
+        .calendar-grid {
+            max-width: 400px;
+            margin: 0 auto;
+            background: #fff8ef;
+            border-radius: 32px;
+            padding: 1rem;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
             font-weight: bold;
-            margin-top: 20px;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+            color: #a7723a;
+        }
+        .weekdays, .days {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            text-align: center;
+        }
+        .weekdays div {
+            font-weight: 600;
+            padding: 8px;
+            color: #8d6a48;
+        }
+        .days div {
+            padding: 12px 5px;
+            font-size: 1rem;
+            cursor: default;
+        }
+        .heart-day {
+            background: #f5e2cd;
+            border-radius: 50%;
+            color: #c2512e;
+            font-weight: bold;
+            position: relative;
+        }
+        .heart-day::after {
+            content: "❤️";
+            position: absolute;
+            font-size: 0.7rem;
+            bottom: -2px;
+            right: 2px;
+        }
+
+        /* timeline cards */
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .timeline-card {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            background: #fffcf5;
+            border-radius: 48px;
+            padding: 0.8rem 1.8rem;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.05);
+            transition: all 0.2s;
+            border: 1px solid #f3e5d4;
+        }
+        .timeline-card:hover {
+            transform: scale(1.01);
+            background: #fffaf0;
+        }
+        .timeline-icon {
+            font-size: 2.4rem;
+            width: 65px;
+            text-align: center;
+            color: #bc8a5a;
+        }
+        .timeline-content {
+            flex: 1;
+        }
+        .timeline-time {
+            font-weight: 700;
+            font-family: monospace;
+            color: #a26e3c;
+        }
+        .timeline-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        /* timer */
+        .timer-box {
+            background: #eadbc8;
+            padding: 1.5rem;
+            border-radius: 60px;
+            text-align: center;
+            font-family: monospace;
+            font-size: 1.8rem;
+            letter-spacing: 4px;
+            font-weight: bold;
+            color: #5a3a22;
+        }
+
+        /* rsvp button */
+        .rsvp-btn {
+            background: #c8a77b;
+            border: none;
+            padding: 14px 34px;
+            border-radius: 60px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            font-family: 'Cormorant Garamond', serif;
+            color: white;
             cursor: pointer;
-            font-family: inherit;
             transition: 0.2s;
+            box-shadow: 0 6px 14px rgba(0,0,0,0.1);
+            margin-top: 20px;
+        }
+        .rsvp-btn:hover {
+            background: #a77c4c;
+            transform: scale(0.97);
             box-shadow: 0 2px 6px rgba(0,0,0,0.1);
         }
 
-        button.reset-btn:hover {
-            background: #b87a48;
-            transform: scale(0.96);
+        .map-placeholder {
+            background: #e7daca;
+            height: 220px;
+            border-radius: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            color: #785e3c;
+        }
+        iframe {
+            width: 100%;
+            border-radius: 28px;
+            border: none;
         }
 
-        .footer-note {
+        footer {
             text-align: center;
-            margin-top: 18px;
-            font-size: 0.7rem;
-            color: #aa805c;
+            margin-top: 4rem;
+            font-size: 0.8rem;
+            color: #ac8c66;
         }
 
-        @media (max-width: 550px) {
-            .envelope-body {
-                padding: 30px 18px 25px;
-            }
-            .invitation-card h1 {
-                font-size: 1.7rem;
-            }
-            .stamp {
-                width: 50px;
-                height: 55px;
-                top: 12px;
-                right: 12px;
-            }
+        @media (max-width: 650px) {
+            .container { padding: 1rem; }
+            .timeline-card { flex-direction: column; text-align: center; padding: 1rem; }
+            .initials-overlay { font-size: 2.4rem; margin-top: -30px; }
+            .story-text { font-size: 1.2rem; }
         }
     </style>
 </head>
 <body>
-<div class="invitation-container">
-    <div class="envelope-wrapper" id="envelopeWrapper">
-        <div class="envelope">
-            <div class="flap"></div>
-            <div class="envelope-body">
-                <div class="stamp">
-                    <span>✧</span>
-                    <span>BELLE</span>
-                    <span>AMÉ</span>
+<div class="container">
+    <!-- ENVELOPE SECTION -->
+    <div class="envelope-stage">
+        <div class="envelope-wrapper" id="envelopeTrigger">
+            <div class="envelope">
+                <div class="flap"></div>
+                <div class="envelope-body">
+                    <div style="font-size: 1.8rem; color:#dbbd97;">✦</div>
+                    <div class="envelope-seal">À notre amour · V & Q</div>
+                    <div style="margin-top: 20px; font-size: 0.8rem; letter-spacing: 1px;">սեղմեք բացելու համար</div>
                 </div>
-                <div class="recipient">
-                    ✦ To our beloved guest ✦ <br>
-                    You are cordially invited
-                </div>
-                <div style="margin-top: 15px; font-size: 0.75rem; color:#ba8b5a;">♡ Open me ♡</div>
             </div>
         </div>
-        <div class="invitation-card" id="invitationCard">
-            <div class="floral-icon">🌿 ✿ 🌸</div>
-            <h1>Belle Amé</h1>
-            <div class="subhead">— Enchanté —</div>
-            <div class="event-details">
-                You are warmly invited to celebrate<br>
-                an evening of elegance & joy
+    </div>
+
+    <!-- REVEALED INVITATION CONTENT (hidden until envelope opens) -->
+    <div class="invitation-reveal" id="invitationContent">
+        <div class="invitation-card">
+            <!-- Couple image + initials VQ -->
+            <div class="couple-hero">
+                <img class="couple-img" src="https://cdn.shopify.com/s/files/1/0991/8038/0469/files/5.png?v=1776161359" alt="V & Q" style="width:100%; max-width:380px; border-radius:28px;">
+                <div class="initials-overlay">V Q</div>
+                <div style="font-size: 1rem; margin-top: 8px; color:#b68446;">✨ save the date ✨</div>
             </div>
-            <div class="date">
-                Saturday, the 15th of June<br>
-                2026 · at 7 o'clock
-            </div>
-            <div class="event-details">
-                Château des Rêves<br>
-                Yerevan, Armenia
-            </div>
-            <div class="rsvp">
-                ✧ RSVP by June 1st ✧
-            </div>
-            <div class="floral-icon" style="margin-top: 10px;">🍂 ✨ 🕊️</div>
         </div>
     </div>
-    <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
-        <div class="hint">👉 Click anywhere on the envelope to open it 👈</div>
-        <button class="reset-btn" id="resetBtn">Reset Envelope</button>
+
+    <!-- SCROLL SECTIONS (reveal on scroll) -->
+    <div class="scroll-section" id="storySection">
+        <div class="section-title">Սիրո պատմություն</div>
+        <div class="story-text">
+            «Հարգելի հյուրեր, մոտենում է մեր կյանքի ամենագեղեցիկ ու հիշարժան պահերից մեկը։<br>
+            Մենք ընտանիք ենք կազմում և մեծ սիրով հրավիրում ենք Ձեզ կիսելու մեր երջանկությունը։<br>
+            Ձեր ներկայությունը մեր կողքին շատ կարևոր է։»
+        </div>
     </div>
-    <div class="footer-note">
-        Belle Amé · Invitation d'exception
+
+    <div class="scroll-section" id="calendarSection">
+        <div class="section-title">📅 Օգոստոս 2026</div>
+        <div id="calendarWidget" class="calendar-grid"></div>
     </div>
+
+    <div class="scroll-section" id="programSection">
+        <div class="section-title">ՕՐՎԱ ԾՐԱԳԻՐ</div>
+        <div class="timeline">
+            <div class="timeline-card"><div class="timeline-icon"><i class="fas fa-home"></i></div><div class="timeline-content"><div class="timeline-time">12:00</div><div class="timeline-title">Հարսի տուն</div></div></div>
+            <div class="timeline-card"><div class="timeline-icon"><i class="fas fa-ring"></i></div><div class="timeline-content"><div class="timeline-time">14:00</div><div class="timeline-title">Պսակադրության արարողություն</div></div></div>
+            <div class="timeline-card"><div class="timeline-icon"><i class="fas fa-people-arrows"></i></div><div class="timeline-content"><div class="timeline-time">16:00</div><div class="timeline-title">Փեսայի տուն</div></div></div>
+            <div class="timeline-card"><div class="timeline-icon"><i class="fas fa-champagne-glasses"></i></div><div class="timeline-content"><div class="timeline-time">17:30</div><div class="timeline-title">Հյուրերի դիմավորում</div></div></div>
+            <div class="timeline-card"><div class="timeline-icon"><i class="fas fa-utensils"></i></div><div class="timeline-content"><div class="timeline-time">18:00</div><div class="timeline-title">Հարսանեկան խնջույք</div></div></div>
+            <div class="timeline-card"><div class="timeline-icon"><i class="fas fa-moon"></i></div><div class="timeline-content"><div class="timeline-time">00:00</div><div class="timeline-title">Հանդիսության ավարտ</div></div></div>
+        </div>
+    </div>
+
+    <div class="scroll-section" id="timerSection">
+        <div class="section-title">⏳ Մեր հարսանիքին մնացել է՝</div>
+        <div class="timer-box" id="countdownTimer">-- -- --</div>
+    </div>
+
+    <div class="scroll-section" id="secondPhotoSection">
+        <div class="couple-hero">
+            <img class="couple-img" src="https://cdn.pixabay.com/photo/2022/08/24/20/12/wedding-7408803_1280.jpg" alt="romantic couple" style="max-width:380px; border-radius:32px; width:100%;">
+            <div style="margin-top: 20px; font-size: 1.2rem; font-style: italic;">✨ eternal love ✨</div>
+        </div>
+    </div>
+
+    <div class="scroll-section" id="danceNote">
+        <div class="story-text" style="font-size:1.3rem;">
+            💃 «Հարգելի հյուրեր, մենք ուրախ կլինենք կիսել մեր կյանքի ամենաերջանիկ օրը Ձեզ հետ։<br>
+            Բերեք Ձեզ հետ տոնական տրամադրություն և հարմար կոշիկներ պարելու համար։» 🕺
+        </div>
+    </div>
+
+    <div class="scroll-section" id="finalInitials">
+        <div class="couple-hero">
+            <img class="couple-img" src="https://cdn.shopify.com/s/files/1/0991/8038/0469/files/5.png?v=1776161359" alt="V&Q" style="max-width:320px; border-radius:40px;">
+            <div class="initials-overlay" style="font-size:3.8rem;">Վ & Ք</div>
+        </div>
+        <div style="text-align:center; margin-top: 1rem;">
+            <button class="rsvp-btn" id="rsvpButton">✧ RSVP & հաստատել ✧</button>
+        </div>
+        <div style="text-align:center; margin-top: 2rem;">
+            <div class="section-title">📍 Վայրը</div>
+            <div class="map-placeholder">
+                <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=44.5151%2C40.1829%2C44.5175%2C40.1845&layer=mapnik&marker=40.1837%2C44.5163" width="100%" height="200" style="border:0; border-radius:28px;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+            <p style="margin-top: 12px;">Երևան, Հայաստան · Հարսանյաց դահլիճ "Belle Amé"</p>
+        </div>
+    </div>
+
+    <footer>
+        ✦ with love, V & Q ✦
+    </footer>
 </div>
 
 <script>
-    const wrapper = document.getElementById('envelopeWrapper');
-    const resetBtn = document.getElementById('resetBtn');
-
-    // Toggle open/close on envelope click (but not when clicking reset button or card content)
-    function toggleEnvelope(e) {
-        // Prevent toggling if click originated from reset button or inside invitation card when open? 
-        // We allow closing only via reset button for better UX.
-        if (e.target === resetBtn || resetBtn.contains(e.target)) return;
-        if (!wrapper.classList.contains('open')) {
-            wrapper.classList.add('open');
+    // Helper: build calendar August 2026 with heart on 16
+    function buildCalendar() {
+        const year = 2026;
+        const month = 7; // August (0-index)
+        const firstDay = new Date(year, month, 1).getDay();
+        const daysInMonth = new Date(year, month + 1, 0).getDate();
+        const weekdays = ["Կ", "Ե", "Ե", "Չ", "Հ", "Ո", "Շ"];
+        let calendarHTML = `<div class="calendar-header"><span>Օգոստոս 2026</span><span>❤️</span></div><div class="weekdays">${weekdays.map(d => `<div>${d}</div>`).join('')}</div><div class="days">`;
+        let dayCounter = 1;
+        for (let i = 0; i < 42; i++) {
+            if (i < firstDay || dayCounter > daysInMonth) {
+                calendarHTML += `<div></div>`;
+            } else {
+                let isHeart = (dayCounter === 16);
+                let heartClass = isHeart ? 'heart-day' : '';
+                calendarHTML += `<div class="${heartClass}">${dayCounter}</div>`;
+                dayCounter++;
+            }
         }
-        // Do not close on click, only reset button closes it.
+        calendarHTML += `</div>`;
+        document.getElementById('calendarWidget').innerHTML = calendarHTML;
     }
 
-    // Reset envelope (close it)
-    function resetEnvelope() {
-        wrapper.classList.remove('open');
+    // Countdown Timer to 16 August 2026, 18:00 (party time)
+    function updateTimer() {
+        const target = new Date(2026, 7, 16, 18, 0, 0).getTime();
+        const now = new Date().getTime();
+        const diff = target - now;
+        if (diff <= 0) {
+            document.getElementById('countdownTimer').innerHTML = "🎉 Այսօր է մեծ օրը 🎉";
+            return;
+        }
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (86400000)) / 3600000);
+        const minutes = Math.floor((diff % 3600000) / 60000);
+        const seconds = Math.floor((diff % 60000) / 1000);
+        document.getElementById('countdownTimer').innerHTML = `${days} օր  ${hours} ժ  ${minutes} ր  ${seconds} վրկ`;
     }
 
-    wrapper.addEventListener('click', toggleEnvelope);
-    resetBtn.addEventListener('click', resetEnvelope);
+    // Intersection Observer for scroll reveal
+    const sections = document.querySelectorAll('.scroll-section');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                // optional staggered inside children
+            }
+        });
+    }, { threshold: 0.2, rootMargin: "0px 0px -60px 0px" });
+    sections.forEach(section => observer.observe(section));
 
-    // Optional: small console greeting
-    console.log("Envelope invitation ready — click to open, reset to close.");
+    // Music & Envelope open logic
+    let musicPlaying = false;
+    let audio = null;
+    let envelopeOpened = false;
+
+    function initAudio() {
+        if (audio) return;
+        // Romantic royalty-free piano track from Pixabay (safe & elegant)
+        audio = new Audio('https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf6c7.mp3?filename=romantic-piano-182532.mp3');
+        audio.loop = true;
+        audio.volume = 0.45;
+        audio.load();
+    }
+
+    function openEnvelope() {
+        if (envelopeOpened) return;
+        envelopeOpened = true;
+        document.body.classList.add('envelope-opened');
+        
+        // start music (user interaction)
+        initAudio();
+        audio.play().catch(e => console.log("audio autoplay blocked, but user opened", e));
+        musicPlaying = true;
+
+        // optional subtle confetti or glow effect
+        const wrapper = document.querySelector('.envelope-wrapper');
+        wrapper.style.animation = 'none';
+        
+        // show couple image with initials already visible via .invitation-reveal
+        // additional micro animation for initials
+        const initialsDiv = document.querySelector('.initials-overlay');
+        if (initialsDiv) {
+            initialsDiv.style.opacity = '0';
+            setTimeout(() => { initialsDiv.style.transition = '0.5s'; initialsDiv.style.opacity = '1'; }, 200);
+        }
+        // trigger first sections appearance after open (already observer, but ensure story visible)
+        setTimeout(() => {
+            const storySec = document.getElementById('storySection');
+            if(storySec && !storySec.classList.contains('visible')) observer.observe(storySec);
+            window.dispatchEvent(new Event('scroll'));
+        }, 400);
+    }
+
+    const envelopeTrigger = document.getElementById('envelopeTrigger');
+    envelopeTrigger.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (!envelopeOpened) openEnvelope();
+    });
+
+    // calendar and timer init
+    buildCalendar();
+    updateTimer();
+    setInterval(updateTimer, 1000);
+
+    // RSVP button alert (premium feel)
+    document.getElementById('rsvpButton').addEventListener('click', () => {
+        alert('✨ Շնորհակալություն! Ձեր պատասխանը գրանցված է։ Մենք կկապվենք Ձեզ հետ։ ✨\nThank you! Your response has been recorded.');
+    });
+
+    // preload images / ensure all visible elements get observer for any dynamic added later
+    window.addEventListener('load', () => {
+        // small hack to reveal sections if already visible
+        sections.forEach(sec => {
+            const rect = sec.getBoundingClientRect();
+            if (rect.top < window.innerHeight - 100) sec.classList.add('visible');
+        });
+        // if envelope already opened? no
+    });
+
+    // extra premium effect: add floating particles (light)
+    function createParticles() {
+        const particleContainer = document.createElement('div');
+        particleContainer.style.position = 'fixed';
+        particleContainer.style.pointerEvents = 'none';
+        particleContainer.style.top = '0';
+        particleContainer.style.left = '0';
+        particleContainer.style.width = '100%';
+        particleContainer.style.height = '100%';
+        particleContainer.style.zIndex = '1';
+        document.body.appendChild(particleContainer);
+        for(let i=0;i<35;i++) {
+            let particle = document.createElement('div');
+            particle.style.position = 'absolute';
+            particle.style.width = '2px';
+            particle.style.height = '2px';
+            particle.style.background = 'radial-gradient(circle, #e9cfaa, #c9a56e)';
+            particle.style.borderRadius = '50%';
+            particle.style.opacity = Math.random() * 0.4;
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.top = Math.random() * 100 + '%';
+            particle.style.animation = `floatParticle ${8 + Math.random() * 10}s linear infinite`;
+            particle.style.animationDelay = Math.random() * 8 + 's';
+            particleContainer.appendChild(particle);
+        }
+        const styleSheet = document.createElement("style");
+        styleSheet.textContent = `@keyframes floatParticle { 0% { transform: translateY(0vh) rotate(0deg); opacity:0; } 20% { opacity:0.5; } 80% { opacity:0.3; } 100% { transform: translateY(-100vh) rotate(360deg); opacity:0; } }`;
+        document.head.appendChild(styleSheet);
+    }
+    createParticles();
 </script>
 </body>
 </html>
