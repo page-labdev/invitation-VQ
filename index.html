@@ -4,274 +4,43 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Ultimate Invitation</title>
+<title>Invitation</title>
+<link rel="stylesheet" href="style.css">
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
-
-<style>
-
-/* RESET */
-*{margin:0;padding:0;box-sizing:border-box}
-body{
-  font-family:'Montserrat',sans-serif;
-  background:#f6f3ef;
-  color:#2b2b2b;
-  overflow-x:hidden;
-}
-
-/* =========================
-   3D ENVELOPE SYSTEM
-========================= */
-.envelope{
-  position:fixed;
-  inset:0;
-  background:#e9e4de;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  z-index:9999;
-  perspective:1200px;
-  cursor:pointer;
-}
-
-.envelope-inner{
-  width:280px;
-  height:180px;
-  position:relative;
-  transform-style:preserve-3d;
-  transition:1.2s ease;
-}
-
-.flap{
-  position:absolute;
-  width:100%;
-  height:100%;
-  background:#ddd6cf;
-  transform-origin:top;
-  transition:1.2s ease;
-  clip-path:polygon(0 0,100% 0,50% 50%);
-}
-
-.letter{
-  position:absolute;
-  width:100%;
-  height:100%;
-  background:#fff;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  transform:translateZ(-1px);
-  font-size:12px;
-  letter-spacing:2px;
-}
-
-.open .flap{
-  transform:rotateX(-160deg);
-}
-
-.open{
-  animation:hideEnv 1.5s forwards 1s;
-}
-
-@keyframes hideEnv{
-  to{transform:translateY(-120%)}
-}
-
-/* =========================
-   BUILDER SYSTEM
-========================= */
-
-.builder{
-  width:100%;
-}
-
-.block{
-  min-height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
-  padding:40px;
-}
-
-/* TYPO */
-h1,h2{
-  font-family:'Playfair Display',serif;
-  letter-spacing:2px;
-}
-
-.names{font-size:64px}
-
-/* =========================
-   TIMELINE ANIMATION ENGINE
-========================= */
-
-[data-anim]{
-  opacity:0;
-  transform:translateY(80px);
-}
-
-.active [data-anim]{
-  animation:reveal 1.2s forwards;
-}
-
-[data-delay=\"1\"]{animation-delay:.3s}
-[data-delay=\"2\"]{animation-delay:.6s}
-[data-delay=\"3\"]{animation-delay:.9s}
-
-@keyframes reveal{
-  to{
-    opacity:1;
-    transform:translateY(0);
-  }
-}
-
-/* =========================
-   TEXT REVEAL (LETTER)
-========================= */
-
-.reveal-text span{
-  opacity:0;
-  display:inline-block;
-  transform:translateY(20px);
-}
-
-.reveal-text.active span{
-  animation:letter .6s forwards;
-}
-
-@keyframes letter{
-  to{
-    opacity:1;
-    transform:translateY(0);
-  }
-}
-
-/* =========================
-   SCROLL SNAP (APPLE STYLE)
-========================= */
-html{
-  scroll-snap-type:y mandatory;
-}
-.block{
-  scroll-snap-align:start;
-}
-
-/* RSVP */
-input{
-  padding:12px;
-  border:1px solid #ddd;
-  margin:6px;
-}
-
-button{
-  padding:12px;
-  background:#000;
-  color:#fff;
-  border:none;
-  cursor:pointer;
-}
-
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Montserrat&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
-<!-- 3D ENVELOPE -->
-<div class="envelope" onclick="openEnvelope()">
-  <div class="envelope-inner">
-    <div class="flap"></div>
-    <div class="letter">OPEN</div>
+<!-- ENVELOPE -->
+<div class="envelope" id="envelope">
+  <div class="flap"></div>
+  <div class="text">ԲԱՑԵԼ</div>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+<section class="hero">
+  <div class="content">
+    <h1>ՀՐԱՎԻՐԱՏՈՄՍ</h1>
+    <p>Save the date</p>
   </div>
-</div>
+</section>
 
-<div class="builder">
+<section class="names">
+  <h2>ԱՆՈՒՆ</h2>
+  <span>&</span>
+  <h2>ԱՆՈՒՆ</h2>
+</section>
 
-<!-- HERO -->
-<div class="block">
-  <div data-anim>
-    <h1 class="reveal-text">ՀՐԱՎԻՐԱՏՈՄՍ</h1>
-  </div>
-</div>
-
-<!-- NAMES -->
-<div class="block">
-  <div>
-    <div class="names reveal-text">ԱՆՈՒՆ</div>
-    <div>&</div>
-    <div class="names reveal-text">ԱՆՈՒՆ</div>
-  </div>
-</div>
-
-<!-- TEXT -->
-<div class="block">
-  <div data-anim>
-    Սիրով հրավիրում ենք Ձեզ մեր հարսանիքին
-  </div>
-</div>
-
-<!-- DATE -->
-<div class="block">
-  <h2 data-anim>00.00.2026</h2>
-</div>
-
-<!-- RSVP -->
-<div class="block">
-  <div data-anim>
-    <h2>RSVP</h2>
-    <input placeholder="Ձեր անունը"><br>
-    <button>Հաստատել</button>
-  </div>
-</div>
+<section class="details">
+  <p>00.00.2026</p>
+  <p>Երևան</p>
+</section>
 
 </div>
 
-<script>
-
-/* ENVELOPE */
-function openEnvelope(){
-  document.querySelector('.envelope').classList.add('open');
-}
-
-/* BUILDER TIMELINE ENGINE */
-const blocks=document.querySelectorAll('.block');
-
-const observer=new IntersectionObserver(entries=>{
- entries.forEach(entry=>{
-  if(entry.isIntersecting){
-   entry.target.classList.add('active');
-  }
- });
-},{threshold:.5});
-
-blocks.forEach(b=>observer.observe(b));
-
-/* LETTER SPLIT */
-document.querySelectorAll('.reveal-text').forEach(el=>{
- let text=el.innerText;
- el.innerHTML='';
- text.split('').forEach((char,i)=>{
-   let span=document.createElement('span');
-   span.innerText=char;
-   span.style.animationDelay=i*0.05+'s';
-   el.appendChild(span);
- });
-});
-
-/* ACTIVATE TEXT WHEN VISIBLE */
-const textObserver=new IntersectionObserver(entries=>{
- entries.forEach(entry=>{
-  if(entry.isIntersecting){
-   entry.target.classList.add('active');
-  }
- });
-});
-
-document.querySelectorAll('.reveal-text').forEach(el=>{
- textObserver.observe(el);
-});
-
-</script>
-
+<script src="script.js"></script>
 </body>
 </html>
