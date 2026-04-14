@@ -4,108 +4,99 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Invitation</title>
+<title>Invitation Builder</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
 
 <style>
+
+/* RESET */
 *{margin:0;padding:0;box-sizing:border-box}
 body{
   font-family:'Montserrat',sans-serif;
-  background:#f6f3ef;
+  background:#f7f4f0;
   color:#2b2b2b;
   overflow-x:hidden;
 }
 
-/* ENVELOPE */
-.envelope{
-  position:fixed;
+/* BUILDER CORE */
+.builder{
   width:100%;
-  height:100vh;
-  background:#e9e4de;
-  z-index:9999;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  flex-direction:column;
-  cursor:pointer;
-  transition:1s ease;
 }
 
-.envelope.open{
-  transform:translateY(-100%);
-}
-
-.envelope-text{
-  letter-spacing:4px;
-  font-size:14px;
-  opacity:.7;
-}
-
-/* SECTIONS */
-section{
+.block{
   min-height:100vh;
   display:flex;
-  flex-direction:column;
   justify-content:center;
   align-items:center;
   text-align:center;
   padding:40px 20px;
+  position:relative;
 }
 
-/* TYPOGRAPHY */
+/* TYPO */
 h1,h2{
   font-family:'Playfair Display',serif;
   letter-spacing:2px;
 }
 
-h1{font-size:36px}
-h2{font-size:32px}
-
 .names{
   font-size:64px;
 }
 
-.amp{
-  margin:10px 0;
-}
-
 .text{
-  max-width:500px;
+  max-width:520px;
   line-height:1.8;
   opacity:.8;
 }
 
-/* FADE ANIMATION */
-.fade{
+/* ANIMATION ENGINE */
+.anim{
   opacity:0;
-  transform:translateY(60px);
-  transition:1.2s ease;
+  transform:translateY(80px);
+  transition:1.2s cubic-bezier(.2,.6,.2,1);
 }
-.fade.show{
+
+.anim.show{
   opacity:1;
   transform:translateY(0);
 }
 
-/* DIVIDER */
-.line{
-  width:1px;
-  height:80px;
-  background:#ccc;
-  margin:30px auto;
+/* DELAY SYSTEM */
+[data-delay="1"]{transition-delay:.2s}
+[data-delay="2"]{transition-delay:.4s}
+[data-delay="3"]{transition-delay:.6s}
+
+/* ENVELOPE */
+.envelope{
+  position:fixed;
+  inset:0;
+  background:#eae5de;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  z-index:9999;
+  cursor:pointer;
+  transition:1s ease;
+}
+.envelope.open{
+  transform:translateY(-100%);
+}
+
+/* SCROLL SNAP (like Apple) */
+html{
+  scroll-snap-type:y mandatory;
+}
+.block{
+  scroll-snap-align:start;
 }
 
 /* RSVP */
-form{
-  display:flex;
-  flex-direction:column;
-  gap:12px;
-  width:260px;
-}
-
 input{
   padding:12px;
   border:1px solid #ddd;
+  margin:6px 0;
+  width:240px;
 }
 
 button{
@@ -118,9 +109,9 @@ button{
 
 /* MOBILE */
 @media(max-width:768px){
-  .names{font-size:42px}
-  h1{font-size:26px}
+  .names{font-size:40px}
 }
+
 </style>
 </head>
 
@@ -128,71 +119,78 @@ button{
 
 <!-- ENVELOPE -->
 <div class="envelope" onclick="openEnvelope()">
-  <div class="envelope-text">ԲԱՑԵԼ ՀՐԱՎԻՐԱՏՈՄՍԸ</div>
+  ԲԱՑԵԼ ՀՐԱՎԻՐԱՏՈՄՍԸ
 </div>
 
+<div class="builder">
+
 <!-- HERO -->
-<section class="fade">
-  <h1>ՀՐԱՎԻՐԱՏՈՄՍ</h1>
-  <div class="line"></div>
-  <div class="text">SAVE THE DATE</div>
-</section>
+<div class="block">
+  <div>
+    <h1 class="anim">ՀՐԱՎԻՐԱՏՈՄՍ</h1>
+    <div class="text anim" data-delay="1">SAVE THE DATE</div>
+  </div>
+</div>
 
 <!-- NAMES -->
-<section class="fade">
-  <div class="names">ԱՆՈՒՆ</div>
-  <div class="amp">&</div>
-  <div class="names">ԱՆՈՒՆ</div>
-</section>
+<div class="block">
+  <div>
+    <div class="names anim">ԱՆՈՒՆ</div>
+    <div class="anim" data-delay="1">&</div>
+    <div class="names anim" data-delay="2">ԱՆՈՒՆ</div>
+  </div>
+</div>
 
-<!-- TEXT -->
-<section class="fade">
-  <div class="text">
+<!-- STORY -->
+<div class="block">
+  <div class="text anim">
     Սիրով հրավիրում ենք Ձեզ կիսելու մեր կյանքի ամենակարևոր օրը
   </div>
-</section>
+</div>
 
 <!-- DATE -->
-<section class="fade">
-  <h2>00.00.2026</h2>
-</section>
+<div class="block">
+  <h2 class="anim">00.00.2026</h2>
+</div>
 
 <!-- DETAILS -->
-<section class="fade">
-  <div class="text">
+<div class="block">
+  <div class="text anim">
     Ժամը՝ 14:00<br><br>
     Վայրը՝ Ռեստորան<br>
     Հասցե՝ Երևան
   </div>
-</section>
+</div>
 
 <!-- RSVP -->
-<section class="fade">
-  <h2>RSVP</h2>
-  <form>
-    <input placeholder="Ձեր անունը">
-    <input placeholder="Հեռախոսահամար">
-    <button>Հաստատել</button>
-  </form>
-</section>
+<div class="block">
+  <div>
+    <h2 class="anim">RSVP</h2>
+    <input class="anim" placeholder="Ձեր անունը">
+    <input class="anim" data-delay="1" placeholder="Հեռախոսահամար">
+    <button class="anim" data-delay="2">Հաստատել</button>
+  </div>
+</div>
+
+</div>
 
 <script>
 
-// ENVELOPE OPEN
+/* ENVELOPE */
 function openEnvelope(){
   document.querySelector('.envelope').classList.add('open');
 }
 
-// SCROLL ANIMATION
-const elements=document.querySelectorAll('.fade');
+/* BUILDER SCROLL ENGINE */
+const elements = document.querySelectorAll('.anim');
 
-const observer=new IntersectionObserver(entries=>{
- entries.forEach(entry=>{
-  if(entry.isIntersecting){
-   entry.target.classList.add('show');
-  }
- });
-});
+const observer = new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add('show');
+    }
+  });
+},{threshold:.3});
 
 elements.forEach(el=>observer.observe(el));
 
