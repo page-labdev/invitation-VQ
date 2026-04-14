@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
-    <title>Բացեք ծրարը | VQ հարսանիքի հրավեր</title>
-    <!-- Google Fonts & Premium Serif -->
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
-    <!-- Font Awesome 6 (free icons for images / timeline) -->
+    <title>VQ | Բացեք ծրարը - Պրեմիում հարսանեկան հրավեր</title>
+    <!-- Premium Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         * {
@@ -16,17 +15,16 @@
         }
 
         body {
-            background: #f7efe2;  /* soft beige base */
-            background-image: radial-gradient(circle at 25% 40%, rgba(235, 215, 185, 0.2) 2%, transparent 2.5%),
-                              radial-gradient(circle at 70% 85%, rgba(210, 180, 140, 0.15) 1.8%, transparent 2%);
-            background-size: 48px 48px, 32px 32px;
+            background: #f4ede3;
+            background-image: radial-gradient(circle at 15% 30%, rgba(200, 170, 130, 0.08) 2%, transparent 2.5%),
+                              radial-gradient(circle at 85% 70%, rgba(180, 140, 100, 0.06) 1.5%, transparent 2%);
+            background-size: 55px 55px, 40px 40px;
             font-family: 'Cormorant Garamond', 'Georgia', serif;
-            color: #2e241f;
-            scroll-behavior: smooth;
+            color: #2b241e;
             overflow-x: hidden;
         }
 
-        /* paper texture overlay */
+        /* premium paper texture overlay */
         body::before {
             content: "";
             position: fixed;
@@ -35,111 +33,130 @@
             width: 100%;
             height: 100%;
             pointer-events: none;
-            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJmIj48ZmVUdXJidWxlbmNlIHR5cGU9ImZyYWN0YWxOb2lzZSIgYmFzZUZyZXF1ZW5jeT0iLjQiIG51bU9jdGF2ZXM9IjMiLz48L2ZpbHRlcj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWx0ZXI9InVybCgjZikiIG9wYWNpdHk9IjAuMDYiLz48L3N2Zz4=');
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iNDAwIj48ZmlsdGVyIGlkPSJmIj48ZmVUdXJidWxlbmNlIHR5cGU9ImZyYWN0YWxOb2lzZSIgYmFzZUZyZXF1ZW5jeT0iLjMiIG51bU9jdGF2ZXM9IjMiLz48L2ZpbHRlcj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWx0ZXI9InVybCgjZikiIG9wYWNpdHk9IjAuMDgiLz48L3N2Zz4=');
             background-repeat: repeat;
-            opacity: 0.35;
+            opacity: 0.4;
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1300px;
             margin: 0 auto;
-            padding: 2rem 1.5rem 5rem;
+            padding: 2rem 2rem 5rem;
             position: relative;
             z-index: 2;
         }
 
-        /* envelope section */
+        /* ---------- LARGE ENVELOPE SECTION ---------- */
         .envelope-stage {
             display: flex;
             justify-content: center;
             align-items: center;
-            margin-bottom: 2rem;
-            perspective: 1000px;
+            margin: 2rem 0 3rem;
+            perspective: 1400px;
         }
 
         .envelope-wrapper {
             position: relative;
             width: 100%;
-            max-width: 560px;
+            max-width: 780px;   /* significantly larger */
             cursor: pointer;
-            transition: transform 0.4s ease;
-            filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.15));
+            filter: drop-shadow(0 35px 45px -12px rgba(0, 0, 0, 0.3));
+            transition: transform 0.5s cubic-bezier(0.2, 0.9, 0.4, 1.1);
         }
 
         .envelope {
             position: relative;
-            background: #fffaf3;
-            border-radius: 16px;
-            box-shadow: 0 12px 28px -8px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255,255,240,0.8);
-            transition: all 0.3s;
+            background: #fffcf5;
+            border-radius: 28px;
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.25), inset 0 1px 2px rgba(255, 250, 235, 0.9);
+            transition: all 0.4s;
             overflow: hidden;
         }
 
-        /* breathing animation */
+        /* breathing animation premium */
         .envelope-wrapper {
-            animation: softFloat 4s ease-in-out infinite;
+            animation: premiumFloat 5s ease-in-out infinite;
         }
 
-        @keyframes softFloat {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-6px); }
-            100% { transform: translateY(0px); }
+        @keyframes premiumFloat {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-9px) rotate(0.3deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
         }
 
+        /* flap with wax seal effect */
         .flap {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
-            height: 52%;
-            background: linear-gradient(145deg, #fef7e8, #faeedc);
-            border-bottom: 2px solid #e4cfb0;
+            height: 54%;
+            background: linear-gradient(145deg, #fef3e4, #faead7);
+            border-bottom: 3px solid #e7cfb0;
             transform-origin: top;
             transition: transform 0.9s cubic-bezier(0.23, 1, 0.32, 1);
-            z-index: 10;
-            border-radius: 16px 16px 0 0;
-            box-shadow: 0 3px 12px rgba(0,0,0,0.05);
+            z-index: 15;
+            border-radius: 28px 28px 0 0;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
             pointer-events: none;
         }
 
-        .flap::after {
-            content: "✧";
+        /* wax seal circle */
+        .wax-seal {
             position: absolute;
-            bottom: 12px;
+            bottom: -32px;
             left: 50%;
             transform: translateX(-50%);
-            font-size: 1.5rem;
-            color: #c6a27a;
-            opacity: 0.7;
+            width: 68px;
+            height: 68px;
+            background: radial-gradient(circle, #c67b3c, #9b4f1a);
+            border-radius: 50%;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2), inset 0 1px 2px rgba(255,215,150,0.6);
+            z-index: 20;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            font-family: serif;
+            color: #f7e2b0;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+            backdrop-filter: blur(0.5px);
+            border: 1px solid #e6b87a;
+        }
+        .wax-seal::after {
+            content: "✧ VQ ✧";
+            font-size: 0.75rem;
+            font-weight: bold;
+            letter-spacing: 1px;
         }
 
         .envelope-body {
-            padding: 55px 30px 40px;
+            padding: 70px 40px 55px;
             text-align: center;
-            background: #fffcf7;
-            border-radius: 16px;
+            background: #fffbf5;
+            border-radius: 28px;
         }
 
-        .envelope-seal {
-            font-family: monospace;
-            font-size: 0.9rem;
-            letter-spacing: 3px;
+        .envelope-seal-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1rem;
+            letter-spacing: 4px;
             color: #b48b54;
-            border-top: 1px dashed #e9d3b5;
+            border-top: 1px solid #ecdbba;
             display: inline-block;
-            padding-top: 18px;
+            padding-top: 20px;
             margin-top: 20px;
         }
 
+        /* invitation reveal area */
         .invitation-reveal {
-            margin-top: 40px;
+            margin-top: 50px;
             opacity: 0;
-            transform: translateY(40px);
-            transition: all 0.8s ease 0.3s;
+            transform: translateY(50px);
+            transition: all 0.9s ease 0.3s;
             pointer-events: none;
         }
 
-        /* opened state */
         body.envelope-opened .flap {
             transform: rotateX(180deg);
         }
@@ -152,57 +169,54 @@
 
         body.envelope-opened .envelope-wrapper {
             animation: none;
-            filter: drop-shadow(0 8px 18px rgba(0,0,0,0.1));
+            filter: drop-shadow(0 12px 24px rgba(0,0,0,0.15));
         }
 
-        /* invitation card inner content */
-        .invitation-card {
-            background: rgba(255, 252, 245, 0.96);
-            border-radius: 32px;
-            padding: 2rem 1.8rem;
-            margin: 2rem 0 1rem;
-            backdrop-filter: blur(2px);
-            box-shadow: 0 25px 40px -12px rgba(0,0,0,0.2);
-            border: 1px solid #eedfcb;
-        }
-
-        /* couple hero */
-        .couple-hero {
+        /* Couple card inside envelope (immediately visible after open) */
+        .couple-premium-card {
+            background: #ffffffeb;
+            backdrop-filter: blur(6px);
+            border-radius: 48px;
+            padding: 2rem 1.5rem;
+            margin: 1rem 0 2rem;
+            box-shadow: 0 35px 45px -20px rgba(0,0,0,0.2);
+            border: 1px solid #f1e3d2;
             text-align: center;
-            margin-bottom: 3rem;
-            position: relative;
         }
 
-        .couple-img {
+        .large-couple-img {
             width: 100%;
-            max-width: 380px;
-            border-radius: 28px;
-            box-shadow: 0 20px 30px -8px rgba(0,0,0,0.2);
-            transition: transform 0.5s ease;
-            filter: sepia(0.1) brightness(1.02);
+            max-width: 500px;
+            border-radius: 40px;
+            box-shadow: 0 30px 40px -15px rgba(0,0,0,0.25);
+            transition: transform 0.6s ease;
+            margin-bottom: 1.2rem;
+        }
+        .large-couple-img:hover {
+            transform: scale(1.01);
         }
 
-        .initials-overlay {
+        .initials-big {
             font-family: 'Playfair Display', serif;
-            font-size: 4rem;
-            letter-spacing: 8px;
-            margin-top: -60px;
-            background: linear-gradient(135deg, #c7a26b, #e7cba5);
+            font-size: 4.2rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #c9985f, #efcf97);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            text-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            font-weight: 600;
+            letter-spacing: 12px;
+            margin-top: -20px;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.05);
         }
 
-        /* scroll reveal sections */
+        /* scroll sections */
         .scroll-section {
             opacity: 0;
-            transform: translateY(40px);
-            transition: opacity 0.8s cubic-bezier(0.2, 0.9, 0.4, 1), transform 0.7s ease;
-            margin: 4rem 0;
+            transform: translateY(50px);
+            transition: opacity 0.9s cubic-bezier(0.2, 0.9, 0.4, 1), transform 0.8s ease;
+            margin: 5rem 0;
             padding: 2rem 0;
-            border-bottom: 1px solid #eedbc8;
+            border-bottom: 1px solid #e7d9ca;
         }
 
         .scroll-section.visible {
@@ -211,41 +225,42 @@
         }
 
         .section-title {
-            font-size: 2rem;
+            font-size: 2.3rem;
             font-weight: 500;
             font-family: 'Playfair Display', serif;
-            color: #b47c48;
+            color: #b37b48;
             text-align: center;
             margin-bottom: 2rem;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
         }
 
         .story-text {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             line-height: 1.5;
             text-align: center;
             max-width: 800px;
             margin: 0 auto;
             font-style: italic;
-            color: #3e2a21;
+            color: #3d2d22;
         }
 
-        /* calendar */
+        /* Calendar - weekdays in English letters */
         .calendar-grid {
-            max-width: 400px;
+            max-width: 480px;
             margin: 0 auto;
-            background: #fff8ef;
-            border-radius: 32px;
-            padding: 1rem;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            background: #fff9f0;
+            border-radius: 48px;
+            padding: 1.8rem;
+            box-shadow: 0 18px 30px -12px rgba(0,0,0,0.08);
         }
         .calendar-header {
             display: flex;
             justify-content: space-between;
             font-weight: bold;
-            margin-bottom: 1rem;
-            font-size: 1.4rem;
-            color: #a7723a;
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            color: #aa7642;
+            font-family: 'Playfair Display';
         }
         .weekdays, .days {
             display: grid;
@@ -254,13 +269,16 @@
         }
         .weekdays div {
             font-weight: 600;
-            padding: 8px;
+            padding: 10px;
             color: #8d6a48;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
         .days div {
             padding: 12px 5px;
             font-size: 1rem;
-            cursor: default;
+            font-weight: 500;
         }
         .heart-day {
             background: #f5e2cd;
@@ -273,128 +291,138 @@
             content: "❤️";
             position: absolute;
             font-size: 0.7rem;
-            bottom: -2px;
-            right: 2px;
+            bottom: 0px;
+            right: 5px;
         }
 
-        /* timeline cards */
+        /* timeline - premium style icons */
         .timeline {
             display: flex;
             flex-direction: column;
-            gap: 1.2rem;
-            max-width: 700px;
+            gap: 1.5rem;
+            max-width: 760px;
             margin: 0 auto;
         }
         .timeline-card {
             display: flex;
             align-items: center;
-            gap: 1.5rem;
+            gap: 1.8rem;
             background: #fffcf5;
-            border-radius: 48px;
-            padding: 0.8rem 1.8rem;
-            box-shadow: 0 6px 12px rgba(0,0,0,0.05);
-            transition: all 0.2s;
-            border: 1px solid #f3e5d4;
+            border-radius: 60px;
+            padding: 1rem 2rem;
+            box-shadow: 0 6px 14px rgba(0,0,0,0.04);
+            transition: all 0.3s;
+            border: 1px solid #efdfcd;
         }
         .timeline-card:hover {
-            transform: scale(1.01);
+            transform: translateX(8px);
             background: #fffaf0;
         }
         .timeline-icon {
-            font-size: 2.4rem;
-            width: 65px;
+            font-size: 2.2rem;
+            width: 70px;
             text-align: center;
-            color: #bc8a5a;
-        }
-        .timeline-content {
-            flex: 1;
+            color: #c39160;
         }
         .timeline-time {
             font-weight: 700;
             font-family: monospace;
-            color: #a26e3c;
+            font-size: 1.1rem;
+            color: #9e693b;
         }
         .timeline-title {
-            font-size: 1.2rem;
+            font-size: 1.25rem;
             font-weight: 600;
         }
 
         /* timer */
         .timer-box {
-            background: #eadbc8;
-            padding: 1.5rem;
-            border-radius: 60px;
+            background: #e7d7c4;
+            padding: 1.8rem;
+            border-radius: 80px;
             text-align: center;
             font-family: monospace;
-            font-size: 1.8rem;
-            letter-spacing: 4px;
+            font-size: 2rem;
+            letter-spacing: 6px;
             font-weight: bold;
-            color: #5a3a22;
+            color: #4f321c;
+            box-shadow: inset 0 0 0 1px #f9efdf, 0 12px 20px -8px rgba(0,0,0,0.1);
         }
 
-        /* rsvp button */
         .rsvp-btn {
-            background: #c8a77b;
+            background: linear-gradient(145deg, #ccaa7c, #b88756);
             border: none;
-            padding: 14px 34px;
+            padding: 16px 42px;
             border-radius: 60px;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             font-weight: 600;
             font-family: 'Cormorant Garamond', serif;
             color: white;
             cursor: pointer;
-            transition: 0.2s;
-            box-shadow: 0 6px 14px rgba(0,0,0,0.1);
-            margin-top: 20px;
+            transition: 0.25s;
+            box-shadow: 0 10px 18px rgba(0,0,0,0.1);
+            letter-spacing: 1px;
         }
         .rsvp-btn:hover {
-            background: #a77c4c;
-            transform: scale(0.97);
-            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            background: #a57245;
+            transform: scale(0.96);
+            box-shadow: 0 5px 12px rgba(0,0,0,0.1);
         }
 
         .map-placeholder {
-            background: #e7daca;
-            height: 220px;
-            border-radius: 28px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1rem;
-            color: #785e3c;
+            background: #dfcfbb;
+            height: 240px;
+            border-radius: 38px;
+            overflow: hidden;
         }
         iframe {
             width: 100%;
-            border-radius: 28px;
+            height: 100%;
             border: none;
         }
 
         footer {
             text-align: center;
-            margin-top: 4rem;
-            font-size: 0.8rem;
-            color: #ac8c66;
+            margin-top: 5rem;
+            font-size: 0.9rem;
+            color: #b6926e;
+            letter-spacing: 1px;
         }
 
-        @media (max-width: 650px) {
-            .container { padding: 1rem; }
-            .timeline-card { flex-direction: column; text-align: center; padding: 1rem; }
-            .initials-overlay { font-size: 2.4rem; margin-top: -30px; }
+        /* floating particles refined */
+        .floating-particle {
+            position: fixed;
+            pointer-events: none;
+            background: radial-gradient(circle, #eedbbc, #dbbd92);
+            border-radius: 50%;
+            opacity: 0;
+            z-index: 1;
+        }
+
+        @media (max-width: 700px) {
+            .container { padding: 1.2rem; }
+            .timeline-card { flex-direction: column; text-align: center; gap: 0.5rem; padding: 1rem; }
+            .initials-big { font-size: 2.6rem; letter-spacing: 6px; margin-top: -10px; }
             .story-text { font-size: 1.2rem; }
+            .section-title { font-size: 1.8rem; }
+            .timer-box { font-size: 1.2rem; letter-spacing: 2px; }
+            .wax-seal { width: 56px; height: 56px; bottom: -28px; }
+            .wax-seal::after { font-size: 0.6rem; }
         }
     </style>
 </head>
 <body>
 <div class="container">
-    <!-- ENVELOPE SECTION -->
+    <!-- LARGE ENVELOPE with WAX SEAL -->
     <div class="envelope-stage">
         <div class="envelope-wrapper" id="envelopeTrigger">
             <div class="envelope">
                 <div class="flap"></div>
+                <div class="wax-seal"></div>
                 <div class="envelope-body">
-                    <div style="font-size: 1.8rem; color:#dbbd97;">✦</div>
-                    <div class="envelope-seal">À notre amour · V & Q</div>
-                    <div style="margin-top: 20px; font-size: 0.8rem; letter-spacing: 1px;">սեղմեք բացելու համար</div>
+                    <div style="font-size: 2.5rem; color: #dbbc93;">✧</div>
+                    <div class="envelope-seal-text">À NOTRE AMOUR · V & Q</div>
+                    <div style="margin-top: 28px; font-size: 1rem; letter-spacing: 1.5px;">սեղմեք բացելու համար</div>
                 </div>
             </div>
         </div>
@@ -402,19 +430,18 @@
 
     <!-- REVEALED INVITATION CONTENT (hidden until envelope opens) -->
     <div class="invitation-reveal" id="invitationContent">
-        <div class="invitation-card">
-            <!-- Couple image + initials VQ -->
-            <div class="couple-hero">
-                <img class="couple-img" src="https://cdn.shopify.com/s/files/1/0991/8038/0469/files/5.png?v=1776161359" alt="V & Q" style="width:100%; max-width:380px; border-radius:28px;">
-                <div class="initials-overlay">V Q</div>
-                <div style="font-size: 1rem; margin-top: 8px; color:#b68446;">✨ save the date ✨</div>
-            </div>
+        <div class="couple-premium-card">
+            <!-- Enlarged couple image -->
+            <img class="large-couple-img" src="https://cdn.shopify.com/s/files/1/0991/8038/0469/files/5.png?v=1776161359" alt="V & Q">
+            <!-- VQ initials prominent above description (visible at top) -->
+            <div class="initials-big">V Q</div>
+            <div style="font-size: 1.2rem; margin-top: 10px; color: #b68446; font-style: italic;">save the date · 16.08.2026</div>
         </div>
     </div>
 
-    <!-- SCROLL SECTIONS (reveal on scroll) -->
+    <!-- SCROLL SECTIONS with staggered animations -->
     <div class="scroll-section" id="storySection">
-        <div class="section-title">Սիրո պատմություն</div>
+        <div class="section-title"><i class="fas fa-feather-alt" style="margin-right: 10px;"></i> Սիրո պատում</div>
         <div class="story-text">
             «Հարգելի հյուրեր, մոտենում է մեր կյանքի ամենագեղեցիկ ու հիշարժան պահերից մեկը։<br>
             Մենք ընտանիք ենք կազմում և մեծ սիրով հրավիրում ենք Ձեզ կիսելու մեր երջանկությունը։<br>
@@ -423,12 +450,12 @@
     </div>
 
     <div class="scroll-section" id="calendarSection">
-        <div class="section-title">📅 Օգոստոս 2026</div>
+        <div class="section-title"><i class="far fa-calendar-alt"></i> Օգոստոս 2026</div>
         <div id="calendarWidget" class="calendar-grid"></div>
     </div>
 
     <div class="scroll-section" id="programSection">
-        <div class="section-title">ՕՐՎԱ ԾՐԱԳԻՐ</div>
+        <div class="section-title"><i class="fas fa-clock"></i> ՕՐՎԱ ԾՐԱԳԻՐ</div>
         <div class="timeline">
             <div class="timeline-card"><div class="timeline-icon"><i class="fas fa-home"></i></div><div class="timeline-content"><div class="timeline-time">12:00</div><div class="timeline-title">Հարսի տուն</div></div></div>
             <div class="timeline-card"><div class="timeline-icon"><i class="fas fa-ring"></i></div><div class="timeline-content"><div class="timeline-time">14:00</div><div class="timeline-title">Պսակադրության արարողություն</div></div></div>
@@ -440,58 +467,60 @@
     </div>
 
     <div class="scroll-section" id="timerSection">
-        <div class="section-title">⏳ Մեր հարսանիքին մնացել է՝</div>
+        <div class="section-title"><i class="fas fa-hourglass-half"></i> Մեր հարսանիքին մնացել է՝</div>
         <div class="timer-box" id="countdownTimer">-- -- --</div>
     </div>
 
     <div class="scroll-section" id="secondPhotoSection">
-        <div class="couple-hero">
-            <img class="couple-img" src="https://cdn.pixabay.com/photo/2022/08/24/20/12/wedding-7408803_1280.jpg" alt="romantic couple" style="max-width:380px; border-radius:32px; width:100%;">
-            <div style="margin-top: 20px; font-size: 1.2rem; font-style: italic;">✨ eternal love ✨</div>
+        <div style="text-align:center;">
+            <img class="large-couple-img" src="https://cdn.pixabay.com/photo/2022/08/24/20/12/wedding-7408803_1280.jpg" alt="romantic moment" style="max-width: 480px; border-radius: 40px; width:100%;">
+            <div style="margin-top: 20px; font-size: 1.3rem; font-style: italic; color:#b47c48;">✨ eternal promise ✨</div>
         </div>
     </div>
 
     <div class="scroll-section" id="danceNote">
-        <div class="story-text" style="font-size:1.3rem;">
+        <div class="story-text" style="font-size:1.4rem;">
             💃 «Հարգելի հյուրեր, մենք ուրախ կլինենք կիսել մեր կյանքի ամենաերջանիկ օրը Ձեզ հետ։<br>
             Բերեք Ձեզ հետ տոնական տրամադրություն և հարմար կոշիկներ պարելու համար։» 🕺
         </div>
     </div>
 
     <div class="scroll-section" id="finalInitials">
-        <div class="couple-hero">
-            <img class="couple-img" src="https://cdn.shopify.com/s/files/1/0991/8038/0469/files/5.png?v=1776161359" alt="V&Q" style="max-width:320px; border-radius:40px;">
-            <div class="initials-overlay" style="font-size:3.8rem;">Վ & Ք</div>
-        </div>
-        <div style="text-align:center; margin-top: 1rem;">
-            <button class="rsvp-btn" id="rsvpButton">✧ RSVP & հաստատել ✧</button>
+        <div style="text-align:center;">
+            <img class="large-couple-img" src="https://cdn.shopify.com/s/files/1/0991/8038/0469/files/5.png?v=1776161359" alt="V&Q" style="max-width: 380px; border-radius: 48px;">
+            <div class="initials-big" style="font-size: 3.5rem; margin-top: 0.5rem;">Վ & Ք</div>
         </div>
         <div style="text-align:center; margin-top: 2rem;">
-            <div class="section-title">📍 Վայրը</div>
+            <button class="rsvp-btn" id="rsvpButton"><i class="fas fa-envelope-open-text"></i> RSVP & հաստատել</button>
+        </div>
+        <div style="text-align:center; margin-top: 2rem;">
+            <div class="section-title"><i class="fas fa-map-marker-alt"></i> Վայրը</div>
             <div class="map-placeholder">
-                <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=44.5151%2C40.1829%2C44.5175%2C40.1845&layer=mapnik&marker=40.1837%2C44.5163" width="100%" height="200" style="border:0; border-radius:28px;" allowfullscreen="" loading="lazy"></iframe>
+                <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=44.5151%2C40.1829%2C44.5175%2C40.1845&layer=mapnik&marker=40.1837%2C44.5163" allowfullscreen="" loading="lazy"></iframe>
             </div>
-            <p style="margin-top: 12px;">Երևան, Հայաստան · Հարսանյաց դահլիճ "Belle Amé"</p>
+            <p style="margin-top: 15px; font-size: 1.1rem;">Երևան, Հայաստան · Հարսանյաց դահլիճ "Belle Amé"</p>
         </div>
     </div>
 
     <footer>
-        ✦ with love, V & Q ✦
+        <i class="fas fa-heart" style="color:#cb9e6b;"></i> with love, V & Q <i class="fas fa-heart" style="color:#cb9e6b;"></i>
     </footer>
 </div>
 
 <script>
-    // Helper: build calendar August 2026 with heart on 16
+    // Calendar: August 2026, weekdays in English letters (Mon, Tue, Wed, Thu, Fri, Sat, Sun)
     function buildCalendar() {
         const year = 2026;
-        const month = 7; // August (0-index)
-        const firstDay = new Date(year, month, 1).getDay();
+        const month = 7; // August
+        const firstDayIndex = new Date(year, month, 1).getDay(); // 0 = Sunday
+        // Adjust for Monday first: we want weekdays Mon-Sun
+        let startOffset = firstDayIndex === 0 ? 6 : firstDayIndex - 1;
         const daysInMonth = new Date(year, month + 1, 0).getDate();
-        const weekdays = ["Կ", "Ե", "Ե", "Չ", "Հ", "Ո", "Շ"];
-        let calendarHTML = `<div class="calendar-header"><span>Օգոստոս 2026</span><span>❤️</span></div><div class="weekdays">${weekdays.map(d => `<div>${d}</div>`).join('')}</div><div class="days">`;
+        const weekdays = ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"];
+        let calendarHTML = `<div class="calendar-header"><span>ՕԳՈՍՏՈՍ 2026</span><span>❤️</span></div><div class="weekdays">${weekdays.map(d => `<div>${d}</div>`).join('')}</div><div class="days">`;
         let dayCounter = 1;
         for (let i = 0; i < 42; i++) {
-            if (i < firstDay || dayCounter > daysInMonth) {
+            if (i < startOffset || dayCounter > daysInMonth) {
                 calendarHTML += `<div></div>`;
             } else {
                 let isHeart = (dayCounter === 16);
@@ -504,13 +533,13 @@
         document.getElementById('calendarWidget').innerHTML = calendarHTML;
     }
 
-    // Countdown Timer to 16 August 2026, 18:00 (party time)
+    // Timer to 16 August 2026, 18:00
     function updateTimer() {
         const target = new Date(2026, 7, 16, 18, 0, 0).getTime();
         const now = new Date().getTime();
         const diff = target - now;
         if (diff <= 0) {
-            document.getElementById('countdownTimer').innerHTML = "🎉 Այսօր է մեծ օրը 🎉";
+            document.getElementById('countdownTimer').innerHTML = "🎉 ԱՅՍՕՐ ՄԵԾ ՕՐՆ Է 🎉";
             return;
         }
         const days = Math.floor(diff / (1000 * 60 * 60 * 24));
@@ -520,29 +549,27 @@
         document.getElementById('countdownTimer').innerHTML = `${days} օր  ${hours} ժ  ${minutes} ր  ${seconds} վրկ`;
     }
 
-    // Intersection Observer for scroll reveal
+    // Intersection Observer for scroll sections
     const sections = document.querySelectorAll('.scroll-section');
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
-                // optional staggered inside children
             }
         });
-    }, { threshold: 0.2, rootMargin: "0px 0px -60px 0px" });
+    }, { threshold: 0.2, rootMargin: "0px 0px -50px 0px" });
     sections.forEach(section => observer.observe(section));
 
-    // Music & Envelope open logic
-    let musicPlaying = false;
+    // Music + Envelope open logic (premium)
     let audio = null;
     let envelopeOpened = false;
 
-    function initAudio() {
+    function initMusic() {
         if (audio) return;
-        // Romantic royalty-free piano track from Pixabay (safe & elegant)
+        // Royalty free elegant piano piece (Pixabay)
         audio = new Audio('https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf6c7.mp3?filename=romantic-piano-182532.mp3');
         audio.loop = true;
-        audio.volume = 0.45;
+        audio.volume = 0.5;
         audio.load();
     }
 
@@ -551,28 +578,25 @@
         envelopeOpened = true;
         document.body.classList.add('envelope-opened');
         
-        // start music (user interaction)
-        initAudio();
-        audio.play().catch(e => console.log("audio autoplay blocked, but user opened", e));
-        musicPlaying = true;
-
-        // optional subtle confetti or glow effect
-        const wrapper = document.querySelector('.envelope-wrapper');
-        wrapper.style.animation = 'none';
+        // play music (attempt autoplay after user gesture)
+        initMusic();
+        audio.play().catch(e => console.log("playback prevented", e));
         
-        // show couple image with initials already visible via .invitation-reveal
-        // additional micro animation for initials
-        const initialsDiv = document.querySelector('.initials-overlay');
-        if (initialsDiv) {
-            initialsDiv.style.opacity = '0';
-            setTimeout(() => { initialsDiv.style.transition = '0.5s'; initialsDiv.style.opacity = '1'; }, 200);
-        }
-        // trigger first sections appearance after open (already observer, but ensure story visible)
+        // remove breathing animation
+        const wrap = document.querySelector('.envelope-wrapper');
+        wrap.style.animation = 'none';
+        
+        // tiny extra effect: add class to wax seal glow
+        const seal = document.querySelector('.wax-seal');
+        if (seal) seal.style.boxShadow = '0 0 0 2px #fbe5b0, 0 10px 20px rgba(0,0,0,0.2)';
+        
+        // reveal invitation card with extra finesse
         setTimeout(() => {
+            window.dispatchEvent(new Event('scroll'));
+            // ensure first sections visible if needed
             const storySec = document.getElementById('storySection');
             if(storySec && !storySec.classList.contains('visible')) observer.observe(storySec);
-            window.dispatchEvent(new Event('scroll'));
-        }, 400);
+        }, 300);
     }
 
     const envelopeTrigger = document.getElementById('envelopeTrigger');
@@ -581,56 +605,44 @@
         if (!envelopeOpened) openEnvelope();
     });
 
-    // calendar and timer init
+    // RSVP interaction
+    document.getElementById('rsvpButton').addEventListener('click', () => {
+        alert('✨ Շնորհակալություն հաստատման համար! Մենք կկապնվենք Ձեզ հետ։ ✨\nThank you for confirming! We will contact you.');
+    });
+
+    // initialise calendar, timer
     buildCalendar();
     updateTimer();
     setInterval(updateTimer, 1000);
 
-    // RSVP button alert (premium feel)
-    document.getElementById('rsvpButton').addEventListener('click', () => {
-        alert('✨ Շնորհակալություն! Ձեր պատասխանը գրանցված է։ Մենք կկապվենք Ձեզ հետ։ ✨\nThank you! Your response has been recorded.');
-    });
-
-    // preload images / ensure all visible elements get observer for any dynamic added later
+    // show visible sections on load
     window.addEventListener('load', () => {
-        // small hack to reveal sections if already visible
         sections.forEach(sec => {
             const rect = sec.getBoundingClientRect();
-            if (rect.top < window.innerHeight - 100) sec.classList.add('visible');
+            if (rect.top < window.innerHeight - 80) sec.classList.add('visible');
         });
-        // if envelope already opened? no
     });
 
-    // extra premium effect: add floating particles (light)
-    function createParticles() {
-        const particleContainer = document.createElement('div');
-        particleContainer.style.position = 'fixed';
-        particleContainer.style.pointerEvents = 'none';
-        particleContainer.style.top = '0';
-        particleContainer.style.left = '0';
-        particleContainer.style.width = '100%';
-        particleContainer.style.height = '100%';
-        particleContainer.style.zIndex = '1';
-        document.body.appendChild(particleContainer);
-        for(let i=0;i<35;i++) {
+    // premium floating particles (light glow)
+    function createLuxuryParticles() {
+        for(let i=0;i<45;i++) {
             let particle = document.createElement('div');
-            particle.style.position = 'absolute';
-            particle.style.width = '2px';
-            particle.style.height = '2px';
-            particle.style.background = 'radial-gradient(circle, #e9cfaa, #c9a56e)';
-            particle.style.borderRadius = '50%';
-            particle.style.opacity = Math.random() * 0.4;
+            particle.classList.add('floating-particle');
+            let size = Math.random() * 4 + 2;
+            particle.style.width = size + 'px';
+            particle.style.height = size + 'px';
             particle.style.left = Math.random() * 100 + '%';
             particle.style.top = Math.random() * 100 + '%';
-            particle.style.animation = `floatParticle ${8 + Math.random() * 10}s linear infinite`;
-            particle.style.animationDelay = Math.random() * 8 + 's';
-            particleContainer.appendChild(particle);
+            particle.style.animation = `floatParticle ${12 + Math.random() * 15}s linear infinite`;
+            particle.style.animationDelay = Math.random() * 10 + 's';
+            particle.style.opacity = Math.random() * 0.35;
+            document.body.appendChild(particle);
         }
-        const styleSheet = document.createElement("style");
-        styleSheet.textContent = `@keyframes floatParticle { 0% { transform: translateY(0vh) rotate(0deg); opacity:0; } 20% { opacity:0.5; } 80% { opacity:0.3; } 100% { transform: translateY(-100vh) rotate(360deg); opacity:0; } }`;
-        document.head.appendChild(styleSheet);
+        const style = document.createElement('style');
+        style.textContent = `@keyframes floatParticle { 0% { transform: translateY(0vh) rotate(0deg); opacity:0; } 15% { opacity:0.5; } 85% { opacity:0.3; } 100% { transform: translateY(-120vh) rotate(420deg); opacity:0; } }`;
+        document.head.appendChild(style);
     }
-    createParticles();
+    createLuxuryParticles();
 </script>
 </body>
 </html>
