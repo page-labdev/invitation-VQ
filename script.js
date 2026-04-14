@@ -1,76 +1,69 @@
 gsap.registerPlugin(ScrollTrigger);
 
-/* =========================
-   MASTER TIMELINE ENGINE
-========================= */
+//
+// MASTER SCENE ENGINE
+//
+const scenes = gsap.utils.toArray(".scene");
 
-const tl = gsap.timeline({
+scenes.forEach((scene, i) => {
+
+  gsap.fromTo(scene,
+    {
+      opacity: 0,
+      scale: 0.98
+    },
+    {
+      opacity: 1,
+      scale: 1,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: scene,
+        start: "top 80%",
+        end: "top 20%",
+        scrub: true
+      }
+    }
+  );
+
+});
+
+//
+// ENVELOPE ZOOM EFFECT
+//
+gsap.to(".envelope", {
+  scale: 1.3,
+  opacity: 0,
   scrollTrigger: {
-    trigger: ".story",
+    trigger: "#s1",
     start: "top top",
-    end: "bottom bottom",
-    scrub: 1
+    end: "bottom top",
+    scrub: true
   }
 });
 
-/* =========================
-   SCENE 1 → ENVELOPE INTRO
-========================= */
-
-tl.fromTo("#s1 .envelope",
-  { scale: 0.8, opacity: 0 },
-  { scale: 1, opacity: 1, duration: 1, ease: "power3.out" }
-);
-
-/* envelope fade + transition */
-tl.to("#s1 .envelope", {
-  scale: 1.4,
+//
+// LETTER REVEAL
+//
+gsap.from(".letter", {
+  y: 80,
   opacity: 0,
-  ease: "power4.inOut"
+  duration: 1,
+  scrollTrigger: {
+    trigger: "#s2",
+    start: "top 70%",
+    scrub: true
+  }
 });
 
-/* =========================
-   SCENE 2 → LETTER REVEAL
-========================= */
-
-tl.to("#s2 .letter", {
-  opacity: 1,
-  y: 0,
-  ease: "expo.out"
-});
-
-/* paper depth motion */
-tl.from("#s2 .paper", {
-  scale: 1.2,
-  opacity: 0
-}, "<");
-
-/* =========================
-   SCENE 3 → EXPERIENCE
-========================= */
-
-tl.to("#s3 .experience", {
-  opacity: 1,
-  y: 0,
-  ease: "power3.out"
-});
-
-/* =========================
-   SCENE 4 → IMMERSION */
-========================= */
-
-tl.to("#s4 .immersive", {
-  opacity: 1,
-  y: 0,
-  ease: "power2.out"
-});
-
-/* =========================
-   SCENE 5 → CTA FINAL */
-========================= */
-
-tl.to("#s5 .cta", {
-  opacity: 1,
-  y: 0,
-  ease: "power4.out"
+//
+// EXPERIENCE TEXT
+//
+gsap.from(".experience", {
+  y: 60,
+  opacity: 0,
+  scrollTrigger: {
+    trigger: "#s3",
+    start: "top 70%",
+    scrub: true
+  }
 });
