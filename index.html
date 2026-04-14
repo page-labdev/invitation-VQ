@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Invitation Builder</title>
+<title>Ultimate Invitation</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
 
@@ -14,12 +14,73 @@
 *{margin:0;padding:0;box-sizing:border-box}
 body{
   font-family:'Montserrat',sans-serif;
-  background:#f7f4f0;
+  background:#f6f3ef;
   color:#2b2b2b;
   overflow-x:hidden;
 }
 
-/* BUILDER CORE */
+/* =========================
+   3D ENVELOPE SYSTEM
+========================= */
+.envelope{
+  position:fixed;
+  inset:0;
+  background:#e9e4de;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  z-index:9999;
+  perspective:1200px;
+  cursor:pointer;
+}
+
+.envelope-inner{
+  width:280px;
+  height:180px;
+  position:relative;
+  transform-style:preserve-3d;
+  transition:1.2s ease;
+}
+
+.flap{
+  position:absolute;
+  width:100%;
+  height:100%;
+  background:#ddd6cf;
+  transform-origin:top;
+  transition:1.2s ease;
+  clip-path:polygon(0 0,100% 0,50% 50%);
+}
+
+.letter{
+  position:absolute;
+  width:100%;
+  height:100%;
+  background:#fff;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  transform:translateZ(-1px);
+  font-size:12px;
+  letter-spacing:2px;
+}
+
+.open .flap{
+  transform:rotateX(-160deg);
+}
+
+.open{
+  animation:hideEnv 1.5s forwards 1s;
+}
+
+@keyframes hideEnv{
+  to{transform:translateY(-120%)}
+}
+
+/* =========================
+   BUILDER SYSTEM
+========================= */
+
 .builder{
   width:100%;
 }
@@ -30,8 +91,7 @@ body{
   justify-content:center;
   align-items:center;
   text-align:center;
-  padding:40px 20px;
-  position:relative;
+  padding:40px;
 }
 
 /* TYPO */
@@ -40,50 +100,56 @@ h1,h2{
   letter-spacing:2px;
 }
 
-.names{
-  font-size:64px;
-}
+.names{font-size:64px}
 
-.text{
-  max-width:520px;
-  line-height:1.8;
-  opacity:.8;
-}
+/* =========================
+   TIMELINE ANIMATION ENGINE
+========================= */
 
-/* ANIMATION ENGINE */
-.anim{
+[data-anim]{
   opacity:0;
   transform:translateY(80px);
-  transition:1.2s cubic-bezier(.2,.6,.2,1);
 }
 
-.anim.show{
-  opacity:1;
-  transform:translateY(0);
+.active [data-anim]{
+  animation:reveal 1.2s forwards;
 }
 
-/* DELAY SYSTEM */
-[data-delay="1"]{transition-delay:.2s}
-[data-delay="2"]{transition-delay:.4s}
-[data-delay="3"]{transition-delay:.6s}
+[data-delay=\"1\"]{animation-delay:.3s}
+[data-delay=\"2\"]{animation-delay:.6s}
+[data-delay=\"3\"]{animation-delay:.9s}
 
-/* ENVELOPE */
-.envelope{
-  position:fixed;
-  inset:0;
-  background:#eae5de;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  z-index:9999;
-  cursor:pointer;
-  transition:1s ease;
-}
-.envelope.open{
-  transform:translateY(-100%);
+@keyframes reveal{
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
 }
 
-/* SCROLL SNAP (like Apple) */
+/* =========================
+   TEXT REVEAL (LETTER)
+========================= */
+
+.reveal-text span{
+  opacity:0;
+  display:inline-block;
+  transform:translateY(20px);
+}
+
+.reveal-text.active span{
+  animation:letter .6s forwards;
+}
+
+@keyframes letter{
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+/* =========================
+   SCROLL SNAP (APPLE STYLE)
+========================= */
 html{
   scroll-snap-type:y mandatory;
 }
@@ -95,8 +161,7 @@ html{
 input{
   padding:12px;
   border:1px solid #ddd;
-  margin:6px 0;
-  width:240px;
+  margin:6px;
 }
 
 button{
@@ -107,68 +172,55 @@ button{
   cursor:pointer;
 }
 
-/* MOBILE */
-@media(max-width:768px){
-  .names{font-size:40px}
-}
-
 </style>
 </head>
 
 <body>
 
-<!-- ENVELOPE -->
+<!-- 3D ENVELOPE -->
 <div class="envelope" onclick="openEnvelope()">
-  ԲԱՑԵԼ ՀՐԱՎԻՐԱՏՈՄՍԸ
+  <div class="envelope-inner">
+    <div class="flap"></div>
+    <div class="letter">OPEN</div>
+  </div>
 </div>
 
 <div class="builder">
 
 <!-- HERO -->
 <div class="block">
-  <div>
-    <h1 class="anim">ՀՐԱՎԻՐԱՏՈՄՍ</h1>
-    <div class="text anim" data-delay="1">SAVE THE DATE</div>
+  <div data-anim>
+    <h1 class="reveal-text">ՀՐԱՎԻՐԱՏՈՄՍ</h1>
   </div>
 </div>
 
 <!-- NAMES -->
 <div class="block">
   <div>
-    <div class="names anim">ԱՆՈՒՆ</div>
-    <div class="anim" data-delay="1">&</div>
-    <div class="names anim" data-delay="2">ԱՆՈՒՆ</div>
+    <div class="names reveal-text">ԱՆՈՒՆ</div>
+    <div>&</div>
+    <div class="names reveal-text">ԱՆՈՒՆ</div>
   </div>
 </div>
 
-<!-- STORY -->
+<!-- TEXT -->
 <div class="block">
-  <div class="text anim">
-    Սիրով հրավիրում ենք Ձեզ կիսելու մեր կյանքի ամենակարևոր օրը
+  <div data-anim>
+    Սիրով հրավիրում ենք Ձեզ մեր հարսանիքին
   </div>
 </div>
 
 <!-- DATE -->
 <div class="block">
-  <h2 class="anim">00.00.2026</h2>
-</div>
-
-<!-- DETAILS -->
-<div class="block">
-  <div class="text anim">
-    Ժամը՝ 14:00<br><br>
-    Վայրը՝ Ռեստորան<br>
-    Հասցե՝ Երևան
-  </div>
+  <h2 data-anim>00.00.2026</h2>
 </div>
 
 <!-- RSVP -->
 <div class="block">
-  <div>
-    <h2 class="anim">RSVP</h2>
-    <input class="anim" placeholder="Ձեր անունը">
-    <input class="anim" data-delay="1" placeholder="Հեռախոսահամար">
-    <button class="anim" data-delay="2">Հաստատել</button>
+  <div data-anim>
+    <h2>RSVP</h2>
+    <input placeholder="Ձեր անունը"><br>
+    <button>Հաստատել</button>
   </div>
 </div>
 
@@ -181,18 +233,43 @@ function openEnvelope(){
   document.querySelector('.envelope').classList.add('open');
 }
 
-/* BUILDER SCROLL ENGINE */
-const elements = document.querySelectorAll('.anim');
+/* BUILDER TIMELINE ENGINE */
+const blocks=document.querySelectorAll('.block');
 
-const observer = new IntersectionObserver(entries=>{
-  entries.forEach(entry=>{
-    if(entry.isIntersecting){
-      entry.target.classList.add('show');
-    }
-  });
-},{threshold:.3});
+const observer=new IntersectionObserver(entries=>{
+ entries.forEach(entry=>{
+  if(entry.isIntersecting){
+   entry.target.classList.add('active');
+  }
+ });
+},{threshold:.5});
 
-elements.forEach(el=>observer.observe(el));
+blocks.forEach(b=>observer.observe(b));
+
+/* LETTER SPLIT */
+document.querySelectorAll('.reveal-text').forEach(el=>{
+ let text=el.innerText;
+ el.innerHTML='';
+ text.split('').forEach((char,i)=>{
+   let span=document.createElement('span');
+   span.innerText=char;
+   span.style.animationDelay=i*0.05+'s';
+   el.appendChild(span);
+ });
+});
+
+/* ACTIVATE TEXT WHEN VISIBLE */
+const textObserver=new IntersectionObserver(entries=>{
+ entries.forEach(entry=>{
+  if(entry.isIntersecting){
+   entry.target.classList.add('active');
+  }
+ });
+});
+
+document.querySelectorAll('.reveal-text').forEach(el=>{
+ textObserver.observe(el);
+});
 
 </script>
 
