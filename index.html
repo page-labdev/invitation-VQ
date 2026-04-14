@@ -12,12 +12,37 @@
 *{margin:0;padding:0;box-sizing:border-box}
 body{
   font-family:'Montserrat',sans-serif;
-  background:#f8f6f3;
+  background:#f6f3ef;
   color:#2b2b2b;
   overflow-x:hidden;
 }
 
-/* GLOBAL */
+/* ENVELOPE */
+.envelope{
+  position:fixed;
+  width:100%;
+  height:100vh;
+  background:#e9e4de;
+  z-index:9999;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  cursor:pointer;
+  transition:1s ease;
+}
+
+.envelope.open{
+  transform:translateY(-100%);
+}
+
+.envelope-text{
+  letter-spacing:4px;
+  font-size:14px;
+  opacity:.7;
+}
+
+/* SECTIONS */
 section{
   min-height:100vh;
   display:flex;
@@ -28,52 +53,30 @@ section{
   padding:40px 20px;
 }
 
+/* TYPOGRAPHY */
 h1,h2{
   font-family:'Playfair Display',serif;
   letter-spacing:2px;
 }
 
-/* HERO */
-.hero{
-  background:#f3efe9;
-}
+h1{font-size:36px}
+h2{font-size:32px}
 
-.hero h1{
-  font-size:42px;
-  font-weight:400;
-}
-
-.hero .date{
-  margin-top:20px;
-  font-size:18px;
-  letter-spacing:4px;
-}
-
-/* BIG NAMES */
 .names{
   font-size:64px;
-  margin:20px 0;
 }
 
 .amp{
-  font-size:28px;
   margin:10px 0;
 }
 
-/* TEXT BLOCK */
 .text{
   max-width:500px;
   line-height:1.8;
   opacity:.8;
 }
 
-/* DETAILS */
-.details{
-  font-size:18px;
-  line-height:2;
-}
-
-/* SECTION FADE */
+/* FADE ANIMATION */
 .fade{
   opacity:0;
   transform:translateY(60px);
@@ -84,12 +87,20 @@ h1,h2{
   transform:translateY(0);
 }
 
+/* DIVIDER */
+.line{
+  width:1px;
+  height:80px;
+  background:#ccc;
+  margin:30px auto;
+}
+
 /* RSVP */
 form{
   display:flex;
   flex-direction:column;
-  gap:15px;
-  width:280px;
+  gap:12px;
+  width:260px;
 }
 
 input{
@@ -105,28 +116,26 @@ button{
   cursor:pointer;
 }
 
-/* DIVIDER */
-.line{
-  width:1px;
-  height:80px;
-  background:#ccc;
-  margin:30px auto;
-}
-
 /* MOBILE */
 @media(max-width:768px){
   .names{font-size:42px}
-  h1{font-size:28px}
+  h1{font-size:26px}
 }
 </style>
 </head>
 
 <body>
 
+<!-- ENVELOPE -->
+<div class="envelope" onclick="openEnvelope()">
+  <div class="envelope-text">ԲԱՑԵԼ ՀՐԱՎԻՐԱՏՈՄՍԸ</div>
+</div>
+
 <!-- HERO -->
-<section class="hero fade">
+<section class="fade">
   <h1>ՀՐԱՎԻՐԱՏՈՄՍ</h1>
-  <div class="date">SAVE THE DATE</div>
+  <div class="line"></div>
+  <div class="text">SAVE THE DATE</div>
 </section>
 
 <!-- NAMES -->
@@ -139,7 +148,7 @@ button{
 <!-- TEXT -->
 <section class="fade">
   <div class="text">
-    Սիրով հրավիրում ենք Ձեզ կիսելու մեր կյանքի ամենակարևոր օրը՝ մեր հարսանիքը
+    Սիրով հրավիրում ենք Ձեզ կիսելու մեր կյանքի ամենակարևոր օրը
   </div>
 </section>
 
@@ -150,23 +159,16 @@ button{
 
 <!-- DETAILS -->
 <section class="fade">
-  <div class="details">
+  <div class="text">
     Ժամը՝ 14:00<br><br>
     Վայրը՝ Ռեստորան<br>
     Հասցե՝ Երևան
   </div>
 </section>
 
-<!-- DRESS CODE -->
-<section class="fade">
-  <h2>DRESS CODE</h2>
-  <div class="text">Black & White</div>
-</section>
-
 <!-- RSVP -->
 <section class="fade">
   <h2>RSVP</h2>
-
   <form>
     <input placeholder="Ձեր անունը">
     <input placeholder="Հեռախոսահամար">
@@ -175,17 +177,25 @@ button{
 </section>
 
 <script>
-const elements = document.querySelectorAll('.fade');
 
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if(entry.isIntersecting){
-      entry.target.classList.add('show');
-    }
-  });
+// ENVELOPE OPEN
+function openEnvelope(){
+  document.querySelector('.envelope').classList.add('open');
+}
+
+// SCROLL ANIMATION
+const elements=document.querySelectorAll('.fade');
+
+const observer=new IntersectionObserver(entries=>{
+ entries.forEach(entry=>{
+  if(entry.isIntersecting){
+   entry.target.classList.add('show');
+  }
+ });
 });
 
-elements.forEach(el => observer.observe(el));
+elements.forEach(el=>observer.observe(el));
+
 </script>
 
 </body>
