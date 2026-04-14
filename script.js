@@ -1,69 +1,59 @@
 gsap.registerPlugin(ScrollTrigger);
 
-//
-// MASTER SCENE ENGINE
-//
-const scenes = gsap.utils.toArray(".scene");
+/* =========================
+   MASTER SCROLL TIMELINE
+========================= */
 
-scenes.forEach((scene, i) => {
-
-  gsap.fromTo(scene,
-    {
-      opacity: 0,
-      scale: 0.98
-    },
-    {
-      opacity: 1,
-      scale: 1,
-      ease: "power3.out",
-      scrollTrigger: {
-        trigger: scene,
-        start: "top 80%",
-        end: "top 20%",
-        scrub: true
-      }
-    }
-  );
-
-});
-
-//
-// ENVELOPE ZOOM EFFECT
-//
-gsap.to(".envelope", {
-  scale: 1.3,
-  opacity: 0,
+const master = gsap.timeline({
   scrollTrigger: {
-    trigger: "#s1",
+    trigger: ".story",
     start: "top top",
-    end: "bottom top",
-    scrub: true
+    end: "bottom bottom",
+    scrub: 1
   }
 });
 
-//
-// LETTER REVEAL
-//
-gsap.from(".letter", {
-  y: 80,
+/* =========================
+   SCENE 1 - ENVELOPE INTRO
+========================= */
+
+master.fromTo(".envelope",
+  { scale: 0.8, opacity: 0 },
+  { scale: 1, opacity: 1, ease: "power3.out", duration: 1 }
+);
+
+master.to(".envelope", {
+  scale: 1.4,
   opacity: 0,
-  duration: 1,
-  scrollTrigger: {
-    trigger: "#s2",
-    start: "top 70%",
-    scrub: true
-  }
+  ease: "power4.inOut"
 });
 
-//
-// EXPERIENCE TEXT
-//
-gsap.from(".experience", {
-  y: 60,
-  opacity: 0,
-  scrollTrigger: {
-    trigger: "#s3",
-    start: "top 70%",
-    scrub: true
-  }
+/* =========================
+   SCENE 2 - LETTER REVEAL
+========================= */
+
+master.to(".letter-text", {
+  opacity: 1,
+  y: 0,
+  ease: "expo.out"
+});
+
+/* =========================
+   SCENE 3 - EXPERIENCE
+========================= */
+
+master.to(".experience", {
+  opacity: 1,
+  y: 0,
+  ease: "power3.out"
+});
+
+/* =========================
+   SCENE 4 - CTA
+========================= */
+
+master.to(".cta", {
+  opacity: 1,
+  y: 0,
+  ease: "power4.out"
 });
