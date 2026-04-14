@@ -1,25 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Invitation</title>
-  <link rel="stylesheet" href="style.css"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Luxury Invitation</title>
+<link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<div class="scene" id="scene">
+<div class="story">
 
-  <div class="envelope" id="envelope">
-    <div class="flap"></div>
-    <div class="body"></div>
+  <!-- SCENE 1: HERO ENVELOPE -->
+  <section class="scene" id="s1">
+    <div class="paper-light"></div>
 
-    <div class="letter" id="letter">
-      <h1>You're Invited</h1>
-      <p>Join us for a special celebration</p>
-      <button onclick="openInvite()">Open Invitation</button>
+    <div class="envelope">
+      <div class="envelope-back"></div>
+      <div class="envelope-flap"></div>
+      <div class="seal">✦</div>
     </div>
-  </div>
+
+    <h1>Scroll to reveal</h1>
+    <p>an invitation crafted in silence</p>
+  </section>
+
+  <!-- SCENE 2: OPEN LETTER -->
+  <section class="scene" id="s2">
+    <div class="letter">
+      <h2>You're Invited</h2>
+      <p>
+        A private evening shaped by light, sound, and presence.
+      </p>
+    </div>
+  </section>
+
+  <!-- SCENE 3: DETAILS -->
+  <section class="scene" id="s3">
+    <div class="details">
+      <h2>The Experience</h2>
+      <p>Minimal. Elegant. Timeless.</p>
+    </div>
+  </section>
+
+  <!-- SCENE 4: FINAL CTA -->
+  <section class="scene" id="s4">
+    <div class="cta">
+      <h2>Join Us</h2>
+      <button>RSVP</button>
+    </div>
+  </section>
 
 </div>
 
