@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
-    <title>VQ | Բացեք ծրարը - Պրեմիում հարսանեկան հրավեր</title>
-    <!-- Premium Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+    <title>VQ | Պրեմիում հարսանեկան հրավեր – Բացեք ծրարը</title>
+    <!-- Google Fonts: Elegant Serif -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+    <!-- Font Awesome 6 (line icons, outline style) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         * {
@@ -15,16 +16,16 @@
         }
 
         body {
-            background: #f4ede3;
-            background-image: radial-gradient(circle at 15% 30%, rgba(200, 170, 130, 0.08) 2%, transparent 2.5%),
-                              radial-gradient(circle at 85% 70%, rgba(180, 140, 100, 0.06) 1.5%, transparent 2%);
-            background-size: 55px 55px, 40px 40px;
+            background: #f8f2e8;
+            background-image: radial-gradient(circle at 20% 30%, rgba(190, 150, 110, 0.08) 2%, transparent 2.5%),
+                              radial-gradient(circle at 80% 70%, rgba(160, 120, 80, 0.05) 1.5%, transparent 2%);
+            background-size: 55px 55px, 45px 45px;
             font-family: 'Cormorant Garamond', 'Georgia', serif;
-            color: #2b241e;
+            color: #2c241e;
             overflow-x: hidden;
         }
 
-        /* premium paper texture overlay */
+        /* premium paper grain overlay */
         body::before {
             content: "";
             position: fixed;
@@ -33,127 +34,132 @@
             width: 100%;
             height: 100%;
             pointer-events: none;
-            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iNDAwIj48ZmlsdGVyIGlkPSJmIj48ZmVUdXJidWxlbmNlIHR5cGU9ImZyYWN0YWxOb2lzZSIgYmFzZUZyZXF1ZW5jeT0iLjMiIG51bU9jdGF2ZXM9IjMiLz48L2ZpbHRlcj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWx0ZXI9InVybCgjZikiIG9wYWNpdHk9IjAuMDgiLz48L3N2Zz4=');
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iNDAwIj48ZmlsdGVyIGlkPSJmIj48ZmVUdXJidWxlbmNlIHR5cGU9ImZyYWN0YWxOb2lzZSIgYmFzZUZyZXF1ZW5jeT0iLjMiIG51bU9jdGF2ZXM9IjMiLz48L2ZpbHRlcj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWx0ZXI9InVybCgjZikiIG9wYWNpdHk9IjAuMDYiLz48L3N2Zz4=');
             background-repeat: repeat;
-            opacity: 0.4;
+            opacity: 0.3;
         }
 
         .container {
             max-width: 1300px;
             margin: 0 auto;
-            padding: 2rem 2rem 5rem;
+            padding: 2rem 1.8rem 5rem;
             position: relative;
             z-index: 2;
         }
 
-        /* ---------- LARGE ENVELOPE SECTION ---------- */
+        /* ---------- LARGE ENVELOPE (4-panel illusion, beige) ---------- */
         .envelope-stage {
             display: flex;
             justify-content: center;
             align-items: center;
-            margin: 2rem 0 3rem;
-            perspective: 1400px;
+            margin: 1.5rem 0 2rem;
+            perspective: 1200px;
         }
 
         .envelope-wrapper {
             position: relative;
             width: 100%;
-            max-width: 780px;   /* significantly larger */
-            cursor: pointer;
-            filter: drop-shadow(0 35px 45px -12px rgba(0, 0, 0, 0.3));
-            transition: transform 0.5s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            max-width: 820px;
+            cursor: default;
+            filter: drop-shadow(0 30px 40px -12px rgba(0, 0, 0, 0.3));
+            transition: transform 0.3s;
         }
 
         .envelope {
             position: relative;
-            background: #fffcf5;
-            border-radius: 28px;
-            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.25), inset 0 1px 2px rgba(255, 250, 235, 0.9);
-            transition: all 0.4s;
+            background: #fdf7ef;
+            border-radius: 32px;
+            box-shadow: 0 20px 35px -8px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 250, 235, 0.8);
             overflow: hidden;
         }
 
-        /* breathing animation premium */
+        /* breathing animation before opening */
         .envelope-wrapper {
             animation: premiumFloat 5s ease-in-out infinite;
         }
 
         @keyframes premiumFloat {
-            0% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-9px) rotate(0.3deg); }
-            100% { transform: translateY(0px) rotate(0deg); }
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+            100% { transform: translateY(0px); }
         }
 
-        /* flap with wax seal effect */
+        /* flap (top part) */
         .flap {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
-            height: 54%;
-            background: linear-gradient(145deg, #fef3e4, #faead7);
-            border-bottom: 3px solid #e7cfb0;
+            height: 52%;
+            background: linear-gradient(145deg, #fef3e4, #fae7d3);
+            border-bottom: 3px solid #e7cfae;
             transform-origin: top;
             transition: transform 0.9s cubic-bezier(0.23, 1, 0.32, 1);
-            z-index: 15;
-            border-radius: 28px 28px 0 0;
-            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+            z-index: 20;
+            border-radius: 32px 32px 0 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
             pointer-events: none;
         }
 
-        /* wax seal circle */
+        /* wax seal (dark red, clickable) */
         .wax-seal {
             position: absolute;
             bottom: -32px;
             left: 50%;
             transform: translateX(-50%);
-            width: 68px;
-            height: 68px;
-            background: radial-gradient(circle, #c67b3c, #9b4f1a);
+            width: 80px;
+            height: 80px;
+            background: radial-gradient(circle, #9b2e1c, #631a0c);
             border-radius: 50%;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.2), inset 0 1px 2px rgba(255,215,150,0.6);
-            z-index: 20;
+            box-shadow: 0 12px 20px rgba(0,0,0,0.3), inset 0 1px 2px rgba(255,215,150,0.5);
+            z-index: 30;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.8rem;
-            font-family: serif;
+            font-family: 'Playfair Display', serif;
+            font-size: 0.9rem;
+            font-weight: bold;
             color: #f7e2b0;
-            text-shadow: 0 1px 2px rgba(0,0,0,0.2);
-            backdrop-filter: blur(0.5px);
-            border: 1px solid #e6b87a;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: 1px solid #e6b16a;
+        }
+        .wax-seal:hover {
+            transform: translateX(-50%) scale(1.02);
+            box-shadow: 0 14px 24px rgba(0,0,0,0.4);
         }
         .wax-seal::after {
             content: "✧ VQ ✧";
-            font-size: 0.75rem;
-            font-weight: bold;
-            letter-spacing: 1px;
+            font-size: 0.8rem;
         }
 
         .envelope-body {
-            padding: 70px 40px 55px;
+            padding: 70px 40px 60px;
             text-align: center;
             background: #fffbf5;
-            border-radius: 28px;
+            border-radius: 32px;
+            position: relative;
+            z-index: 5;
         }
 
-        .envelope-seal-text {
+        .envelope-texture {
             font-family: 'Playfair Display', serif;
-            font-size: 1rem;
-            letter-spacing: 4px;
-            color: #b48b54;
-            border-top: 1px solid #ecdbba;
+            font-size: 0.9rem;
+            letter-spacing: 6px;
+            color: #c6a16e;
+            border-top: 1px solid #eedbc8;
             display: inline-block;
-            padding-top: 20px;
+            padding-top: 18px;
             margin-top: 20px;
         }
 
-        /* invitation reveal area */
+        /* ----- REVEALED INVITATION CARD (after opening) ----- */
         .invitation-reveal {
             margin-top: 50px;
             opacity: 0;
-            transform: translateY(50px);
-            transition: all 0.9s ease 0.3s;
+            transform: translateY(55px);
+            transition: all 1s cubic-bezier(0.2, 0.9, 0.4, 1) 0.3s;
             pointer-events: none;
         }
 
@@ -172,51 +178,88 @@
             filter: drop-shadow(0 12px 24px rgba(0,0,0,0.15));
         }
 
-        /* Couple card inside envelope (immediately visible after open) */
-        .couple-premium-card {
-            background: #ffffffeb;
-            backdrop-filter: blur(6px);
-            border-radius: 48px;
-            padding: 2rem 1.5rem;
-            margin: 1rem 0 2rem;
-            box-shadow: 0 35px 45px -20px rgba(0,0,0,0.2);
-            border: 1px solid #f1e3d2;
+        /* Main invitation card (premium) */
+        .main-card {
+            background: rgba(255, 252, 245, 0.96);
+            backdrop-filter: blur(4px);
+            border-radius: 52px;
+            padding: 2rem 1.8rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 35px 50px -20px rgba(0,0,0,0.25);
+            border: 1px solid #f0e0ce;
             text-align: center;
+            position: relative;
+            overflow: hidden;
         }
 
-        .large-couple-img {
+        /* background image with shadow overlay */
+        .main-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
-            max-width: 500px;
-            border-radius: 40px;
-            box-shadow: 0 30px 40px -15px rgba(0,0,0,0.25);
-            transition: transform 0.6s ease;
-            margin-bottom: 1.2rem;
-        }
-        .large-couple-img:hover {
-            transform: scale(1.01);
+            height: 100%;
+            background-image: url('https://cdn.shopify.com/s/files/1/0991/8038/0469/files/5.png?v=1776161359');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.12;
+            filter: blur(6px);
+            z-index: 0;
         }
 
-        .initials-big {
+        .couple-large-img {
+            width: 100%;
+            max-width: 520px;
+            border-radius: 48px;
+            box-shadow: 0 30px 40px -15px rgba(0,0,0,0.25);
+            margin: 0 auto 1rem;
+            position: relative;
+            z-index: 2;
+            transition: transform 0.4s;
+        }
+
+        .invitation-title {
+            font-size: 2rem;
+            letter-spacing: 8px;
             font-family: 'Playfair Display', serif;
-            font-size: 4.2rem;
+            color: #b67b44;
+            margin-top: 1rem;
+            font-weight: 500;
+            position: relative;
+            z-index: 2;
+        }
+
+        .initials-below {
+            font-size: 3.2rem;
             font-weight: 700;
-            background: linear-gradient(135deg, #c9985f, #efcf97);
+            background: linear-gradient(135deg, #c2864a, #efcf97);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
             letter-spacing: 12px;
-            margin-top: -20px;
-            text-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            margin-top: -10px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .save-date {
+            font-size: 1.4rem;
+            font-style: italic;
+            color: #a56f3c;
+            margin: 12px 0;
+            position: relative;
+            z-index: 2;
         }
 
         /* scroll sections */
         .scroll-section {
             opacity: 0;
-            transform: translateY(50px);
-            transition: opacity 0.9s cubic-bezier(0.2, 0.9, 0.4, 1), transform 0.8s ease;
-            margin: 5rem 0;
-            padding: 2rem 0;
-            border-bottom: 1px solid #e7d9ca;
+            transform: translateY(45px);
+            transition: opacity 0.8s cubic-bezier(0.2, 0.9, 0.4, 1), transform 0.7s ease;
+            margin: 4.5rem 0;
+            padding: 1.8rem 0;
+            border-bottom: 1px solid #eedbc8;
         }
 
         .scroll-section.visible {
@@ -225,42 +268,40 @@
         }
 
         .section-title {
-            font-size: 2.3rem;
+            font-size: 2.2rem;
             font-weight: 500;
             font-family: 'Playfair Display', serif;
             color: #b37b48;
             text-align: center;
             margin-bottom: 2rem;
-            letter-spacing: 2px;
         }
 
         .story-text {
-            font-size: 1.6rem;
+            font-size: 1.55rem;
             line-height: 1.5;
             text-align: center;
             max-width: 800px;
             margin: 0 auto;
             font-style: italic;
-            color: #3d2d22;
+            color: #3e2c1f;
         }
 
-        /* Calendar - weekdays in English letters */
-        .calendar-grid {
+        /* calendar */
+        .calendar-wrapper {
             max-width: 480px;
             margin: 0 auto;
             background: #fff9f0;
             border-radius: 48px;
-            padding: 1.8rem;
-            box-shadow: 0 18px 30px -12px rgba(0,0,0,0.08);
+            padding: 1.5rem;
+            box-shadow: 0 20px 30px -12px rgba(0,0,0,0.08);
         }
         .calendar-header {
             display: flex;
             justify-content: space-between;
+            font-size: 1.5rem;
             font-weight: bold;
-            margin-bottom: 1.5rem;
-            font-size: 1.6rem;
             color: #aa7642;
-            font-family: 'Playfair Display';
+            margin-bottom: 1rem;
         }
         .weekdays, .days {
             display: grid;
@@ -269,16 +310,14 @@
         }
         .weekdays div {
             font-weight: 600;
-            padding: 10px;
-            color: #8d6a48;
-            font-size: 0.9rem;
+            padding: 8px;
+            font-size: 0.8rem;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            color: #8d6a48;
         }
         .days div {
             padding: 12px 5px;
             font-size: 1rem;
-            font-weight: 500;
         }
         .heart-day {
             background: #f5e2cd;
@@ -290,90 +329,118 @@
         .heart-day::after {
             content: "❤️";
             position: absolute;
-            font-size: 0.7rem;
-            bottom: 0px;
-            right: 5px;
+            font-size: 0.65rem;
+            bottom: 0;
+            right: 3px;
         }
 
-        /* timeline - premium style icons */
-        .timeline {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-            max-width: 760px;
+        /* TIMELINE with animated connecting line (step-by-step) */
+        .timeline-scroll {
+            max-width: 800px;
             margin: 0 auto;
+            position: relative;
+            padding-left: 30px;
         }
-        .timeline-card {
+        .timeline-item {
             display: flex;
-            align-items: center;
-            gap: 1.8rem;
-            background: #fffcf5;
-            border-radius: 60px;
-            padding: 1rem 2rem;
-            box-shadow: 0 6px 14px rgba(0,0,0,0.04);
-            transition: all 0.3s;
-            border: 1px solid #efdfcd;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            position: relative;
+            opacity: 0;
+            transform: translateX(-15px);
+            transition: opacity 0.6s ease, transform 0.5s ease;
         }
-        .timeline-card:hover {
-            transform: translateX(8px);
-            background: #fffaf0;
+        .timeline-item.visible-timeline {
+            opacity: 1;
+            transform: translateX(0);
         }
         .timeline-icon {
-            font-size: 2.2rem;
             width: 70px;
-            text-align: center;
-            color: #c39160;
+            height: 70px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: #a57244;
+            border: 1.5px solid #d4bc9a;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.05);
+            flex-shrink: 0;
+        }
+        .timeline-content {
+            flex: 1;
+            background: #fffcf5;
+            padding: 0.8rem 1.2rem;
+            border-radius: 28px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
         }
         .timeline-time {
             font-weight: 700;
             font-family: monospace;
-            font-size: 1.1rem;
             color: #9e693b;
         }
         .timeline-title {
-            font-size: 1.25rem;
+            font-size: 1.2rem;
             font-weight: 600;
+        }
+        /* connecting line animation */
+        .timeline-scroll {
+            position: relative;
+        }
+        .timeline-scroll::before {
+            content: '';
+            position: absolute;
+            left: 33px;
+            top: 12px;
+            width: 2px;
+            height: 0%;
+            background: linear-gradient(to bottom, #dbbf95, #b68851);
+            z-index: 0;
+            transition: height 0.6s ease;
+        }
+        body.line-progress .timeline-scroll::before {
+            height: var(--line-height, 0%);
         }
 
         /* timer */
         .timer-box {
             background: #e7d7c4;
-            padding: 1.8rem;
-            border-radius: 80px;
+            padding: 1.5rem;
+            border-radius: 70px;
             text-align: center;
             font-family: monospace;
-            font-size: 2rem;
-            letter-spacing: 6px;
+            font-size: 1.8rem;
+            letter-spacing: 4px;
             font-weight: bold;
             color: #4f321c;
-            box-shadow: inset 0 0 0 1px #f9efdf, 0 12px 20px -8px rgba(0,0,0,0.1);
+            max-width: 600px;
+            margin: 0 auto;
         }
 
         .rsvp-btn {
-            background: linear-gradient(145deg, #ccaa7c, #b88756);
+            background: linear-gradient(145deg, #cfaa7a, #b88854);
             border: none;
-            padding: 16px 42px;
+            padding: 14px 38px;
             border-radius: 60px;
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             font-weight: 600;
             font-family: 'Cormorant Garamond', serif;
             color: white;
             cursor: pointer;
-            transition: 0.25s;
+            transition: 0.2s;
             box-shadow: 0 10px 18px rgba(0,0,0,0.1);
-            letter-spacing: 1px;
         }
         .rsvp-btn:hover {
             background: #a57245;
             transform: scale(0.96);
-            box-shadow: 0 5px 12px rgba(0,0,0,0.1);
         }
 
         .map-placeholder {
             background: #dfcfbb;
-            height: 240px;
             border-radius: 38px;
             overflow: hidden;
+            height: 220px;
         }
         iframe {
             width: 100%;
@@ -381,67 +448,69 @@
             border: none;
         }
 
-        footer {
-            text-align: center;
-            margin-top: 5rem;
-            font-size: 0.9rem;
-            color: #b6926e;
-            letter-spacing: 1px;
+        /* black-white outline icons for locations */
+        .line-icon {
+            font-size: 2.8rem;
+            color: #2c2c2c;
+            filter: drop-shadow(0 2px 2px rgba(0,0,0,0.1));
         }
-
-        /* floating particles refined */
-        .floating-particle {
-            position: fixed;
-            pointer-events: none;
-            background: radial-gradient(circle, #eedbbc, #dbbd92);
-            border-radius: 50%;
-            opacity: 0;
-            z-index: 1;
+        .inline-icon-group {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin: 2rem 0;
+        }
+        .icon-card {
+            text-align: center;
+            background: white;
+            padding: 1rem;
+            border-radius: 28px;
+            width: 110px;
+            border: 1px solid #e4d5c2;
         }
 
         @media (max-width: 700px) {
-            .container { padding: 1.2rem; }
-            .timeline-card { flex-direction: column; text-align: center; gap: 0.5rem; padding: 1rem; }
-            .initials-big { font-size: 2.6rem; letter-spacing: 6px; margin-top: -10px; }
+            .container { padding: 1rem; }
+            .initials-below { font-size: 2.2rem; letter-spacing: 6px; }
             .story-text { font-size: 1.2rem; }
-            .section-title { font-size: 1.8rem; }
-            .timer-box { font-size: 1.2rem; letter-spacing: 2px; }
-            .wax-seal { width: 56px; height: 56px; bottom: -28px; }
-            .wax-seal::after { font-size: 0.6rem; }
+            .timeline-item { gap: 1rem; }
+            .timeline-icon { width: 55px; height: 55px; font-size: 1.6rem; }
+            .wax-seal { width: 65px; height: 65px; bottom: -28px; }
+            .wax-seal::after { font-size: 0.7rem; }
         }
     </style>
 </head>
 <body>
 <div class="container">
-    <!-- LARGE ENVELOPE with WAX SEAL -->
+    <!-- LARGE ENVELOPE with dark red seal -->
     <div class="envelope-stage">
-        <div class="envelope-wrapper" id="envelopeTrigger">
+        <div class="envelope-wrapper" id="envelopeWrapper">
             <div class="envelope">
                 <div class="flap"></div>
-                <div class="wax-seal"></div>
+                <div class="wax-seal" id="waxSealBtn"></div>
                 <div class="envelope-body">
-                    <div style="font-size: 2.5rem; color: #dbbc93;">✧</div>
-                    <div class="envelope-seal-text">À NOTRE AMOUR · V & Q</div>
-                    <div style="margin-top: 28px; font-size: 1rem; letter-spacing: 1.5px;">սեղմեք բացելու համար</div>
+                    <div style="font-size: 2rem; color:#dbbd93;">✧</div>
+                    <div class="envelope-texture">amour éternel</div>
+                    <div style="margin-top: 30px; font-size: 0.9rem; letter-spacing: 1px;">սեղմեք կնիքին</div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- REVEALED INVITATION CONTENT (hidden until envelope opens) -->
+    <!-- INVITATION CARD (revealed after opening) -->
     <div class="invitation-reveal" id="invitationContent">
-        <div class="couple-premium-card">
-            <!-- Enlarged couple image -->
-            <img class="large-couple-img" src="https://cdn.shopify.com/s/files/1/0991/8038/0469/files/5.png?v=1776161359" alt="V & Q">
-            <!-- VQ initials prominent above description (visible at top) -->
-            <div class="initials-big">V Q</div>
-            <div style="font-size: 1.2rem; margin-top: 10px; color: #b68446; font-style: italic;">save the date · 16.08.2026</div>
+        <div class="main-card">
+            <img class="couple-large-img" src="https://cdn.shopify.com/s/files/1/0991/8038/0469/files/5.png?v=1776161359" alt="V & Q">
+            <div class="invitation-title">ՀՐԱՎԻՐԱՏՈՄՍ</div>
+            <div class="initials-below">V Q</div>
+            <div class="save-date" id="saveDateText">Save the Date · 16.08.2026</div>
         </div>
     </div>
 
-    <!-- SCROLL SECTIONS with staggered animations -->
+    <!-- SCROLL SECTIONS -->
     <div class="scroll-section" id="storySection">
-        <div class="section-title"><i class="fas fa-feather-alt" style="margin-right: 10px;"></i> Սիրո պատում</div>
+        <div class="section-title"><i class="fas fa-feather-alt"></i> Սիրո խոստում</div>
         <div class="story-text">
             «Հարգելի հյուրեր, մոտենում է մեր կյանքի ամենագեղեցիկ ու հիշարժան պահերից մեկը։<br>
             Մենք ընտանիք ենք կազմում և մեծ սիրով հրավիրում ենք Ձեզ կիսելու մեր երջանկությունը։<br>
@@ -451,18 +520,25 @@
 
     <div class="scroll-section" id="calendarSection">
         <div class="section-title"><i class="far fa-calendar-alt"></i> Օգոստոս 2026</div>
-        <div id="calendarWidget" class="calendar-grid"></div>
+        <div class="calendar-wrapper" id="calendarWidget"></div>
     </div>
 
     <div class="scroll-section" id="programSection">
-        <div class="section-title"><i class="fas fa-clock"></i> ՕՐՎԱ ԾՐԱԳԻՐ</div>
-        <div class="timeline">
-            <div class="timeline-card"><div class="timeline-icon"><i class="fas fa-home"></i></div><div class="timeline-content"><div class="timeline-time">12:00</div><div class="timeline-title">Հարսի տուն</div></div></div>
-            <div class="timeline-card"><div class="timeline-icon"><i class="fas fa-ring"></i></div><div class="timeline-content"><div class="timeline-time">14:00</div><div class="timeline-title">Պսակադրության արարողություն</div></div></div>
-            <div class="timeline-card"><div class="timeline-icon"><i class="fas fa-people-arrows"></i></div><div class="timeline-content"><div class="timeline-time">16:00</div><div class="timeline-title">Փեսայի տուն</div></div></div>
-            <div class="timeline-card"><div class="timeline-icon"><i class="fas fa-champagne-glasses"></i></div><div class="timeline-content"><div class="timeline-time">17:30</div><div class="timeline-title">Հյուրերի դիմավորում</div></div></div>
-            <div class="timeline-card"><div class="timeline-icon"><i class="fas fa-utensils"></i></div><div class="timeline-content"><div class="timeline-time">18:00</div><div class="timeline-title">Հարսանեկան խնջույք</div></div></div>
-            <div class="timeline-card"><div class="timeline-icon"><i class="fas fa-moon"></i></div><div class="timeline-content"><div class="timeline-time">00:00</div><div class="timeline-title">Հանդիսության ավարտ</div></div></div>
+        <div class="section-title"><i class="fas fa-map-marked-alt"></i> ՕՐՎԱ ԾՐԱԳԻՐ</div>
+        <div class="timeline-scroll" id="timelineContainer">
+            <div class="timeline-item" data-step="1"><div class="timeline-icon"><i class="fas fa-home line-icon"></i></div><div class="timeline-content"><div class="timeline-time">12:00</div><div class="timeline-title">Հարսի տուն</div></div></div>
+            <div class="timeline-item" data-step="2"><div class="timeline-icon"><i class="fas fa-ring line-icon"></i></div><div class="timeline-content"><div class="timeline-time">14:00</div><div class="timeline-title">Պսակադրության արարողություն</div></div></div>
+            <div class="timeline-item" data-step="3"><div class="timeline-icon"><i class="fas fa-people-arrows line-icon"></i></div><div class="timeline-content"><div class="timeline-time">16:00</div><div class="timeline-title">Փեսայի տուն</div></div></div>
+            <div class="timeline-item" data-step="4"><div class="timeline-icon"><i class="fas fa-champagne-glasses line-icon"></i></div><div class="timeline-content"><div class="timeline-time">17:30</div><div class="timeline-title">Հյուրերի դիմավորում</div></div></div>
+            <div class="timeline-item" data-step="5"><div class="timeline-icon"><i class="fas fa-utensils line-icon"></i></div><div class="timeline-content"><div class="timeline-time">18:00</div><div class="timeline-title">Հարսանեկան խնջույք</div></div></div>
+            <div class="timeline-item" data-step="6"><div class="timeline-icon"><i class="fas fa-moon line-icon"></i></div><div class="timeline-content"><div class="timeline-time">00:00</div><div class="timeline-title">Հանդիսության ավարտ</div></div></div>
+        </div>
+        <!-- Black & white outline icons for locations (church, bride, groom, restaurant) -->
+        <div class="inline-icon-group">
+            <div class="icon-card"><i class="fas fa-church line-icon"></i><div>Եկեղեցի</div></div>
+            <div class="icon-card"><i class="fas fa-female line-icon"></i><div>Հարս</div></div>
+            <div class="icon-card"><i class="fas fa-male line-icon"></i><div>Փեսա</div></div>
+            <div class="icon-card"><i class="fas fa-utensils line-icon"></i><div>Ռեստորան</div></div>
         </div>
     </div>
 
@@ -473,8 +549,8 @@
 
     <div class="scroll-section" id="secondPhotoSection">
         <div style="text-align:center;">
-            <img class="large-couple-img" src="https://cdn.pixabay.com/photo/2022/08/24/20/12/wedding-7408803_1280.jpg" alt="romantic moment" style="max-width: 480px; border-radius: 40px; width:100%;">
-            <div style="margin-top: 20px; font-size: 1.3rem; font-style: italic; color:#b47c48;">✨ eternal promise ✨</div>
+            <img class="couple-large-img" src="https://cdn.pixabay.com/photo/2022/08/24/20/12/wedding-7408803_1280.jpg" alt="romantic couple" style="max-width: 480px; border-radius: 48px;">
+            <div style="margin-top: 20px; font-size: 1.3rem; font-style: italic; color:#b47c48;">✨ մեր սիրո պահը ✨</div>
         </div>
     </div>
 
@@ -487,8 +563,8 @@
 
     <div class="scroll-section" id="finalInitials">
         <div style="text-align:center;">
-            <img class="large-couple-img" src="https://cdn.shopify.com/s/files/1/0991/8038/0469/files/5.png?v=1776161359" alt="V&Q" style="max-width: 380px; border-radius: 48px;">
-            <div class="initials-big" style="font-size: 3.5rem; margin-top: 0.5rem;">Վ & Ք</div>
+            <img class="couple-large-img" src="https://cdn.shopify.com/s/files/1/0991/8038/0469/files/5.png?v=1776161359" alt="V&Q" style="max-width: 360px; border-radius: 48px;">
+            <div class="initials-below" style="font-size: 3rem; margin-top: 0.5rem;">Վ & Ք</div>
         </div>
         <div style="text-align:center; margin-top: 2rem;">
             <button class="rsvp-btn" id="rsvpButton"><i class="fas fa-envelope-open-text"></i> RSVP & հաստատել</button>
@@ -498,42 +574,81 @@
             <div class="map-placeholder">
                 <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=44.5151%2C40.1829%2C44.5175%2C40.1845&layer=mapnik&marker=40.1837%2C44.5163" allowfullscreen="" loading="lazy"></iframe>
             </div>
-            <p style="margin-top: 15px; font-size: 1.1rem;">Երևան, Հայաստան · Հարսանյաց դահլիճ "Belle Amé"</p>
+            <p style="margin-top: 15px;">Երևան, Հայաստան · Հարսանյաց դահլիճ "Belle Amé"</p>
         </div>
     </div>
-
-    <footer>
-        <i class="fas fa-heart" style="color:#cb9e6b;"></i> with love, V & Q <i class="fas fa-heart" style="color:#cb9e6b;"></i>
-    </footer>
+    <footer style="text-align:center; margin-top: 3rem; color:#b6926e;">✧ with eternal love, V & Q ✧</footer>
 </div>
 
 <script>
-    // Calendar: August 2026, weekdays in English letters (Mon, Tue, Wed, Thu, Fri, Sat, Sun)
+    // ------------------------- MUSIC & ENVELOPE OPEN -------------------------
+    let audio = null;
+    let envelopeOpened = false;
+
+    function initMusic() {
+        if (audio) return;
+        // Royalty free romantic piano track
+        audio = new Audio('https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf6c7.mp3?filename=romantic-piano-182532.mp3');
+        audio.loop = true;
+        audio.volume = 0.45;
+        audio.load();
+    }
+
+    function openEnvelope() {
+        if (envelopeOpened) return;
+        envelopeOpened = true;
+        document.body.classList.add('envelope-opened');
+        
+        // play music
+        initMusic();
+        audio.play().catch(e => console.log("audio user gesture needed, but opened"));
+        
+        // Remove breathing animation
+        const wrap = document.querySelector('.envelope-wrapper');
+        if (wrap) wrap.style.animation = 'none';
+        
+        // Show Save the Date text with a fade-in
+        const saveText = document.getElementById('saveDateText');
+        if (saveText) {
+            saveText.style.opacity = '0';
+            saveText.style.transition = 'opacity 0.6s';
+            setTimeout(() => { saveText.style.opacity = '1'; }, 200);
+        }
+        
+        // additional: subtle glow on seal
+        const seal = document.getElementById('waxSealBtn');
+        if (seal) seal.style.boxShadow = '0 0 0 3px #ffdd99, 0 10px 20px rgba(0,0,0,0.3)';
+    }
+
+    document.getElementById('waxSealBtn').addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (!envelopeOpened) openEnvelope();
+    });
+
+    // ------------------------- CALENDAR (August 2026, heart on 16) -------------------------
     function buildCalendar() {
         const year = 2026;
         const month = 7; // August
-        const firstDayIndex = new Date(year, month, 1).getDay(); // 0 = Sunday
-        // Adjust for Monday first: we want weekdays Mon-Sun
-        let startOffset = firstDayIndex === 0 ? 6 : firstDayIndex - 1;
+        const firstDay = new Date(year, month, 1).getDay(); // 0 Sunday
+        let startOffset = firstDay === 0 ? 6 : firstDay - 1;
         const daysInMonth = new Date(year, month + 1, 0).getDate();
         const weekdays = ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"];
-        let calendarHTML = `<div class="calendar-header"><span>ՕԳՈՍՏՈՍ 2026</span><span>❤️</span></div><div class="weekdays">${weekdays.map(d => `<div>${d}</div>`).join('')}</div><div class="days">`;
+        let html = `<div class="calendar-header"><span>ՕԳՈՍՏՈՍ 2026</span><span>❤️</span></div><div class="weekdays">${weekdays.map(d => `<div>${d}</div>`).join('')}</div><div class="days">`;
         let dayCounter = 1;
         for (let i = 0; i < 42; i++) {
             if (i < startOffset || dayCounter > daysInMonth) {
-                calendarHTML += `<div></div>`;
+                html += `<div></div>`;
             } else {
-                let isHeart = (dayCounter === 16);
-                let heartClass = isHeart ? 'heart-day' : '';
-                calendarHTML += `<div class="${heartClass}">${dayCounter}</div>`;
+                const isHeart = (dayCounter === 16);
+                html += `<div class="${isHeart ? 'heart-day' : ''}">${dayCounter}</div>`;
                 dayCounter++;
             }
         }
-        calendarHTML += `</div>`;
-        document.getElementById('calendarWidget').innerHTML = calendarHTML;
+        html += `</div>`;
+        document.getElementById('calendarWidget').innerHTML = html;
     }
 
-    // Timer to 16 August 2026, 18:00
+    // ------------------------- COUNTDOWN TIMER -------------------------
     function updateTimer() {
         const target = new Date(2026, 7, 16, 18, 0, 0).getTime();
         const now = new Date().getTime();
@@ -549,7 +664,7 @@
         document.getElementById('countdownTimer').innerHTML = `${days} օր  ${hours} ժ  ${minutes} ր  ${seconds} վրկ`;
     }
 
-    // Intersection Observer for scroll sections
+    // ------------------------- SCROLL REVEAL (sections & timeline steps with line animation) -------------------------
     const sections = document.querySelectorAll('.scroll-section');
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -557,92 +672,90 @@
                 entry.target.classList.add('visible');
             }
         });
-    }, { threshold: 0.2, rootMargin: "0px 0px -50px 0px" });
+    }, { threshold: 0.2, rootMargin: "0px 0px -40px 0px" });
     sections.forEach(section => observer.observe(section));
 
-    // Music + Envelope open logic (premium)
-    let audio = null;
-    let envelopeOpened = false;
-
-    function initMusic() {
-        if (audio) return;
-        // Royalty free elegant piano piece (Pixabay)
-        audio = new Audio('https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf6c7.mp3?filename=romantic-piano-182532.mp3');
-        audio.loop = true;
-        audio.volume = 0.5;
-        audio.load();
+    // Timeline items animated line (step by step)
+    const timelineItems = document.querySelectorAll('.timeline-item');
+    const timelineContainer = document.getElementById('timelineContainer');
+    let maxSteps = timelineItems.length;
+    
+    function updateTimelineLine() {
+        let visibleCount = 0;
+        timelineItems.forEach((item, idx) => {
+            const rect = item.getBoundingClientRect();
+            const isVisible = rect.top < window.innerHeight - 100 && rect.bottom > 50;
+            if (isVisible && !item.classList.contains('visible-timeline')) {
+                item.classList.add('visible-timeline');
+            }
+            if (item.classList.contains('visible-timeline')) visibleCount = idx + 1;
+        });
+        const progressPercent = (visibleCount / maxSteps) * 100;
+        document.body.classList.add('line-progress');
+        timelineContainer.style.setProperty('--line-height', progressPercent + '%');
+        // initial style
+        if (!document.querySelector('style#timelineStyle')) {
+            const style = document.createElement('style');
+            style.id = 'timelineStyle';
+            style.textContent = `.timeline-scroll::before { transition: height 0.45s ease-out; }`;
+            document.head.appendChild(style);
+        }
     }
 
-    function openEnvelope() {
-        if (envelopeOpened) return;
-        envelopeOpened = true;
-        document.body.classList.add('envelope-opened');
-        
-        // play music (attempt autoplay after user gesture)
-        initMusic();
-        audio.play().catch(e => console.log("playback prevented", e));
-        
-        // remove breathing animation
-        const wrap = document.querySelector('.envelope-wrapper');
-        wrap.style.animation = 'none';
-        
-        // tiny extra effect: add class to wax seal glow
-        const seal = document.querySelector('.wax-seal');
-        if (seal) seal.style.boxShadow = '0 0 0 2px #fbe5b0, 0 10px 20px rgba(0,0,0,0.2)';
-        
-        // reveal invitation card with extra finesse
-        setTimeout(() => {
-            window.dispatchEvent(new Event('scroll'));
-            // ensure first sections visible if needed
-            const storySec = document.getElementById('storySection');
-            if(storySec && !storySec.classList.contains('visible')) observer.observe(storySec);
-        }, 300);
-    }
+    const timelineObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible-timeline');
+                updateTimelineLine();
+            } else {
+                // optional keep visible
+            }
+        });
+    }, { threshold: 0.4 });
+    timelineItems.forEach(item => timelineObserver.observe(item));
+    window.addEventListener('scroll', updateTimelineLine);
+    window.addEventListener('load', () => { updateTimelineLine(); setTimeout(updateTimelineLine, 200); });
 
-    const envelopeTrigger = document.getElementById('envelopeTrigger');
-    envelopeTrigger.addEventListener('click', (e) => {
-        e.stopPropagation();
-        if (!envelopeOpened) openEnvelope();
-    });
-
-    // RSVP interaction
+    // ------------------------- RSVP BUTTON -------------------------
     document.getElementById('rsvpButton').addEventListener('click', () => {
-        alert('✨ Շնորհակալություն հաստատման համար! Մենք կկապնվենք Ձեզ հետ։ ✨\nThank you for confirming! We will contact you.');
+        alert('✨ Շնորհակալություն հաստատման համար! Մենք կկապնվենք Ձեզ հետ։ ✨\nThank you for confirming your presence!');
     });
 
-    // initialise calendar, timer
+    // floating particles premium (light)
+    function addParticles() {
+        for (let i = 0; i < 40; i++) {
+            let particle = document.createElement('div');
+            particle.style.position = 'fixed';
+            particle.style.pointerEvents = 'none';
+            particle.style.width = Math.random() * 4 + 2 + 'px';
+            particle.style.height = particle.style.width;
+            particle.style.background = 'radial-gradient(circle, #e9cfaa, #d9b37a)';
+            particle.style.borderRadius = '50%';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.top = Math.random() * 100 + '%';
+            particle.style.opacity = Math.random() * 0.35;
+            particle.style.zIndex = '1';
+            particle.style.animation = `floatParticle ${10 + Math.random() * 15}s linear infinite`;
+            document.body.appendChild(particle);
+        }
+        const styleSheet = document.createElement("style");
+        styleSheet.textContent = `@keyframes floatParticle { 0% { transform: translateY(0vh) rotate(0deg); opacity:0; } 15% { opacity:0.5; } 85% { opacity:0.2; } 100% { transform: translateY(-120vh) rotate(360deg); opacity:0; } }`;
+        document.head.appendChild(styleSheet);
+    }
+    addParticles();
+
+    // init calendar and timer
     buildCalendar();
     updateTimer();
     setInterval(updateTimer, 1000);
-
-    // show visible sections on load
+    // ensure visible sections on load
     window.addEventListener('load', () => {
         sections.forEach(sec => {
             const rect = sec.getBoundingClientRect();
             if (rect.top < window.innerHeight - 80) sec.classList.add('visible');
         });
+        updateTimelineLine();
     });
-
-    // premium floating particles (light glow)
-    function createLuxuryParticles() {
-        for(let i=0;i<45;i++) {
-            let particle = document.createElement('div');
-            particle.classList.add('floating-particle');
-            let size = Math.random() * 4 + 2;
-            particle.style.width = size + 'px';
-            particle.style.height = size + 'px';
-            particle.style.left = Math.random() * 100 + '%';
-            particle.style.top = Math.random() * 100 + '%';
-            particle.style.animation = `floatParticle ${12 + Math.random() * 15}s linear infinite`;
-            particle.style.animationDelay = Math.random() * 10 + 's';
-            particle.style.opacity = Math.random() * 0.35;
-            document.body.appendChild(particle);
-        }
-        const style = document.createElement('style');
-        style.textContent = `@keyframes floatParticle { 0% { transform: translateY(0vh) rotate(0deg); opacity:0; } 15% { opacity:0.5; } 85% { opacity:0.3; } 100% { transform: translateY(-120vh) rotate(420deg); opacity:0; } }`;
-        document.head.appendChild(style);
-    }
-    createLuxuryParticles();
 </script>
 </body>
 </html>
