@@ -1,1 +1,214 @@
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Luxury Wedding Invitation</title>
+
+  <!-- Premium Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: #0f0f0f;
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    section {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    h1, h2 {
+      font-family: 'Playfair Display', serif;
+      letter-spacing: 1px;
+    }
+
+    h1 {
+      font-size: 64px;
+    }
+
+    h2 {
+      font-size: 42px;
+      margin-bottom: 20px;
+    }
+
+    p {
+      max-width: 600px;
+      line-height: 1.8;
+      opacity: 0.8;
+    }
+
+    /* GOLD EFFECT */
+    .gold {
+      background: linear-gradient(90deg, #c6a15b, #f5e6c8, #c6a15b);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* VIDEO HERO */
+    .hero {
+      position: relative;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .hero video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+    }
+
+    .overlay {
+      background: rgba(0,0,0,0.4);
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    /* ANIMATION */
+    .fade {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: 1s ease;
+    }
+
+    .fade.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* NAMES */
+    .names {
+      font-size: 48px;
+      margin: 20px 0;
+    }
+
+    /* RSVP */
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      width: 300px;
+    }
+
+    input, select {
+      padding: 12px;
+      border: none;
+      outline: none;
+    }
+
+    button {
+      padding: 14px;
+      border: none;
+      background: #c6a15b;
+      color: black;
+      font-weight: 500;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #f5e6c8;
+    }
+
+    /* MOBILE */
+    @media(max-width:768px){
+      h1 {font-size: 40px;}
+      h2 {font-size: 28px;}
+      .names {font-size: 32px;}
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- VIDEO HERO -->
+<section class="hero">
+  <video autoplay muted loop>
+    <source src="https://cdn.coverr.co/videos/coverr-wedding-toast-1574/1080p.mp4" type="video/mp4">
+  </video>
+  <div class="overlay"></div>
+
+  <div class="hero-content fade">
+    <h1 class="gold">Մենք ամուսնանում ենք</h1>
+    <p>Դուք հրավիրված եք մեր կյանքի ամենագեղեցիկ օրվան</p>
+  </div>
+</section>
+
+<!-- COUPLE -->
+<section class="fade">
+  <h2 class="gold">Սիրով հրավիրում ենք</h2>
+  <div class="names gold">Անուն & Անուն</div>
+  <p>Սիրով հրավիրում ենք Ձեզ կիսելու մեր երջանկությունը այս հատուկ օրը</p>
+</section>
+
+<!-- DETAILS -->
+<section class="fade">
+  <h2 class="gold">Օրվա մանրամասները</h2>
+  <p>
+    📅 Ամսաթիվ: 00/00/2026<br>
+    ⏰ Ժամը: 00:00<br>
+    📍 Վայր: Ռեստորան / Հասցե
+  </p>
+</section>
+
+<!-- RSVP FORM (Google Forms Integration Ready) -->
+<section class="fade">
+  <h2 class="gold">Հաստատեք Ձեր ներկայությունը</h2>
+
+  <form action="https://docs.google.com/forms/d/e/YOUR_FORM_ID/formResponse" method="POST" target="_blank">
+    <input type="text" name="entry.123456" placeholder="Ձեր անունը" required>
+    <select name="entry.654321">
+      <option>Կգաք</option>
+      <option>Չեք կարող գալ</option>
+    </select>
+    <button type="submit">Ուղարկել</button>
+  </form>
+</section>
+
+<!-- FOOTER -->
+<section>
+  <p class="gold">Սիրով սպասում ենք Ձեզ ✨</p>
+</section>
+
+<script>
+  const faders = document.querySelectorAll('.fade');
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add('show');
+      }
+    });
+  });
+
+  faders.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
 
