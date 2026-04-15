@@ -32,7 +32,7 @@
       pointer-events: none;
       z-index: 300;
       opacity: 0.05;
-      background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJmIj48ZmVUdXJidWxlbmNlIHR5cGU9ImZyYWN0YWxOb2lzZSIgYmFzZUZyZXF1ZW5jeT0iLjUiIG51bU9jdGF2ZXM9IjMiLz48L2ZmlsdGVyPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbHRlcj0idXJsKCNmKSIgb3BhY2l0eT0iMC40Ii8+PC9zdmc+');
+      background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJmIj48ZmVUdXJidWxlbmNlIHR5cGU9ImZyYWN0YWxOb2lzZSIgYmFzZUZyZXF1ZW5jeT0iLjUiIG51bU9jdGF2ZXM9IjMiLz48L2ZpbHRlcj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWx0ZXI9InVybCgjZikiIG9wYWNpdHk9IjAuNCIvPjwvc3ZnPg==');
       background-repeat: repeat;
       mix-blend-mode: multiply;
       pointer-events: none;
@@ -327,14 +327,13 @@
     }
 
     /* Countdown frame */
-.countdown-frame {
-  background: rgba(100, 55, 40, 0.5);   /* warm brown, semi-transparent */
-  backdrop-filter: blur(8px);
-  border-radius: 48px;
-  padding: 1.8rem 1.2rem;
-  box-shadow: 0 20px 35px -12px rgba(0,0,0,0.1), inset 0 0 0 1px rgba(255,255,245,0.6);
-  border: 1px solid rgba(210, 180, 140, 0.3);
-}
+    .countdown-frame {
+      background: rgba(100, 55, 40, 0.5);
+      backdrop-filter: blur(8px);
+      border-radius: 48px;
+      padding: 1.8rem 1.2rem;
+      box-shadow: 0 20px 35px -12px rgba(0,0,0,0.1), inset 0 0 0 1px rgba(255,255,245,0.6);
+      border: 1px solid rgba(210, 180, 140, 0.3);
     }
     .countdown-item {
       background: rgba(0,0,0,0.2);
@@ -353,6 +352,15 @@
       font-size: 0.7rem;
       text-transform: uppercase;
       letter-spacing: 1px;
+    }
+
+    /* Hero image for final page */
+    .hero-image {
+      max-width: 90%;
+      max-height: 70vh;
+      width: auto;
+      border-radius: 48px;
+      box-shadow: 0 30px 50px -20px rgba(0,0,0,0.4);
     }
 
     /* Scroll arrow */
@@ -440,12 +448,8 @@
       .calendar-weekday { font-size: 0.65rem; }
       .countdown-number { font-size: 1.5rem; }
       .countdown-item { min-width: 60px; }
+      .hero-image { max-width: 85%; }
     }
-    @media (max-width: 550px) {
-  #finalImagePage .hero-image {
-    max-width: 80%;
-  }
-}
   </style>
 </head>
 <body>
