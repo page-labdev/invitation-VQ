@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
-  <title>Վարդան & Քնարիկ — Պրեմիում հարսանեկան հրավեր</title>
+  <title>Վրերժ & Քրիստինե — Հարսանեկան հրավեր</title>
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&family=Great+Vibes&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <!-- Font Awesome 6 -->
@@ -31,10 +31,11 @@
       height: 100%;
       pointer-events: none;
       z-index: 300;
-      opacity: 0.05;
+      opacity: 0.06;
       background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJmIj48ZmVUdXJidWxlbmNlIHR5cGU9ImZyYWN0YWxOb2lzZSIgYmFzZUZyZXF1ZW5jeT0iLjUiIG51bU9jdGF2ZXM9IjMiLz48L2ZpbHRlcj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWx0ZXI9InVybCgjZikiIG9wYWNpdHk9IjAuNCIvPjwvc3ZnPg==');
       background-repeat: repeat;
       mix-blend-mode: multiply;
+      pointer-events: none;
     }
 
     /* ENVELOPE OVERLAY */
@@ -195,13 +196,21 @@
       transition: transform 0.2s ease-out;
     }
 
-    /* SCHEDULE ITEMS WITH HOVER IMAGES */
+    /* GLASS CARD */
+    .glass-card {
+      background: rgba(255, 245, 235, 0.6);
+      backdrop-filter: blur(10px);
+      border-radius: 48px;
+      padding: 1.8rem;
+      box-shadow: 0 20px 35px -12px rgba(0,0,0,0.15), 0 0 0 1px rgba(212,175,55,0.2);
+    }
+
+    /* SCHEDULE ITEMS WITH IMAGES */
     .schedule-list {
       display: flex;
       flex-direction: column;
       gap: 1.2rem;
       margin: 1.5rem 0;
-      position: relative;
     }
     .schedule-item {
       background: rgba(255, 248, 235, 0.85);
@@ -217,13 +226,11 @@
       opacity: 0;
       transition: all 0.5s cubic-bezier(0.2, 0.9, 0.4, 1.1);
       position: relative;
-      overflow: hidden;
     }
     .schedule-item.revealed {
       transform: translateX(0);
       opacity: 1;
     }
-    /* Dotted line between items */
     .schedule-item:not(:last-child)::after {
       content: '';
       position: absolute;
@@ -234,6 +241,25 @@
       background: repeating-linear-gradient(to bottom, #d4af37, #d4af37 6px, transparent 6px, transparent 12px);
       transform: translateX(-50%);
     }
+    .schedule-img {
+      width: 44px;
+      height: 44px;
+      object-fit: contain;
+      border-radius: 50%;
+      background: #f7ede2;
+      padding: 6px;
+      transition: transform 0.3s ease;
+    }
+    .schedule-item:hover .schedule-img {
+      transform: scale(1.1);
+    }
+    .schedule-desc {
+      flex: 1;
+      text-align: left;
+      font-size: 1rem;
+      letter-spacing: 0.3px;
+      font-weight: 500;
+    }
     .schedule-time {
       font-weight: 700;
       background: #f3e3d3;
@@ -243,43 +269,10 @@
       font-size: 0.85rem;
       color: #b1623a;
       min-width: 70px;
-    }
-    .schedule-desc {
-      flex: 1;
-      text-align: left;
-      letter-spacing: 0.3px;
-      font-size: 1rem;
-    }
-    /* HOVER IMAGE - elegant icon that appears on hover */
-    .schedule-img {
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      object-fit: cover;
-      opacity: 0;
-      transform: scale(0.7);
-      transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.2);
-      box-shadow: 0 5px 12px rgba(0,0,0,0.1);
-      background: #f7ede2;
-      padding: 4px;
-    }
-    .schedule-item:hover .schedule-img {
-      opacity: 1;
-      transform: scale(1);
-    }
-    /* Alternate image position */
-    .schedule-img-right {
-      order: 2;
+      text-align: center;
     }
 
-    /* Calendar, buttons, etc. (previous styles preserved) */
-    .glass-card {
-      background: rgba(255, 245, 235, 0.6);
-      backdrop-filter: blur(10px);
-      border-radius: 48px;
-      padding: 1.8rem;
-      box-shadow: 0 20px 35px -12px rgba(0,0,0,0.15), 0 0 0 1px rgba(212,175,55,0.2);
-    }
+    /* CALENDAR */
     .calendar-grid {
       display: grid;
       grid-template-columns: repeat(7, 1fr);
@@ -301,6 +294,8 @@
       0% { box-shadow: 0 0 0 2px #f7d8a0, 0 0 0 5px rgba(212,175,55,0.3); }
       100% { box-shadow: 0 0 0 6px #e6b86e, 0 0 0 10px rgba(212,175,55,0.6); }
     }
+
+    /* BUTTONS & IMAGES */
     .btn-gold {
       background: transparent;
       border: 1px solid #c6a43b;
@@ -392,8 +387,9 @@
     }
     @media (max-width: 550px) {
       .schedule-item { padding: 0.5rem 1rem; }
-      .schedule-img { width: 28px; height: 28px; }
+      .schedule-img { width: 36px; height: 36px; }
       .schedule-time { font-size: 0.7rem; min-width: 60px; }
+      .schedule-desc { font-size: 0.85rem; }
     }
   </style>
 </head>
@@ -405,7 +401,7 @@
   <div class="envelope" id="envelope">
     <div class="envelope-flap"></div>
     <div class="envelope-body"></div>
-    <div class="envelope-card">Վարդան & Քնարիկ<br><span style="font-size:0.8rem;">16.08.2026</span></div>
+    <div class="envelope-card">Վրերժ & Քրիստինե<br><span style="font-size:0.8rem;">16.08.2026</span></div>
   </div>
 </div>
 
@@ -416,86 +412,95 @@
     <div class="parallax-bg"></div>
     <div class="page-content stagger-parent">
       <div class="stagger-child"><i class="fas fa-heart" style="color:#d4af37; font-size:2rem;"></i></div>
-      <div class="stagger-child script-name">Վարդան & Քնարիկ</div>
+      <div class="stagger-child script-name">Վրերժ & Քրիստինե</div>
       <div class="stagger-child gold-border"></div>
       <div class="stagger-child serif-heading" style="font-size:1.3rem;">16 Օգոստոսի, 2026</div>
       <div class="stagger-child" style="margin-top:2rem;"><i class="fas fa-chevron-down"></i> ճամփորդություն սկսվում է</div>
     </div>
-    <div class="scroll-down" data-next="page2"><i class="fas fa-angle-double-down"></i></div>
+    <div class="scroll-down" data-next="pageCalendar"><i class="fas fa-angle-double-down"></i></div>
   </section>
 
-  <!-- PAGE 2 - COUPLE PHOTO + SCHEDULE WITH HOVER IMAGES -->
-  <section class="page" id="page2">
+  <!-- PAGE 2 - CALENDAR (moved to second section) -->
+  <section class="page page-calendar" id="pageCalendar">
+    <div class="parallax-bg"></div>
+    <div class="page-content stagger-parent">
+      <div class="stagger-child serif-heading" style="font-size:2rem;">✨ Հատուկ օրացույց ✨</div>
+      <div class="stagger-child glass-card" style="margin-top:1rem;">
+        <div class="calendar-header" style="font-family:'Playfair Display'; font-size:1.4rem;">Օգոստոս 2026</div>
+        <div class="calendar-grid" id="calendarGrid"></div>
+      </div>
+      <div class="stagger-child gold-text" style="margin-top:1rem;"><i class="fas fa-heart"></i> Սիրտը նշում է մեր մեծ օրը</div>
+    </div>
+    <div class="scroll-down" data-next="pageCoupleSchedule"><i class="fas fa-angle-double-down"></i></div>
+  </section>
+
+  <!-- PAGE 3 - COUPLE PHOTO + SCHEDULE WITH IMAGES -->
+  <section class="page" id="pageCoupleSchedule">
     <div class="parallax-bg"></div>
     <div class="page-content">
       <div class="couple-image-container stagger-child" style="max-width:380px; margin:0 auto 1.5rem; border-radius:32px; overflow:hidden; box-shadow:0 20px 35px -10px rgba(0,0,0,0.2);">
-        <img id="coupleImg1" src="https://placehold.co/700x875/f9e5d4/b87a4b?text=Վ&Ք+Լուսանկար" alt="Couple" style="width:100%; display:block;">
+        <img id="coupleImg1" src="https://placehold.co/700x875/f9e5d4/b87a4b?text=Վրերժ+Քրիստինե" alt="Couple" style="width:100%; display:block;">
       </div>
       <h3 class="serif-heading stagger-child" style="font-size:1.8rem;">ՕՐՎԱ ԾՐԱԳԻՐ</h3>
       <div class="divider-gold stagger-child"></div>
       <div class="schedule-list" id="scheduleList">
-        <!-- 1. Հարսի տուն 12:00 -->
+        <!-- Each item: image, text, time (using provided URLs) -->
         <div class="schedule-item">
+          <img class="schedule-img" src="https://cdn.shopify.com/s/files/1/0991/8038/0469/files/bride-holding-a-bouquet-line-art-free-vector.jpg?v=1776200458" alt="bride">
+          <span class="schedule-desc">Հարսի տուն</span>
           <span class="schedule-time">12:00</span>
-          <span class="schedule-desc">1. Հարսի տուն</span>
-         src="..."https://cdn.shopify.com/s/files/1/0991/8038/0469/files/bride-holding-a-bouquet-line-art-free-vector.jpg?v=1776200458">
         </div>
-        <!-- 2. Պսակադրության արարողություն 14:00 -->
         <div class="schedule-item">
+          <img class="schedule-img" src="https://cdn.shopify.com/s/files/1/0991/8038/0469/files/5.png?v=1776200459" alt="ceremony">
+          <span class="schedule-desc">Պսակադրության արարողություն</span>
           <span class="schedule-time">14:00</span>
-          <span class="schedule-desc">2. Պսակադրության արարողություն</span>
-          <img class="schedule-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23b87a4b'%3E%3Cpath d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5' stroke='%23c6a43b' stroke-width='0.5'/%3E%3C/svg%3E" alt="rings">
         </div>
-        <!-- 3. Փեսայի տուն 16:00 -->
         <div class="schedule-item">
+          <img class="schedule-img" src="https://cdn.shopify.com/s/files/1/0991/8038/0469/files/one-continuous-single-drawing-black-line-art-doodle-groom-outline-vector-illustration_1098986-7584.avif?v=1776200458" alt="groom">
+          <span class="schedule-desc">Փեսայի տուն</span>
           <span class="schedule-time">16:00</span>
-          <span class="schedule-desc">3. Փեսայի տուն</span>
-          <img class="schedule-img"<img class="schedule-img" 
-     src="https://cdn.shopify.com/s/files/1/0991/8038/0469/files/one-continuous-single-drawing-black-line-art-doodle-groom-outline-vector-illustration_1098986-7584.avif?v=1776200458" 
-     alt="Groom illustration">viewBox='0 0 24 24' fill='%23b87a4b'%3E%3Cpath d='M3 9l9-6 9 6v9H3z' stroke='%23c6a43b' fill='none'/%3E%3C/svg%3E" alt="house">
         </div>
-        <!-- 4. Հյուրերի դիմավորում 17:30 -->
         <div class="schedule-item">
+          <img class="schedule-img" src="https://cdn.shopify.com/s/files/1/0991/8038/0469/files/8.png?v=1776200459" alt="guests">
+          <span class="schedule-desc">Հյուրերի դիմավորում</span>
           <span class="schedule-time">17:30</span>
-          <span class="schedule-desc">4. Հյուրերի դիմավորում</span>
-          <img class="schedule-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23b87a4b'%3E%3Ccircle cx='12' cy='8' r='4'/%3E%3Cpath d='M5 20v-2a7 7 0 0 1 14 0v2' stroke='%23c6a43b' fill='none'/%3E%3C/svg%3E" alt="guests">
         </div>
-        <!-- 4. Հարսանեկան խնջույք 18:00 -->
         <div class="schedule-item">
+          <img class="schedule-img" src="https://cdn.shopify.com/s/files/1/0991/8038/0469/files/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvdjE2OS1mYWgtYXVtLTQ2LW5ld3llYXItc2ljb25zXzIuanBn.jpg?v=1776200458" alt="party">
+          <span class="schedule-desc">Հարսանեկան խնջույք</span>
           <span class="schedule-time">18:00</span>
-          <span class="schedule-desc">4. Հարսանեկան խնջույք</span>
-          <img class="schedule-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23b87a4b'%3E%3Cpath d='M12 2v4M8 6h8l1 4H7l1-4zM5 12h14l-1 8H6l-1-8z' stroke='%23c6a43b' fill='none'/%3E%3C/svg%3E" alt="party">
         </div>
-        <!-- 5. Հանդիսության ավարտ 00:00 -->
         <div class="schedule-item">
+          <img class="schedule-img" src="https://cdn.shopify.com/s/files/1/0991/8038/0469/files/bride-holding-a-bouquet-line-art-free-vector.jpg?v=1776200458" alt="end">
+          <span class="schedule-desc">Հանդիսության ավարտ</span>
           <span class="schedule-time">00:00</span>
-          <span class="schedule-desc">5. Հանդիսության ավարտ</span>
-          <img class="schedule-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23b87a4b'%3E%3Cpath d='M12 2v20M2 12h20' stroke='%23c6a43b' stroke-width='1.5'/%3E%3C/svg%3E" alt="stars">
         </div>
       </div>
     </div>
-    <div class="scroll-down" data-next="page3"><i class="fas fa-angle-double-down"></i></div>
+    <div class="scroll-down" data-next="pageInvitation"><i class="fas fa-angle-double-down"></i></div>
   </section>
 
-  <!-- PAGE 3 - INVITATION TEXT -->
-  <section class="page" id="page3">
+  <!-- PAGE 4 - INVITATION TEXT -->
+  <section class="page" id="pageInvitation">
+    <div class="parallax-bg"></div>
     <div class="page-content stagger-parent">
       <div class="stagger-child ornament-icon">❁ ✿ ❁</div>
       <div class="stagger-child" style="font-family:'Cormorant Garamond'; font-size:1.2rem;">Ընտանիքների հետ միասին</div>
-      <div class="stagger-child script-name" style="font-size:2.6rem;">Վարդան & Քնարիկ</div>
-      <div class="stagger-child" style="font-size:1.05rem;">պատիվ ունեն հրավիրել Ձեզ իրենց հարսանեկան արարողությանը</div>
+      <div class="stagger-child script-name" style="font-size:2.6rem;">Վրերժ & Քրիստինե</div>
+      <div class="stagger-child" style="font-size:1.05rem; max-width:500px;">պատիվ ունեն հրավիրել Ձեզ իրենց հարսանեկան արարողությանը</div>
       <div class="stagger-child divider-gold"></div>
       <div class="stagger-child" style="font-size:1.2rem; font-family:'Playfair Display';">Շաբաթ, 16 Օգոստոսի, 2026</div>
       <div class="stagger-child">Արարողությունը՝ ժամը 16:00</div>
-      <div class="stagger-child"><i class="fas fa-map-marker-alt gold-text"></i> Երևան, Պսակադրության պալատ</div>
+      <div class="stagger-child"><i class="fas fa-map-marker-alt gold-text"></i> Երևանյան փող., 101/1, "ԱՇՏԱՐԱԿ ՀՈԼԼ" ՌԵՍՏՈՐԱՆԱՅԻՆ ՀԱՄԱԼԻՐ</div>
     </div>
-    <div class="scroll-down" data-next="page4"><i class="fas fa-angle-double-down"></i></div>
+    <div class="scroll-down" data-next="pageCountdown"><i class="fas fa-angle-double-down"></i></div>
   </section>
 
-  <!-- PAGE 4 - COUNTDOWN -->
-  <section class="page page-countdown" id="page4">
+  <!-- PAGE 5 - COUNTDOWN -->
+  <section class="page page-countdown" id="pageCountdown">
+    <div class="parallax-bg"></div>
     <div class="page-content stagger-parent">
-      <div class="stagger-child serif-heading" style="color:#f5e2c1; font-size:2rem;">Մեր օրվա հետհաշվարկ</div>
+      <div class="stagger-child serif-heading" style="color:#f5e2c1; font-size:2rem;">ՀԱՐՍԱՆԻՔԻՆ ՄՆԱՑ</div>
       <div class="stagger-child" style="font-size:1.3rem;">16 Օգոստոսի, 2026</div>
       <div class="stagger-child divider-gold"></div>
       <div class="stagger-child" id="countdownTimer" style="display:flex; justify-content:center; gap:1rem; flex-wrap:wrap; margin-top:1rem;">
@@ -505,38 +510,12 @@
         <div class="countdown-item"><div class="countdown-number" id="seconds">00</div><div class="countdown-label">Վայրկյան</div></div>
       </div>
     </div>
-    <div class="scroll-down" data-next="page5"><i class="fas fa-angle-double-down"></i></div>
+    <div class="scroll-down" data-next="pageMessage"><i class="fas fa-angle-double-down"></i></div>
   </section>
 
-  <!-- PAGE 5 - CALENDAR -->
-  <section class="page page-calendar" id="page5">
-    <div class="page-content stagger-parent">
-      <div class="stagger-child serif-heading" style="font-size:2rem;">✨ Հատուկ օրացույց ✨</div>
-      <div class="stagger-child glass-card" style="margin-top:1rem;">
-        <div class="calendar-header">Օգոստոս 2026</div>
-        <div class="calendar-grid" id="calendarGrid"></div>
-      </div>
-      <div class="stagger-child gold-text" style="margin-top:1rem;"><i class="fas fa-heart"></i> Սիրտը նշում է մեր մեծ օրը</div>
-    </div>
-    <div class="scroll-down" data-next="page6"><i class="fas fa-angle-double-down"></i></div>
-  </section>
-
-  <!-- PAGE 6 - VENUE -->
-  <section class="page" id="page6">
-    <div class="page-content stagger-parent">
-      <div class="stagger-child"><i class="fas fa-church" style="font-size:2rem; color:#c6a43b;"></i></div>
-      <div class="stagger-child serif-heading" style="font-size:2rem;">Երևանի Պսակադրության պալատ</div>
-      <div class="stagger-child">Վազգեն Սարգսյան 5/1, Երևան 0010</div>
-      <div class="stagger-child map-container" style="border-radius:28px; overflow:hidden; margin:1rem 0;">
-        <iframe width="100%" height="220" style="border:0;" loading="lazy" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=Yerevan+Wedding+Palace+5%2F1+Vazgen+Sargsyan+Street+Yerevan&zoom=15"></iframe>
-      </div>
-      <a href="https://www.google.com/maps/dir/?api=1&destination=Yerevan+Wedding+Palace+5%2F1+Vazgen+Sargsyan+Street+Yerevan" target="_blank" class="stagger-child btn-gold"><i class="fas fa-directions"></i> Երթուղի</a>
-    </div>
-    <div class="scroll-down" data-next="page7"><i class="fas fa-angle-double-down"></i></div>
-  </section>
-
-  <!-- PAGE 7 - MESSAGE -->
-  <section class="page page-message" id="page7">
+  <!-- PAGE 6 - MESSAGE -->
+  <section class="page page-message" id="pageMessage">
+    <div class="parallax-bg"></div>
     <div class="page-content stagger-parent">
       <div class="stagger-child glass-card">
         <i class="fas fa-feather-alt" style="color:#c6a43b; font-size:1.8rem;"></i>
@@ -546,18 +525,19 @@
         <i class="fas fa-heart stagger-child" style="color:#c6a43b;"></i>
       </div>
     </div>
-    <div class="scroll-down" data-next="page8"><i class="fas fa-angle-double-down"></i></div>
+    <div class="scroll-down" data-next="pageFinal"><i class="fas fa-angle-double-down"></i></div>
   </section>
 
-  <!-- PAGE 8 - FINAL -->
-  <section class="page" id="page8">
+  <!-- PAGE 7 - FINAL IMAGE & INITIALS -->
+  <section class="page" id="pageFinal">
+    <div class="parallax-bg"></div>
     <div class="page-content stagger-parent">
       <div class="stagger-child couple-image-container" style="max-width:320px; margin:0 auto 1.5rem;">
         <img id="coupleImg2" src="https://placehold.co/600x750/f5e2cf/b2825a?text=Վ&Ք" style="width:100%; border-radius:28px;">
       </div>
       <div class="stagger-child final-initials" style="font-family:'Great Vibes'; font-size:4rem;">Վ & Ք</div>
       <div class="stagger-child" style="font-family:'Playfair Display';">2026</div>
-      <div class="stagger-child" style="margin-top:1rem;">✨ հավերժ միասին ✨</div>
+      <div class="stagger-child" style="margin-top:1rem;">✨ Հավերժ միասին ✨</div>
     </div>
   </section>
 </div>
@@ -568,7 +548,7 @@
 </div>
 
 <script>
-  // ENVELOPE
+  // ENVELOPE INTERACTION
   const envelopeOverlay = document.getElementById('envelopeOverlay');
   const envelope = document.getElementById('envelope');
   const mainContainer = document.getElementById('scrollContainer');
@@ -581,7 +561,7 @@
     }, 900);
   });
 
-  // STAGGERED REVEAL
+  // STAGGERED TEXT REVEAL
   const sections = document.querySelectorAll('.page');
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -589,7 +569,7 @@
         const section = entry.target;
         const staggerParent = section.querySelector('.stagger-parent');
         if (staggerParent) staggerParent.classList.add('section-revealed');
-        if (section.id === 'page2') {
+        if (section.id === 'pageCoupleSchedule') {
           const scheduleItems = section.querySelectorAll('.schedule-item');
           scheduleItems.forEach((item, idx) => {
             setTimeout(() => item.classList.add('revealed'), idx * 120);
@@ -611,8 +591,10 @@
     const now = new Date().getTime();
     const diff = weddingDate.getTime() - now;
     if (diff <= 0) {
-      document.getElementById('days').innerText = '00'; document.getElementById('hours').innerText = '00';
-      document.getElementById('minutes').innerText = '00'; document.getElementById('seconds').innerText = '00';
+      document.getElementById('days').innerText = '00';
+      document.getElementById('hours').innerText = '00';
+      document.getElementById('minutes').innerText = '00';
+      document.getElementById('seconds').innerText = '00';
       return;
     }
     const days = Math.floor(diff / (1000*60*60*24));
@@ -624,9 +606,10 @@
     document.getElementById('minutes').innerText = minutes < 10 ? '0'+minutes : minutes;
     document.getElementById('seconds').innerText = seconds < 10 ? '0'+seconds : seconds;
   }
-  updateCountdown(); setInterval(updateCountdown, 1000);
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
 
-  // CALENDAR
+  // CALENDAR AUGUST 2026
   function buildCalendar() {
     const year = 2026, month = 7;
     const firstDay = new Date(year, month, 1).getDay();
@@ -634,9 +617,21 @@
     const grid = document.getElementById('calendarGrid');
     grid.innerHTML = '';
     const weekdays = ['Կ','Ե','Եր','Չ','Հ','Ու','Շ'];
-    weekdays.forEach(day => { let wd = document.createElement('div'); wd.className = 'calendar-weekday'; wd.innerText = day; wd.style.fontSize='0.75rem'; wd.style.fontWeight='600'; grid.appendChild(wd); });
+    weekdays.forEach(day => { 
+      let wd = document.createElement('div'); 
+      wd.className = 'calendar-weekday'; 
+      wd.innerText = day; 
+      wd.style.fontSize='0.75rem'; 
+      wd.style.fontWeight='600'; 
+      grid.appendChild(wd); 
+    });
     let emptyStart = firstDay === 0 ? 6 : firstDay-1;
-    for(let i=0; i<emptyStart; i++) { let empty = document.createElement('div'); empty.className = 'calendar-day'; empty.style.background = 'transparent'; grid.appendChild(empty); }
+    for(let i=0; i<emptyStart; i++) { 
+      let empty = document.createElement('div'); 
+      empty.className = 'calendar-day'; 
+      empty.style.background = 'transparent'; 
+      grid.appendChild(empty); 
+    }
     for(let d=1; d<=daysInMonth; d++) {
       let dayDiv = document.createElement('div');
       dayDiv.className = 'calendar-day';
@@ -646,7 +641,9 @@
       if(d === 16) {
         dayDiv.classList.add('highlight-day');
         dayDiv.innerHTML = `16 <i class="fas fa-heart" style="font-size:0.9rem; color:#c53a1f;"></i>`;
-      } else { dayDiv.innerText = d; }
+      } else {
+        dayDiv.innerText = d;
+      }
       grid.appendChild(dayDiv);
     }
   }
@@ -668,17 +665,38 @@
     });
   });
 
-  // MUSIC
+  // MUSIC (Ed Sheeran - Perfect)
   const audio = new Audio('https://cdn.pixabay.com/download/audio/2022/02/22/audio_bb2d9c8b6c.mp3?filename=ed-sheeran-perfect-instrumental-piano-version-14410.mp3');
-  audio.loop = true; audio.volume = 0.35;
+  audio.loop = true;
+  audio.volume = 0.35;
   let isPlaying = false;
   const musicBtn = document.getElementById('musicToggle');
   const musicIcon = document.getElementById('musicIcon');
   const musicTextSpan = document.getElementById('musicText');
-  envelope.addEventListener('click', () => { setTimeout(() => { audio.play().then(() => { isPlaying=true; musicIcon.className='fas fa-volume-up'; musicTextSpan.innerText='Music On'; }).catch(()=>{}); }, 500); }, { once: true });
-  musicBtn.addEventListener('click', () => {
-    if(isPlaying) { audio.pause(); isPlaying=false; musicIcon.className='fas fa-music'; musicTextSpan.innerText='Music Off'; }
-    else { audio.play().then(()=>{ isPlaying=true; musicIcon.className='fas fa-volume-up'; musicTextSpan.innerText='Music On'; }).catch(e=>console.log); }
+  function startMusic() {
+    audio.play().then(() => {
+      isPlaying = true;
+      musicIcon.className = 'fas fa-volume-up';
+      musicTextSpan.innerText = 'Music On';
+    }).catch(e => console.log("autoplay blocked"));
+  }
+  envelope.addEventListener('click', () => {
+    setTimeout(() => { startMusic(); }, 500);
+  }, { once: true });
+  musicBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    if(isPlaying) {
+      audio.pause();
+      isPlaying = false;
+      musicIcon.className = 'fas fa-music';
+      musicTextSpan.innerText = 'Music Off';
+    } else {
+      audio.play().then(() => {
+        isPlaying = true;
+        musicIcon.className = 'fas fa-volume-up';
+        musicTextSpan.innerText = 'Music On';
+      }).catch(err => console.log);
+    }
   });
   document.body.style.overflow = 'hidden';
 </script>
