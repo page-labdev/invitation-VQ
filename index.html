@@ -38,7 +38,7 @@
       pointer-events: none;
     }
 
-    /* ENVELOPE OVERLAY - LUXURY WITH TOP WAX STAMP (moved down) */
+    /* ENVELOPE OVERLAY - LUXURY WITH WAX STAMP (moved down, burgundy) */
     .envelope-overlay {
       position: fixed;
       top: 0;
@@ -106,10 +106,10 @@
       pointer-events: none;
       z-index: 3;
     }
-    /* Wax stamp moved down (from -30px to 15px) */
+    /* Wax stamp - burgundy color, moved down 1.5cm */
     .wax-stamp {
       position: absolute;
-      top: 15px;
+      top: 70px;
       left: 50%;
       transform: translateX(-50%);
       width: 70px;
@@ -122,17 +122,18 @@
       height: 100%;
       filter: drop-shadow(0 6px 12px rgba(0,0,0,0.3));
     }
+    /* Envelope centre text */
     .open-text {
       position: absolute;
-      bottom: -85px;
+      top: 50%;
       left: 50%;
-      transform: translateX(-50%);
+      transform: translate(-50%, -50%);
       font-family: 'Dancing Script', cursive;
-      font-size: 1rem;
+      font-size: 1.1rem;
       font-weight: 500;
-      color: #4a2c2a;
+      color: #5a3e2b;
       white-space: nowrap;
-      background: rgba(255,245,235,0.8);
+      background: rgba(255,245,235,0.7);
       padding: 5px 16px;
       border-radius: 40px;
       backdrop-filter: blur(4px);
@@ -268,17 +269,39 @@
       transition: transform 0.2s ease-out;
     }
 
-    /* Calendar */
+    /* PREMIUM CALENDAR */
+    .calendar-container {
+      background: rgba(255, 248, 240, 0.5);
+      backdrop-filter: blur(8px);
+      border-radius: 48px;
+      padding: 1.5rem 1rem;
+      box-shadow: 0 20px 35px -12px rgba(0,0,0,0.1), inset 0 0 0 1px rgba(255,255,245,0.6);
+    }
+    .calendar-header {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+      color: #4a2c2a;
+    }
     .calendar-grid {
       display: grid;
       grid-template-columns: repeat(7, 1fr);
       gap: 8px;
-      margin-top: 1rem;
+    }
+    .calendar-weekday {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      color: #b87a4b;
+      letter-spacing: 1px;
     }
     .calendar-day {
       background: #fffaf5;
       border-radius: 40px;
       padding: 8px 0;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: all 0.2s;
     }
     .highlight-day {
       background: #e6c9a0;
@@ -289,6 +312,7 @@
       0% { box-shadow: 0 0 0 2px #f7d8a0, 0 0 0 5px rgba(212,175,55,0.3); }
       100% { box-shadow: 0 0 0 6px #e6b86e, 0 0 0 10px rgba(212,175,55,0.6); }
     }
+
     .scroll-down {
       position: absolute;
       bottom: 30px;
@@ -333,11 +357,11 @@
       height: 100%;
     }
 
-    /* Couple name - Dancing Script, brown, not bold */
+    /* Couple name - Dancing Script, normal weight (not bold) */
     .couple-name {
       font-family: 'Dancing Script', cursive;
       font-size: clamp(3rem, 10vw, 5.5rem);
-      font-weight: normal;
+      font-weight: 400;
       color: #6b3e26;
       text-shadow: 0.5px 0.5px 0 rgba(0,0,0,0.05);
       letter-spacing: 1px;
@@ -353,44 +377,100 @@
       width: 80px;
       margin: 1.2rem auto;
     }
+
+    /* BEAUTIFUL BEIGE FRAME FOR TIMELINE CARDS */
+    .schedule-card {
+      background: rgba(255, 248, 235, 0.85);
+      backdrop-filter: blur(6px);
+      border-radius: 48px;
+      padding: 1.5rem 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      box-shadow: 0 15px 25px -8px rgba(0,0,0,0.1);
+      border: 1px solid #e8d5b5;
+      position: relative;
+      transition: all 0.3s;
+    }
+    .schedule-card::before {
+      content: '';
+      position: absolute;
+      inset: 4px;
+      border-radius: 44px;
+      border: 1px solid rgba(210, 180, 140, 0.4);
+      pointer-events: none;
+    }
+    .schedule-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 20px 30px -10px rgba(0,0,0,0.15);
+    }
+    .schedule-img {
+      max-width: 70%;
+      max-height: 30vh;
+      object-fit: contain;
+      border-radius: 28px;
+    }
+    .schedule-desc {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      font-weight: 600;
+    }
+    .schedule-time {
+      font-size: 1.2rem;
+      font-family: 'Inter', sans-serif;
+      color: #c6a43b;
+    }
+    .page-dark .schedule-desc, .page-dark .schedule-time {
+      color: #f5e2c1;
+    }
+    .page-dark .schedule-card {
+      background: rgba(50, 40, 35, 0.8);
+      border-color: #b89a6a;
+    }
+
     @media (max-width: 550px) {
       .event-title { font-size: 1.6rem; }
       .event-time { font-size: 1rem; }
       .hero-image { max-width: 95%; }
       .drawn-heart { width: 70px; height: 70px; }
-      .wax-stamp { width: 55px; height: 55px; top: 10px; }
-      .open-text { font-size: 0.85rem; bottom: -75px; }
+      .wax-stamp { width: 55px; height: 55px; top: 55px; }
+      .open-text { font-size: 0.85rem; white-space: nowrap; }
       .couple-name { font-size: 2.8rem; }
+      .schedule-desc { font-size: 1.3rem; }
+      .schedule-img { max-width: 85%; }
+      .calendar-weekday { font-size: 0.65rem; }
     }
   </style>
 </head>
 <body>
 <div class="grain"></div>
 
-<!-- ENVELOPE OVERLAY WITH TOP WAX STAMP (moved down) -->
+<!-- ENVELOPE OVERLAY WITH BURGUNDY WAX STAMP (moved down) -->
 <div class="envelope-overlay" id="envelopeOverlay">
   <div class="envelope" id="envelope">
     <div class="envelope-flap"></div>
     <div class="envelope-body"></div>
     <div class="envelope-card">Վրերժ & Քրիստինե<br><span style="font-size:0.8rem;">16.08.2026</span></div>
-    <!-- Wax stamp at top center, moved down -->
+    <!-- Wax stamp - color #722f37, moved down -->
     <div class="wax-stamp">
       <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="50" cy="50" r="48" fill="#c62828" stroke="#8b0000" stroke-width="2"/>
-        <circle cx="50" cy="50" r="42" fill="#d32f2f" stroke="#b71c1c" stroke-width="1.5"/>
-        <circle cx="50" cy="50" r="36" fill="#e53935"/>
-        <path d="M50 35 C50 35, 38 22, 28 33 C18 44, 22 58, 50 75 C78 58, 82 44, 72 33 C62 22, 50 35, 50 35Z" fill="#ffcdd2" stroke="#b71c1c" stroke-width="1"/>
-        <path d="M50 38 C50 38, 41 28, 33 37 C25 46, 29 57, 50 70 C71 57, 75 46, 67 37 C59 28, 50 38, 50 38Z" fill="#ef5350" stroke="#c62828" stroke-width="0.8"/>
+        <circle cx="50" cy="50" r="48" fill="#722f37" stroke="#4a1a1f" stroke-width="2"/>
+        <circle cx="50" cy="50" r="42" fill="#8b3a45" stroke="#5c2329" stroke-width="1.5"/>
+        <circle cx="50" cy="50" r="36" fill="#9e4a55"/>
+        <path d="M50 35 C50 35, 38 22, 28 33 C18 44, 22 58, 50 75 C78 58, 82 44, 72 33 C62 22, 50 35, 50 35Z" fill="#ffcdd2" stroke="#5c2329" stroke-width="1"/>
+        <path d="M50 38 C50 38, 41 28, 33 37 C25 46, 29 57, 50 70 C71 57, 75 46, 67 37 C59 28, 50 38, 50 38Z" fill="#c96a75" stroke="#722f37" stroke-width="0.8"/>
         <circle cx="50" cy="50" r="48" fill="none" stroke="#ffcdd2" stroke-width="0.5" stroke-dasharray="3 3"/>
       </svg>
     </div>
-    <div class="open-text">Բացեք հրավիրատոմսը</div>
+    <!-- Centred text on envelope -->
+    <div class="open-text">Բացեք Հրավիրատոմսը</div>
   </div>
 </div>
 
 <!-- MAIN INVITATION -->
 <div class="scroll-container" id="scrollContainer">
-  <!-- PAGE 1 - COVER with hand-drawn heart and Dancing Script brown names -->
+  <!-- PAGE 1 - COVER with hand-drawn heart and Dancing Script names (normal weight) -->
   <section class="page page-warm" id="pageCover">
     <div class="parallax-bg"></div>
     <div class="page-content stagger-parent">
@@ -419,13 +499,13 @@
     <div class="scroll-down" data-next="calendarPage"><i class="fas fa-angle-double-down"></i></div>
   </section>
 
-  <!-- CALENDAR PAGE (second section) -->
+  <!-- CALENDAR PAGE (premium design, weekdays in English) -->
   <section class="page page-warm" id="calendarPage">
     <div class="parallax-bg"></div>
     <div class="page-content stagger-parent">
       <div class="stagger-child" style="font-size:2rem; font-family:'Playfair Display';">✨ Հատուկ օրացույց ✨</div>
-      <div class="stagger-child" style="margin-top:1rem;">
-        <div style="font-family:'Playfair Display'; font-size:1.4rem;">Օգոստոս 2026</div>
+      <div class="stagger-child calendar-container">
+        <div class="calendar-header">Օգոստոս 2026</div>
         <div class="calendar-grid" id="calendarGrid"></div>
       </div>
       <div class="stagger-child" style="margin-top:1rem;"><i class="fas fa-heart"></i> Սիրտը նշում է մեր մեծ օրը</div>
@@ -433,15 +513,17 @@
     <div class="scroll-down" data-next="event1"><i class="fas fa-angle-double-down"></i></div>
   </section>
 
-  <!-- SCHEDULE EVENT PAGES (each event one full page) -->
+  <!-- SCHEDULE EVENT PAGES (each event one full page, with beige frame) -->
   <!-- Event 1 - with heading "ՕՐՎԱ ԾՐԱԳԻՐ" -->
   <section class="page page-warm" id="event1">
     <div class="parallax-bg"></div>
     <div class="page-content stagger-parent">
       <div class="stagger-child"><h2 style="font-family:'Playfair Display'; font-size:2rem;">ՕՐՎԱ ԾՐԱԳԻՐ</h2><div class="gold-border"></div></div>
-      <img class="event-image" src="https://cdn.shopify.com/s/files/1/0991/8038/0469/files/bride-holding-a-bouquet-line-art-free-vector.jpg?v=1776200458" alt="Հարսի տուն">
-      <div class="stagger-child event-title">Հարսի տուն</div>
-      <div class="stagger-child event-time">12:00</div>
+      <div class="stagger-child schedule-card">
+        <img class="schedule-img" src="https://cdn.shopify.com/s/files/1/0991/8038/0469/files/bride-holding-a-bouquet-line-art-free-vector.jpg?v=1776200458" alt="Հարսի տուն">
+        <div class="schedule-desc">Հարսի տուն</div>
+        <div class="schedule-time">12:00</div>
+      </div>
     </div>
     <div class="scroll-down" data-next="event2"><i class="fas fa-angle-double-down"></i></div>
   </section>
@@ -450,9 +532,11 @@
   <section class="page page-dark" id="event2">
     <div class="parallax-bg"></div>
     <div class="page-content stagger-parent">
-      <img class="event-image" src="https://cdn.shopify.com/s/files/1/0991/8038/0469/files/5.png?v=1776200459" alt="Պսակադրության արարողություն">
-      <div class="stagger-child event-title">Պսակադրության արարողություն</div>
-      <div class="stagger-child event-time">14:00</div>
+      <div class="stagger-child schedule-card">
+        <img class="schedule-img" src="https://cdn.shopify.com/s/files/1/0991/8038/0469/files/5.png?v=1776200459" alt="Պսակադրության արարողություն">
+        <div class="schedule-desc">Պսակադրության արարողություն</div>
+        <div class="schedule-time">14:00</div>
+      </div>
     </div>
     <div class="scroll-down" data-next="event3"><i class="fas fa-angle-double-down"></i></div>
   </section>
@@ -461,9 +545,11 @@
   <section class="page page-warm" id="event3">
     <div class="parallax-bg"></div>
     <div class="page-content stagger-parent">
-      <img class="event-image" src="https://cdn.shopify.com/s/files/1/0991/8038/0469/files/one-continuous-single-drawing-black-line-art-doodle-groom-outline-vector-illustration_1098986-7584.avif?v=1776200458" alt="Փեսայի տուն">
-      <div class="stagger-child event-title">Փեսայի տուն</div>
-      <div class="stagger-child event-time">16:00</div>
+      <div class="stagger-child schedule-card">
+        <img class="schedule-img" src="https://cdn.shopify.com/s/files/1/0991/8038/0469/files/one-continuous-single-drawing-black-line-art-doodle-groom-outline-vector-illustration_1098986-7584.avif?v=1776200458" alt="Փեսայի տուն">
+        <div class="schedule-desc">Փեսայի տուն</div>
+        <div class="schedule-time">16:00</div>
+      </div>
     </div>
     <div class="scroll-down" data-next="event4"><i class="fas fa-angle-double-down"></i></div>
   </section>
@@ -472,9 +558,11 @@
   <section class="page page-dark" id="event4">
     <div class="parallax-bg"></div>
     <div class="page-content stagger-parent">
-      <img class="event-image" src="https://cdn.shopify.com/s/files/1/0991/8038/0469/files/8.png?v=1776200459" alt="Հյուրերի դիմավորում">
-      <div class="stagger-child event-title">Հյուրերի դիմավորում</div>
-      <div class="stagger-child event-time">17:30</div>
+      <div class="stagger-child schedule-card">
+        <img class="schedule-img" src="https://cdn.shopify.com/s/files/1/0991/8038/0469/files/8.png?v=1776200459" alt="Հյուրերի դիմավորում">
+        <div class="schedule-desc">Հյուրերի դիմավորում</div>
+        <div class="schedule-time">17:30</div>
+      </div>
     </div>
     <div class="scroll-down" data-next="event5"><i class="fas fa-angle-double-down"></i></div>
   </section>
@@ -483,9 +571,11 @@
   <section class="page page-warm" id="event5">
     <div class="parallax-bg"></div>
     <div class="page-content stagger-parent">
-      <img class="event-image" src="https://cdn.shopify.com/s/files/1/0991/8038/0469/files/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvdjE2OS1mYWgtYXVtLTQ2LW5ld3llYXItc2ljb25zXzIuanBn.jpg?v=1776200458" alt="Հարսանեկան խնջույք">
-      <div class="stagger-child event-title">Հարսանեկան խնջույք</div>
-      <div class="stagger-child event-time">18:00</div>
+      <div class="stagger-child schedule-card">
+        <img class="schedule-img" src="https://cdn.shopify.com/s/files/1/0991/8038/0469/files/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvdjE2OS1mYWgtYXVtLTQ2LW5ld3llYXItc2ljb25zXzIuanBn.jpg?v=1776200458" alt="Հարսանեկան խնջույք">
+        <div class="schedule-desc">Հարսանեկան խնջույք</div>
+        <div class="schedule-time">18:00</div>
+      </div>
     </div>
     <div class="scroll-down" data-next="event6"><i class="fas fa-angle-double-down"></i></div>
   </section>
@@ -494,9 +584,11 @@
   <section class="page page-dark" id="event6">
     <div class="parallax-bg"></div>
     <div class="page-content stagger-parent">
-      <img class="event-image" src="https://cdn.shopify.com/s/files/1/0991/8038/0469/files/one-line-illustration-of-wedding-couple-minimalist-one-line-illustration-of-wedding-couple-3AD8XRT.jpg?v=1776249548" alt="Հանդիսության ավարտ">
-      <div class="stagger-child event-title">Հանդիսության ավարտ</div>
-      <div class="stagger-child event-time">00:00</div>
+      <div class="stagger-child schedule-card">
+        <img class="schedule-img" src="https://cdn.shopify.com/s/files/1/0991/8038/0469/files/one-line-illustration-of-wedding-couple-minimalist-one-line-illustration-of-wedding-couple-3AD8XRT.jpg?v=1776249548" alt="Հանդիսության ավարտ">
+        <div class="schedule-desc">Հանդիսության ավարտ</div>
+        <div class="schedule-time">00:00</div>
+      </div>
     </div>
     <div class="scroll-down" data-next="invitationPage"><i class="fas fa-angle-double-down"></i></div>
   </section>
@@ -571,7 +663,6 @@
   
   function startMusic() {
     if (audio) return;
-    // Romantic piano instrumental of "Perfect" by Ed Sheeran
     audio = new Audio('https://cdn.pixabay.com/download/audio/2022/02/22/audio_bb2d9c8b6c.mp3?filename=ed-sheeran-perfect-instrumental-piano-version-14410.mp3');
     audio.loop = true;
     audio.volume = 0.35;
@@ -631,7 +722,7 @@
   updateCountdown();
   setInterval(updateCountdown, 1000);
   
-  // CALENDAR AUGUST 2026
+  // PREMIUM CALENDAR with English weekdays
   function buildCalendar() {
     const year = 2026, month = 7;
     const firstDay = new Date(year, month, 1).getDay();
@@ -639,13 +730,11 @@
     const grid = document.getElementById('calendarGrid');
     if (!grid) return;
     grid.innerHTML = '';
-    const weekdays = ['Կ','Ե','Եր','Չ','Հ','Ու','Շ'];
+    const weekdays = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
     weekdays.forEach(day => { 
       let wd = document.createElement('div'); 
       wd.className = 'calendar-weekday'; 
       wd.innerText = day; 
-      wd.style.fontSize='0.75rem'; 
-      wd.style.fontWeight='600'; 
       grid.appendChild(wd); 
     });
     let emptyStart = firstDay === 0 ? 6 : firstDay-1;
@@ -658,12 +747,9 @@
     for(let d=1; d<=daysInMonth; d++) {
       let dayDiv = document.createElement('div');
       dayDiv.className = 'calendar-day';
-      dayDiv.style.padding = '8px 0';
-      dayDiv.style.borderRadius = '40px';
-      dayDiv.style.background = '#fffaf5';
       if(d === 16) {
         dayDiv.classList.add('highlight-day');
-        dayDiv.innerHTML = `16 <i class="fas fa-heart" style="font-size:0.9rem; color:#c53a1f;"></i>`;
+        dayDiv.innerHTML = `16 <i class="fas fa-heart" style="font-size:0.8rem; color:#c53a1f;"></i>`;
       } else {
         dayDiv.innerText = d;
       }
