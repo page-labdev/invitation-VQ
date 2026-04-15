@@ -201,7 +201,7 @@
       z-index: 2;
     }
 
-    /* CINEMATIC REVEAL: fade, scale, gold glow */
+    /* CINEMATIC REVEAL (for all sections except first page soft emergence) */
     .reveal-item {
       opacity: 0;
       transform: translateY(25px) scale(0.98);
@@ -213,7 +213,6 @@
       transform: translateY(0) scale(1);
       filter: blur(0);
     }
-    /* image specific: slightly larger scale on reveal */
     .reveal-image {
       opacity: 0;
       transform: translateY(20px) scale(0.96);
@@ -225,7 +224,6 @@
       transform: translateY(0) scale(1.03);
       filter: blur(0);
     }
-    /* gold glow behind content */
     .gold-glow {
       position: relative;
     }
@@ -245,6 +243,33 @@
     }
     .gold-glow.revealed::before {
       opacity: 1;
+    }
+
+    /* SOFT EMERGENCE for first page texts (staggered, no sharp jumps) */
+    .soft-emerge {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.7s cubic-bezier(0.2, 0.9, 0.4, 1.1), transform 0.7s ease;
+      transition-delay: 0s;
+    }
+    .first-page-triggered .soft-emerge {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    /* Stagger delays for soft emergence */
+    .first-page-triggered .soft-emerge:nth-child(1) { transition-delay: 0.1s; }
+    .first-page-triggered .soft-emerge:nth-child(2) { transition-delay: 0.2s; }
+    .first-page-triggered .soft-emerge:nth-child(3) { transition-delay: 0.3s; }
+    .first-page-triggered .soft-emerge:nth-child(4) { transition-delay: 0.4s; }
+    .first-page-triggered .soft-emerge:nth-child(5) { transition-delay: 0.5s; }
+
+    /* First page image */
+    .couple-logo {
+      width: 80%;
+      max-width: 380px;
+      height: auto;
+      margin-bottom: 1.5rem;
+      filter: drop-shadow(0 8px 20px rgba(0,0,0,0.1));
     }
 
     /* LARGE CENTERED IMAGE STYLES */
@@ -403,22 +428,6 @@
       display: none;
     }
 
-    /* First page couple names - luxury style, no heart, with & */
-    .luxury-names {
-      font-family: 'Great Vibes', cursive;
-      font-size: clamp(3rem, 12vw, 6rem);
-      font-weight: 400;
-      color: #9e5a3a;
-      text-shadow: 0 2px 10px rgba(212,175,55,0.3);
-      letter-spacing: 2px;
-    }
-    .ampersand {
-      font-family: 'Great Vibes', cursive;
-      font-size: inherit;
-      color: #d4af37;
-      margin: 0 0.2rem;
-    }
-
     .gold-border {
       border-bottom: 1px solid #e5c687;
       width: 80px;
@@ -482,7 +491,7 @@
       .hero-image { max-width: 95%; }
       .wax-stamp { width: 55px; height: 55px; top: 55px; }
       .open-text { top: 130px; font-size: 0.85rem; white-space: nowrap; }
-      .luxury-names { font-size: 2.8rem; }
+      .couple-logo { width: 85%; }
       .schedule-desc { font-size: 1.3rem; }
       .schedule-img { max-width: 85%; }
       .calendar-weekday { font-size: 0.65rem; }
@@ -517,16 +526,15 @@
 
 <!-- MAIN INVITATION -->
 <div class="scroll-container" id="scrollContainer">
-  <!-- PAGE 1 - COVER with luxury names and & (no heart) -->
+  <!-- PAGE 1 - COVER with image instead of names, soft emergence for texts -->
   <section class="page page-warm" id="pageCover">
     <div class="parallax-bg"></div>
-    <div class="page-content">
-      <div class="reveal-item gold-glow luxury-names">
-        Վրերժ <span class="ampersand">&amp;</span> Քրիստինե
-      </div>
-      <div class="reveal-item gold-border" style="margin: 1rem auto;"></div>
-      <div class="reveal-item" style="font-size:1.3rem; font-family:'Playfair Display';">16 Օգոստոսի, 2026</div>
-      <div class="reveal-item" style="margin-top:2rem;"><i class="fas fa-chevron-down"></i> ճամփորդություն սկսվում է</div>
+    <div class="page-content" id="firstPageContent">
+      <!-- Image replaces couple names -->
+      <img src="https://cdn.shopify.com/s/files/1/0991/8038/0469/files/9.png?v=1776264944" alt="Վրերժ & Քրիստինե" class="couple-logo soft-emerge">
+      <div class="soft-emerge gold-border"></div>
+      <div class="soft-emerge" style="font-size:1.3rem; font-family:'Playfair Display';">16 Օգոստոսի, 2026</div>
+      <div class="soft-emerge" style="margin-top:2rem;"><i class="fas fa-chevron-down"></i> ճամփորդություն սկսվում է</div>
     </div>
     <div class="scroll-down" data-next="heroImagePage"><i class="fas fa-angle-double-down"></i></div>
   </section>
@@ -717,7 +725,7 @@
     }, 900);
   });
   
-  // CINEMATIC REVEAL ON SCROLL (fade, scale, gold glow)
+  // CINEMATIC REVEAL FOR ALL SECTIONS (except first page soft emergence)
   const revealItems = document.querySelectorAll('.reveal-item, .reveal-image');
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -729,10 +737,33 @@
   }, { threshold: 0.2 });
   revealItems.forEach(item => observer.observe(item));
   
-  // Also reveal cover elements manually
-  setTimeout(() => {
-    document.querySelectorAll('#pageCover .reveal-item, #pageCover .reveal-image').forEach(el => el.classList.add('revealed'));
-  }, 300);
+  // SOFT EMERGENCE FOR FIRST PAGE (staggered, trigger on hover desktop / scroll mobile)
+  const firstPageContainer = document.getElementById('firstPageContent');
+  const isMobile = window.matchMedia("(max-width: 768px)").matches;
+  
+  function triggerSoftEmergence() {
+    if (!firstPageContainer.classList.contains('first-page-triggered')) {
+      firstPageContainer.classList.add('first-page-triggered');
+    }
+  }
+  
+  if (!isMobile) {
+    // Desktop: trigger on hover
+    firstPageContainer.addEventListener('mouseenter', triggerSoftEmergence, { once: true });
+  } else {
+    // Mobile: trigger when visible
+    const softObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          triggerSoftEmergence();
+          softObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+    softObserver.observe(firstPageContainer);
+  }
+  
+  // Also reveal cover elements that are not part of soft emergence (none needed)
   
   // COUNTDOWN
   const weddingDate = new Date(2026, 7, 16, 16, 0, 0);
