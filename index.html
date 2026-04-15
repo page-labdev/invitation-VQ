@@ -38,7 +38,7 @@
       pointer-events: none;
     }
 
-    /* ENVELOPE OVERLAY - LUXURY VERSION */
+    /* ENVELOPE OVERLAY - LUXURY VERSION WITH WAX STAMP */
     .envelope-overlay {
       position: fixed;
       top: 0;
@@ -48,6 +48,7 @@
       background: radial-gradient(circle at 30% 20%, #fcf3e4, #e9d9c4);
       z-index: 1000;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
       transition: opacity 1.2s cubic-bezier(0.23, 1, 0.32, 1);
@@ -104,6 +105,39 @@
       color: #b1623a;
       pointer-events: none;
       z-index: 3;
+    }
+    /* Realistic Wax Stamp */
+    .wax-stamp {
+      position: absolute;
+      bottom: -40px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 70px;
+      height: 70px;
+      z-index: 10;
+      pointer-events: none;
+    }
+    .wax-stamp svg {
+      width: 100%;
+      height: 100%;
+      filter: drop-shadow(0 6px 12px rgba(0,0,0,0.3));
+    }
+    .open-text {
+      position: absolute;
+      bottom: -85px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: 'Dancing Script', cursive;
+      font-size: 1rem;
+      font-weight: 500;
+      color: #4a2c2a;
+      white-space: nowrap;
+      background: rgba(255,245,235,0.8);
+      padding: 5px 16px;
+      border-radius: 40px;
+      backdrop-filter: blur(4px);
+      pointer-events: none;
+      z-index: 10;
     }
     .envelope.open {
       transform: scale(1.8) translateY(-25px);
@@ -166,20 +200,19 @@
       z-index: 2;
     }
 
-    /* LARGE CENTERED IMAGE STYLES */
+    /* LARGE CENTERED IMAGE STYLES (for schedule events) */
     .event-image {
-      max-width: 85%;
+      max-width: 80%;
       width: auto;
-      max-height: 60vh;
+      max-height: 40vh;
       object-fit: contain;
-      margin-bottom: 2rem;
+      margin-bottom: 1rem;
       border-radius: 32px;
-      box-shadow: 0 25px 45px -12px rgba(0,0,0,0.3);
-      transition: transform 0.5s ease, box-shadow 0.5s;
+      box-shadow: 0 20px 35px -12px rgba(0,0,0,0.2);
+      transition: transform 0.4s;
     }
     .event-image:hover {
       transform: scale(1.02);
-      box-shadow: 0 35px 55px -12px rgba(0,0,0,0.4);
     }
     .hero-image {
       max-width: 90%;
@@ -189,13 +222,13 @@
       transition: all 0.6s;
     }
     .event-title {
-      font-size: 2rem;
+      font-size: 1.8rem;
       font-family: 'Playfair Display', serif;
       font-weight: 600;
-      margin: 1rem 0 0.5rem;
+      margin: 0.5rem 0 0.2rem;
     }
     .event-time {
-      font-size: 1.3rem;
+      font-size: 1.2rem;
       font-family: 'Inter', sans-serif;
       font-weight: 300;
       letter-spacing: 2px;
@@ -204,7 +237,7 @@
     .page-dark .event-title { color: #f5e2c1; }
     .page-dark .event-time { color: #e9c57b; }
 
-    /* Staggered text reveal */
+    /* Staggered text reveal for other sections */
     .stagger-child {
       opacity: 0;
       transform: translateY(24px) scale(0.98);
@@ -284,7 +317,7 @@
       z-index: 200;
       cursor: pointer;
       transition: all 0.3s;
-      display: none; /* hidden, music starts automatically */
+      display: none;
     }
     .music-toggle:hover {
       transform: scale(1.05);
@@ -323,23 +356,103 @@
       width: 80px;
       margin: 1.2rem auto;
     }
+
+    /* Progressive reveal for schedule section (single page) */
+    .schedule-wrapper {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.9s ease, transform 0.9s ease;
+    }
+    .schedule-wrapper.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .schedule-heading {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease 0.2s, transform 0.6s ease 0.2s;
+    }
+    .schedule-wrapper.revealed .schedule-heading {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .schedule-item {
+      opacity: 0;
+      transform: translateY(25px);
+      transition: opacity 0.5s cubic-bezier(0.2, 0.9, 0.4, 1.1), transform 0.5s ease;
+      margin-bottom: 2rem;
+    }
+    .schedule-wrapper.revealed .schedule-item:nth-child(2) { transition-delay: 0.3s; opacity: 1; transform: translateY(0); }
+    .schedule-wrapper.revealed .schedule-item:nth-child(3) { transition-delay: 0.5s; opacity: 1; transform: translateY(0); }
+    .schedule-wrapper.revealed .schedule-item:nth-child(4) { transition-delay: 0.7s; opacity: 1; transform: translateY(0); }
+    .schedule-wrapper.revealed .schedule-item:nth-child(5) { transition-delay: 0.9s; opacity: 1; transform: translateY(0); }
+    .schedule-wrapper.revealed .schedule-item:nth-child(6) { transition-delay: 1.1s; opacity: 1; transform: translateY(0); }
+    .schedule-wrapper.revealed .schedule-item:nth-child(7) { transition-delay: 1.3s; opacity: 1; transform: translateY(0); }
+
+    .schedule-card {
+      background: rgba(255, 248, 235, 0.85);
+      backdrop-filter: blur(6px);
+      border-radius: 48px;
+      padding: 1.5rem 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    }
+    .page-dark .schedule-card {
+      background: rgba(50, 40, 35, 0.8);
+    }
+    .schedule-img {
+      max-width: 70%;
+      max-height: 30vh;
+      object-fit: contain;
+      border-radius: 28px;
+    }
+    .schedule-desc {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      font-weight: 600;
+    }
+    .schedule-time {
+      font-size: 1.2rem;
+      font-family: 'Inter', sans-serif;
+      color: #c6a43b;
+    }
+    .page-dark .schedule-desc, .page-dark .schedule-time {
+      color: #f5e2c1;
+    }
+
     @media (max-width: 550px) {
       .event-title { font-size: 1.6rem; }
       .event-time { font-size: 1rem; }
       .hero-image { max-width: 95%; }
       .drawn-heart { width: 60px; height: 60px; }
+      .schedule-desc { font-size: 1.3rem; }
+      .schedule-img { max-width: 85%; }
     }
   </style>
 </head>
 <body>
 <div class="grain"></div>
 
-<!-- ENVELOPE OVERLAY -->
+<!-- ENVELOPE OVERLAY WITH WAX STAMP -->
 <div class="envelope-overlay" id="envelopeOverlay">
   <div class="envelope" id="envelope">
     <div class="envelope-flap"></div>
     <div class="envelope-body"></div>
     <div class="envelope-card">Վրերժ & Քրիստինե<br><span style="font-size:0.8rem;">16.08.2026</span></div>
+    <div class="wax-stamp">
+      <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="50" cy="50" r="48" fill="#c62828" stroke="#8b0000" stroke-width="2"/>
+        <circle cx="50" cy="50" r="42" fill="#d32f2f" stroke="#b71c1c" stroke-width="1.5"/>
+        <circle cx="50" cy="50" r="36" fill="#e53935"/>
+        <path d="M50 35 C50 35, 38 22, 28 33 C18 44, 22 58, 50 75 C78 58, 82 44, 72 33 C62 22, 50 35, 50 35Z" fill="#ffcdd2" stroke="#b71c1c" stroke-width="1"/>
+        <path d="M50 38 C50 38, 41 28, 33 37 C25 46, 29 57, 50 70 C71 57, 75 46, 67 37 C59 28, 50 38, 50 38Z" fill="#ef5350" stroke="#c62828" stroke-width="0.8"/>
+        <circle cx="50" cy="50" r="48" fill="none" stroke="#ffcdd2" stroke-width="0.5" stroke-dasharray="3 3"/>
+      </svg>
+    </div>
+    <div class="open-text">Բացեք հրավիրատոմսը</div>
   </div>
 </div>
 
@@ -362,7 +475,7 @@
     <div class="scroll-down" data-next="heroImagePage"><i class="fas fa-angle-double-down"></i></div>
   </section>
 
-  <!-- HERO IMAGE PAGE (appears after envelope opens) -->
+  <!-- HERO IMAGE PAGE -->
   <section class="page page-warm" id="heroImagePage">
     <div class="parallax-bg"></div>
     <div class="page-content stagger-parent">
@@ -374,83 +487,78 @@
     <div class="scroll-down" data-next="calendarPage"><i class="fas fa-angle-double-down"></i></div>
   </section>
 
-  <!-- CALENDAR PAGE (second section, before schedule) -->
+  <!-- CALENDAR PAGE (second section) -->
   <section class="page page-warm" id="calendarPage">
     <div class="parallax-bg"></div>
     <div class="page-content stagger-parent">
-      <div class="stagger-child serif-heading" style="font-size:2rem;">✨ Հատուկ օրացույց ✨</div>
+      <div class="stagger-child" style="font-size:2rem; font-family:'Playfair Display';">✨ Հատուկ օրացույց ✨</div>
       <div class="stagger-child" style="margin-top:1rem;">
-        <div class="calendar-header" style="font-family:'Playfair Display'; font-size:1.4rem;">Օգոստոս 2026</div>
+        <div style="font-family:'Playfair Display'; font-size:1.4rem;">Օգոստոս 2026</div>
         <div class="calendar-grid" id="calendarGrid"></div>
       </div>
-      <div class="stagger-child gold-text" style="margin-top:1rem;"><i class="fas fa-heart"></i> Սիրտը նշում է մեր մեծ օրը</div>
+      <div class="stagger-child" style="margin-top:1rem;"><i class="fas fa-heart"></i> Սիրտը նշում է մեր մեծ օրը</div>
     </div>
-    <div class="scroll-down" data-next="event1"><i class="fas fa-angle-double-down"></i></div>
+    <div class="scroll-down" data-next="schedulePage"><i class="fas fa-angle-double-down"></i></div>
   </section>
 
-  <!-- SCHEDULE EVENT PAGES (each event one full page) -->
-  <!-- Event 1 -->
-  <section class="page page-warm" id="event1">
+  <!-- SCHEDULE PAGE (single page with all events, progressive reveal) -->
+  <section class="page page-warm" id="schedulePage">
     <div class="parallax-bg"></div>
-    <div class="page-content stagger-parent">
-      <img class="event-image" src="https://cdn.shopify.com/s/files/1/0991/8038/0469/files/bride-holding-a-bouquet-line-art-free-vector.jpg?v=1776200458" alt="Հարսի տուն">
-      <div class="stagger-child event-title">Հարսի տուն</div>
-      <div class="stagger-child event-time">12:00</div>
-    </div>
-    <div class="scroll-down" data-next="event2"><i class="fas fa-angle-double-down"></i></div>
-  </section>
-
-  <!-- Event 2 -->
-  <section class="page page-dark" id="event2">
-    <div class="parallax-bg"></div>
-    <div class="page-content stagger-parent">
-      <img class="event-image" src="https://cdn.shopify.com/s/files/1/0991/8038/0469/files/5.png?v=1776200459" alt="Պսակադրության արարողություն">
-      <div class="stagger-child event-title">Պսակադրության արարողություն</div>
-      <div class="stagger-child event-time">14:00</div>
-    </div>
-    <div class="scroll-down" data-next="event3"><i class="fas fa-angle-double-down"></i></div>
-  </section>
-
-  <!-- Event 3 -->
-  <section class="page page-warm" id="event3">
-    <div class="parallax-bg"></div>
-    <div class="page-content stagger-parent">
-      <img class="event-image" src="https://cdn.shopify.com/s/files/1/0991/8038/0469/files/one-continuous-single-drawing-black-line-art-doodle-groom-outline-vector-illustration_1098986-7584.avif?v=1776200458" alt="Փեսայի տուն">
-      <div class="stagger-child event-title">Փեսայի տուն</div>
-      <div class="stagger-child event-time">16:00</div>
-    </div>
-    <div class="scroll-down" data-next="event4"><i class="fas fa-angle-double-down"></i></div>
-  </section>
-
-  <!-- Event 4 -->
-  <section class="page page-dark" id="event4">
-    <div class="parallax-bg"></div>
-    <div class="page-content stagger-parent">
-      <img class="event-image" src="https://cdn.shopify.com/s/files/1/0991/8038/0469/files/8.png?v=1776200459" alt="Հյուրերի դիմավորում">
-      <div class="stagger-child event-title">Հյուրերի դիմավորում</div>
-      <div class="stagger-child event-time">17:30</div>
-    </div>
-    <div class="scroll-down" data-next="event5"><i class="fas fa-angle-double-down"></i></div>
-  </section>
-
-  <!-- Event 5 -->
-  <section class="page page-warm" id="event5">
-    <div class="parallax-bg"></div>
-    <div class="page-content stagger-parent">
-      <img class="event-image" src="https://cdn.shopify.com/s/files/1/0991/8038/0469/files/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvdjE2OS1mYWgtYXVtLTQ2LW5ld3llYXItc2ljb25zXzIuanBn.jpg?v=1776200458" alt="Հարսանեկան խնջույք">
-      <div class="stagger-child event-title">Հարսանեկան խնջույք</div>
-      <div class="stagger-child event-time">18:00</div>
-    </div>
-    <div class="scroll-down" data-next="event6"><i class="fas fa-angle-double-down"></i></div>
-  </section>
-
-  <!-- Event 6 (updated image) -->
-  <section class="page page-dark" id="event6">
-    <div class="parallax-bg"></div>
-    <div class="page-content stagger-parent">
-      <img class="event-image" src="https://cdn.shopify.com/s/files/1/0991/8038/0469/files/one-line-illustration-of-wedding-couple-minimalist-one-line-illustration-of-wedding-couple-3AD8XRT.jpg?v=1776249548" alt="Հանդիսության ավարտ">
-      <div class="stagger-child event-title">Հանդիսության ավարտ</div>
-      <div class="stagger-child event-time">00:00</div>
+    <div class="page-content">
+      <div class="schedule-wrapper" id="scheduleWrapper">
+        <div class="schedule-heading">
+          <h3 style="font-family:'Playfair Display'; font-size:2rem; font-weight:600;">ՕՐՎԱ ԾՐԱԳԻՐ</h3>
+          <div class="gold-border"></div>
+        </div>
+        <!-- Event 1 -->
+        <div class="schedule-item">
+          <div class="schedule-card">
+            <img class="schedule-img" src="https://cdn.shopify.com/s/files/1/0991/8038/0469/files/bride-holding-a-bouquet-line-art-free-vector.jpg?v=1776200458" alt="Հարսի տուն">
+            <div class="schedule-desc">Հարսի տուն</div>
+            <div class="schedule-time">12:00</div>
+          </div>
+        </div>
+        <!-- Event 2 -->
+        <div class="schedule-item">
+          <div class="schedule-card">
+            <img class="schedule-img" src="https://cdn.shopify.com/s/files/1/0991/8038/0469/files/5.png?v=1776200459" alt="Պսակադրության արարողություն">
+            <div class="schedule-desc">Պսակադրության արարողություն</div>
+            <div class="schedule-time">14:00</div>
+          </div>
+        </div>
+        <!-- Event 3 -->
+        <div class="schedule-item">
+          <div class="schedule-card">
+            <img class="schedule-img" src="https://cdn.shopify.com/s/files/1/0991/8038/0469/files/one-continuous-single-drawing-black-line-art-doodle-groom-outline-vector-illustration_1098986-7584.avif?v=1776200458" alt="Փեսայի տուն">
+            <div class="schedule-desc">Փեսայի տուն</div>
+            <div class="schedule-time">16:00</div>
+          </div>
+        </div>
+        <!-- Event 4 -->
+        <div class="schedule-item">
+          <div class="schedule-card">
+            <img class="schedule-img" src="https://cdn.shopify.com/s/files/1/0991/8038/0469/files/8.png?v=1776200459" alt="Հյուրերի դիմավորում">
+            <div class="schedule-desc">Հյուրերի դիմավորում</div>
+            <div class="schedule-time">17:30</div>
+          </div>
+        </div>
+        <!-- Event 5 -->
+        <div class="schedule-item">
+          <div class="schedule-card">
+            <img class="schedule-img" src="https://cdn.shopify.com/s/files/1/0991/8038/0469/files/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvdjE2OS1mYWgtYXVtLTQ2LW5ld3llYXItc2ljb25zXzIuanBn.jpg?v=1776200458" alt="Հարսանեկան խնջույք">
+            <div class="schedule-desc">Հարսանեկան խնջույք</div>
+            <div class="schedule-time">18:00</div>
+          </div>
+        </div>
+        <!-- Event 6 (updated image) -->
+        <div class="schedule-item">
+          <div class="schedule-card">
+            <img class="schedule-img" src="https://cdn.shopify.com/s/files/1/0991/8038/0469/files/one-line-illustration-of-wedding-couple-minimalist-one-line-illustration-of-wedding-couple-3AD8XRT.jpg?v=1776249548" alt="Հանդիսության ավարտ">
+            <div class="schedule-desc">Հանդիսության ավարտ</div>
+            <div class="schedule-time">00:00</div>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="scroll-down" data-next="invitationPage"><i class="fas fa-angle-double-down"></i></div>
   </section>
@@ -459,7 +567,7 @@
   <section class="page page-dark" id="invitationPage">
     <div class="parallax-bg"></div>
     <div class="page-content stagger-parent">
-      <div class="stagger-child ornament-icon">❁ ✿ ❁</div>
+      <div class="stagger-child">❁ ✿ ❁</div>
       <div class="stagger-child" style="font-family:'Cormorant Garamond'; font-size:1.2rem;">Ընտանիքների հետ միասին</div>
       <div class="stagger-child script-name" style="font-size:2.6rem;">Վրերժ & Քրիստինե</div>
       <div class="stagger-child" style="font-size:1.05rem; max-width:500px;">պատիվ ունեն հրավիրել Ձեզ իրենց հարսանեկան արարողությանը</div>
@@ -475,7 +583,7 @@
   <section class="page page-warm" id="countdownPage">
     <div class="parallax-bg"></div>
     <div class="page-content stagger-parent">
-      <div class="stagger-child serif-heading" style="font-size:2rem;">ՀԱՐՍԱՆԻՔԻՆ ՄՆԱՑ</div>
+      <div class="stagger-child" style="font-size:2rem; font-family:'Playfair Display';">ՀԱՐՍԱՆԻՔԻՆ ՄՆԱՑ</div>
       <div class="stagger-child" style="font-size:1.3rem;">16 Օգոստոսի, 2026</div>
       <div class="stagger-child gold-border"></div>
       <div class="stagger-child" id="countdownTimer" style="display:flex; justify-content:center; gap:1rem; flex-wrap:wrap; margin-top:1rem;">
@@ -516,11 +624,6 @@
   </section>
 </div>
 
-<!-- MUSIC TOGGLE (hidden, auto-starts) -->
-<div class="music-toggle" id="musicToggle" style="display: none;">
-  <i class="fas fa-music" id="musicIcon"></i> <span id="musicText">Music On</span>
-</div>
-
 <script>
   // ENVELOPE INTERACTION & MUSIC AUTOPLAY
   const envelopeOverlay = document.getElementById('envelopeOverlay');
@@ -549,8 +652,8 @@
     }, 900);
   });
   
-  // STAGGERED REVEAL FOR ALL PAGES
-  const sections = document.querySelectorAll('.page');
+  // STAGGERED REVEAL FOR OTHER PAGES
+  const sections = document.querySelectorAll('.page:not(#schedulePage)');
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -563,6 +666,19 @@
   }, { threshold: 0.3 });
   sections.forEach(section => observer.observe(section));
   
+  // Progressive reveal for schedule section
+  const scheduleWrapper = document.getElementById('scheduleWrapper');
+  const scheduleObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        scheduleWrapper.classList.add('revealed');
+        scheduleObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.4 });
+  if (scheduleWrapper) scheduleObserver.observe(scheduleWrapper);
+  
+  // manually reveal cover
   setTimeout(() => {
     const coverParent = document.querySelector('#pageCover .stagger-parent');
     if (coverParent) coverParent.classList.add('section-revealed');
