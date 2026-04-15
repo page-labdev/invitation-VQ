@@ -38,7 +38,7 @@
       pointer-events: none;
     }
 
-    /* ENVELOPE OVERLAY - LUXURY WITH WAX STAMP */
+    /* ENVELOPE OVERLAY - WITH REALISTIC WAX STAMP */
     .envelope-overlay {
       position: fixed;
       top: 0;
@@ -55,8 +55,8 @@
     }
     .envelope {
       position: relative;
-      width: 320px;
-      height: 210px;
+      width: 340px;
+      height: 220px;
       background: #f8ede0;
       border-radius: 14px;
       box-shadow: 0 40px 50px -25px rgba(0,0,0,0.5), 0 0 0 1px rgba(212,175,55,0.4);
@@ -106,50 +106,39 @@
       pointer-events: none;
       z-index: 3;
     }
-    /* Wax stamp */
+    /* Realistic Wax Stamp (Red, heart-shaped) */
     .wax-stamp {
       position: absolute;
-      bottom: -30px;
+      bottom: -40px;
       left: 50%;
       transform: translateX(-50%);
-      width: 60px;
-      height: 60px;
-      background: radial-gradient(circle at 30% 30%, #e63946, #9b1d2c);
-      border-radius: 50%;
-      box-shadow: 0 8px 15px rgba(0,0,0,0.3), inset 0 1px 3px rgba(255,255,255,0.4);
+      width: 70px;
+      height: 70px;
       z-index: 10;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Playfair Display', serif;
-      font-size: 0.9rem;
-      font-weight: bold;
-      color: #ffd966;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      border: 1px solid rgba(255,215,0,0.3);
+      pointer-events: none;
     }
-    .wax-stamp::after {
-      content: "❤";
-      font-size: 1.8rem;
-      color: #ffd700;
-      text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+    .wax-stamp svg {
+      width: 100%;
+      height: 100%;
+      filter: drop-shadow(0 6px 12px rgba(0,0,0,0.3));
     }
     .open-text {
       position: absolute;
-      bottom: -80px;
+      bottom: -85px;
       left: 50%;
       transform: translateX(-50%);
       font-family: 'Dancing Script', cursive;
       font-size: 1rem;
-      color: #5a3e2b;
+      font-weight: 500;
+      color: #4a2c2a;
       white-space: nowrap;
-      background: rgba(255,245,235,0.7);
-      padding: 4px 12px;
+      background: rgba(255,245,235,0.8);
+      padding: 5px 16px;
       border-radius: 40px;
       backdrop-filter: blur(4px);
       pointer-events: none;
       z-index: 10;
+      letter-spacing: 0.5px;
     }
     .envelope.open {
       transform: scale(1.8) translateY(-25px);
@@ -215,41 +204,40 @@
     .event-image {
       max-width: 85%;
       width: auto;
-      max-height: 60vh;
+      max-height: 55vh;
       object-fit: contain;
-      margin-bottom: 2rem;
+      margin-bottom: 1.5rem;
       border-radius: 32px;
-      box-shadow: 0 25px 45px -12px rgba(0,0,0,0.3);
-      transition: transform 0.5s ease, box-shadow 0.5s;
+      box-shadow: 0 25px 40px -12px rgba(0,0,0,0.25);
+      transition: transform 0.4s;
     }
     .event-image:hover {
       transform: scale(1.02);
-      box-shadow: 0 35px 55px -12px rgba(0,0,0,0.4);
     }
     .hero-image {
       max-width: 90%;
       max-height: 70vh;
       border-radius: 48px;
-      box-shadow: 0 30px 50px -20px rgba(0,0,0,0.4), 0 0 0 8px rgba(212,175,55,0.2), 0 0 0 16px rgba(212,175,55,0.1);
+      box-shadow: 0 30px 50px -20px rgba(0,0,0,0.4), 0 0 0 8px rgba(212,175,55,0.2);
       transition: all 0.6s;
     }
     .event-title {
       font-size: 2rem;
       font-family: 'Playfair Display', serif;
       font-weight: 600;
-      margin: 1rem 0 0.5rem;
+      margin: 0.5rem 0 0.2rem;
     }
     .event-time {
       font-size: 1.3rem;
       font-family: 'Dancing Script', cursive;
-      font-weight: 400;
+      font-weight: 500;
       letter-spacing: 1px;
       color: #c6a43b;
     }
     .page-dark .event-title { color: #f5e2c1; }
     .page-dark .event-time { color: #e9c57b; }
 
-    /* Staggered text reveal for other sections */
+    /* Staggered text for other sections */
     .stagger-child {
       opacity: 0;
       transform: translateY(24px) scale(0.98);
@@ -265,55 +253,54 @@
     .stagger-child:nth-child(2) { transition-delay: 0.2s; }
     .stagger-child:nth-child(3) { transition-delay: 0.35s; }
 
-    /* Progressive reveal for schedule section */
-    .schedule-reveal-section {
+    /* PROGRESSIVE REVEAL FOR SCHEDULE SECTION */
+    .schedule-wrapper {
       opacity: 0;
       transform: translateY(30px);
       transition: opacity 0.9s ease, transform 0.9s ease;
     }
-    .schedule-reveal-section.revealed {
+    .schedule-wrapper.revealed {
       opacity: 1;
       transform: translateY(0);
     }
-    .schedule-title {
+    .schedule-heading {
       opacity: 0;
       transform: translateY(20px);
       transition: opacity 0.6s ease 0.2s, transform 0.6s ease 0.2s;
     }
-    .schedule-reveal-section.revealed .schedule-title {
+    .schedule-wrapper.revealed .schedule-heading {
       opacity: 1;
       transform: translateY(0);
     }
-    .schedule-item-reveal {
+    .schedule-item {
       opacity: 0;
       transform: translateY(25px);
       transition: opacity 0.5s cubic-bezier(0.2, 0.9, 0.4, 1.1), transform 0.5s ease;
+      margin-bottom: 2rem;
     }
-    .schedule-reveal-section.revealed .schedule-item-reveal:nth-child(1) { transition-delay: 0.3s; opacity: 1; transform: translateY(0); }
-    .schedule-reveal-section.revealed .schedule-item-reveal:nth-child(2) { transition-delay: 0.5s; opacity: 1; transform: translateY(0); }
-    .schedule-reveal-section.revealed .schedule-item-reveal:nth-child(3) { transition-delay: 0.7s; opacity: 1; transform: translateY(0); }
-    .schedule-reveal-section.revealed .schedule-item-reveal:nth-child(4) { transition-delay: 0.9s; opacity: 1; transform: translateY(0); }
-    .schedule-reveal-section.revealed .schedule-item-reveal:nth-child(5) { transition-delay: 1.1s; opacity: 1; transform: translateY(0); }
-    .schedule-reveal-section.revealed .schedule-item-reveal:nth-child(6) { transition-delay: 1.3s; opacity: 1; transform: translateY(0); }
+    .schedule-wrapper.revealed .schedule-item:nth-child(2) { transition-delay: 0.3s; opacity: 1; transform: translateY(0); }
+    .schedule-wrapper.revealed .schedule-item:nth-child(3) { transition-delay: 0.5s; opacity: 1; transform: translateY(0); }
+    .schedule-wrapper.revealed .schedule-item:nth-child(4) { transition-delay: 0.7s; opacity: 1; transform: translateY(0); }
+    .schedule-wrapper.revealed .schedule-item:nth-child(5) { transition-delay: 0.9s; opacity: 1; transform: translateY(0); }
+    .schedule-wrapper.revealed .schedule-item:nth-child(6) { transition-delay: 1.1s; opacity: 1; transform: translateY(0); }
+    .schedule-wrapper.revealed .schedule-item:nth-child(7) { transition-delay: 1.3s; opacity: 1; transform: translateY(0); }
 
-    /* Schedule items inside the schedule page */
-    .schedule-item-card {
-      background: rgba(255, 248, 235, 0.7);
+    .schedule-card {
+      background: rgba(255, 248, 235, 0.85);
       backdrop-filter: blur(6px);
       border-radius: 48px;
-      padding: 1rem;
-      margin-bottom: 1.5rem;
+      padding: 1.5rem 1rem;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0.8rem;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.05);
     }
     .schedule-img {
-      max-width: 80%;
-      max-height: 35vh;
+      max-width: 70%;
+      max-height: 30vh;
       object-fit: contain;
-      border-radius: 32px;
-      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+      border-radius: 28px;
     }
     .schedule-desc {
       font-family: 'Dancing Script', cursive;
@@ -325,12 +312,8 @@
       font-size: 1.3rem;
       color: #c6a43b;
     }
-    .page-dark .schedule-desc, .page-dark .schedule-time {
-      color: #f5e2c1;
-    }
-    .page-dark .schedule-item-card {
-      background: rgba(50, 40, 35, 0.8);
-    }
+    .page-dark .schedule-desc, .page-dark .schedule-time { color: #f5e2c1; }
+    .page-dark .schedule-card { background: rgba(50, 40, 35, 0.8); }
 
     /* Calendar */
     .calendar-grid {
@@ -389,7 +372,7 @@
       font-size: clamp(2.8rem, 10vw, 5rem);
       color: #9e5a3a;
     }
-    .handwriting-text {
+    .handwriting {
       font-family: 'Dancing Script', cursive;
     }
     .gold-border {
@@ -400,37 +383,47 @@
     @media (max-width: 550px) {
       .event-title { font-size: 1.6rem; }
       .event-time { font-size: 1rem; }
-      .hero-image { max-width: 95%; }
       .schedule-desc { font-size: 1.4rem; }
-      .wax-stamp { width: 50px; height: 50px; bottom: -25px; }
-      .open-text { font-size: 0.85rem; bottom: -70px; white-space: nowrap; }
+      .schedule-img { max-width: 85%; }
+      .wax-stamp { width: 55px; height: 55px; bottom: -35px; }
+      .open-text { font-size: 0.85rem; bottom: -75px; white-space: nowrap; }
     }
   </style>
 </head>
 <body>
 <div class="grain"></div>
 
-<!-- ENVELOPE OVERLAY WITH WAX STAMP -->
+<!-- ENVELOPE OVERLAY WITH REALISTIC WAX STAMP -->
 <div class="envelope-overlay" id="envelopeOverlay">
   <div class="envelope" id="envelope">
     <div class="envelope-flap"></div>
     <div class="envelope-body"></div>
     <div class="envelope-card">Վրերժ & Քրիստինե<br><span style="font-size:0.8rem;">16.08.2026</span></div>
-    <div class="wax-stamp"></div>
+    <!-- Realistic Red Wax Stamp with Heart -->
+    <div class="wax-stamp">
+      <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="50" cy="50" r="48" fill="#c62828" stroke="#8b0000" stroke-width="2"/>
+        <circle cx="50" cy="50" r="42" fill="#d32f2f" stroke="#b71c1c" stroke-width="1.5"/>
+        <circle cx="50" cy="50" r="36" fill="#e53935"/>
+        <path d="M50 35 C50 35, 38 22, 28 33 C18 44, 22 58, 50 75 C78 58, 82 44, 72 33 C62 22, 50 35, 50 35Z" fill="#ffcdd2" stroke="#b71c1c" stroke-width="1"/>
+        <path d="M50 38 C50 38, 41 28, 33 37 C25 46, 29 57, 50 70 C71 57, 75 46, 67 37 C59 28, 50 38, 50 38Z" fill="#ef5350" stroke="#c62828" stroke-width="0.8"/>
+        <circle cx="50" cy="50" r="48" fill="none" stroke="#ffcdd2" stroke-width="0.5" stroke-dasharray="3 3"/>
+      </svg>
+    </div>
     <div class="open-text">Բացեք հրավիրատոմսը</div>
   </div>
 </div>
 
 <!-- MAIN INVITATION -->
 <div class="scroll-container" id="scrollContainer">
-  <!-- PAGE 1 - COVER with Great Vibes for names -->
+  <!-- PAGE 1 - COVER with Great Vibes -->
   <section class="page page-warm" id="pageCover">
     <div class="parallax-bg"></div>
     <div class="page-content stagger-parent">
       <div class="stagger-child"><i class="fas fa-heart" style="color:#d4af37; font-size:2rem;"></i></div>
       <div class="stagger-child script-name">Վրերժ & Քրիստինե</div>
       <div class="stagger-child gold-border"></div>
-      <div class="stagger-child handwriting-text" style="font-size:1.3rem;">16 Օգոստոսի, 2026</div>
+      <div class="stagger-child handwriting" style="font-size:1.3rem;">16 Օգոստոսի, 2026</div>
       <div class="stagger-child" style="margin-top:2rem;"><i class="fas fa-chevron-down"></i> ճամփորդություն սկսվում է</div>
     </div>
     <div class="scroll-down" data-next="heroImagePage"><i class="fas fa-angle-double-down"></i></div>
@@ -443,21 +436,21 @@
       <div class="stagger-child">
         <img class="hero-image" src="https://cdn.shopify.com/s/files/1/0991/8038/0469/files/1_d145255e-0a7d-4cf5-b595-d7069466fd1d.png?v=1776197045" alt="Hero floral couple">
       </div>
-      <div class="stagger-child handwriting-text" style="margin-top:2rem; font-size:1.2rem;">Մեր սիրո պատմությունը</div>
+      <div class="stagger-child handwriting" style="margin-top:2rem; font-size:1.2rem;">Մեր սիրո պատմությունը</div>
     </div>
     <div class="scroll-down" data-next="calendarPage"><i class="fas fa-angle-double-down"></i></div>
   </section>
 
-  <!-- CALENDAR PAGE (second section) -->
+  <!-- CALENDAR PAGE -->
   <section class="page page-warm" id="calendarPage">
     <div class="parallax-bg"></div>
     <div class="page-content stagger-parent">
-      <div class="stagger-child serif-heading" style="font-size:2rem;">✨ Հատուկ օրացույց ✨</div>
+      <div class="stagger-child" style="font-size:2rem; font-family:'Playfair Display';">✨ Հատուկ օրացույց ✨</div>
       <div class="stagger-child" style="margin-top:1rem;">
-        <div class="calendar-header" style="font-family:'Playfair Display'; font-size:1.4rem;">Օգոստոս 2026</div>
+        <div style="font-family:'Playfair Display'; font-size:1.4rem;">Օգոստոս 2026</div>
         <div class="calendar-grid" id="calendarGrid"></div>
       </div>
-      <div class="stagger-child gold-text" style="margin-top:1rem;"><i class="fas fa-heart"></i> Սիրտը նշում է մեր մեծ օրը</div>
+      <div class="stagger-child" style="margin-top:1rem;"><i class="fas fa-heart"></i> Սիրտը նշում է մեր մեծ օրը</div>
     </div>
     <div class="scroll-down" data-next="schedulePage"><i class="fas fa-angle-double-down"></i></div>
   </section>
@@ -465,70 +458,72 @@
   <!-- SCHEDULE PAGE with progressive reveal -->
   <section class="page page-warm" id="schedulePage">
     <div class="parallax-bg"></div>
-    <div class="page-content schedule-reveal-section" id="scheduleRevealSection">
-      <div class="schedule-title">
-        <h3 class="handwriting-text" style="font-size:2rem; font-weight:600;">ՕՐՎԱ ԾՐԱԳԻՐ</h3>
-        <div class="gold-border"></div>
-      </div>
-      <!-- Schedule items - each will appear with stagger -->
-      <div class="schedule-item-reveal">
-        <div class="schedule-item-card">
-          <img class="schedule-img" src="https://cdn.shopify.com/s/files/1/0991/8038/0469/files/bride-holding-a-bouquet-line-art-free-vector.jpg?v=1776200458" alt="Հարսի տուն">
-          <div class="schedule-desc">Հարսի տուն</div>
-          <div class="schedule-time">12:00</div>
+    <div class="page-content">
+      <div class="schedule-wrapper" id="scheduleWrapper">
+        <div class="schedule-heading">
+          <h3 class="handwriting" style="font-size:2rem; font-weight:600;">ՕՐՎԱ ԾՐԱԳԻՐ</h3>
+          <div class="gold-border"></div>
         </div>
-      </div>
-      <div class="schedule-item-reveal">
-        <div class="schedule-item-card">
-          <img class="schedule-img" src="https://cdn.shopify.com/s/files/1/0991/8038/0469/files/5.png?v=1776200459" alt="Պսակադրության արարողություն">
-          <div class="schedule-desc">Պսակադրության արարողություն</div>
-          <div class="schedule-time">14:00</div>
+        <!-- Schedule items -->
+        <div class="schedule-item">
+          <div class="schedule-card">
+            <img class="schedule-img" src="https://cdn.shopify.com/s/files/1/0991/8038/0469/files/bride-holding-a-bouquet-line-art-free-vector.jpg?v=1776200458" alt="Հարսի տուն">
+            <div class="schedule-desc">Հարսի տուն</div>
+            <div class="schedule-time">12:00</div>
+          </div>
         </div>
-      </div>
-      <div class="schedule-item-reveal">
-        <div class="schedule-item-card">
-          <img class="schedule-img" src="https://cdn.shopify.com/s/files/1/0991/8038/0469/files/one-continuous-single-drawing-black-line-art-doodle-groom-outline-vector-illustration_1098986-7584.avif?v=1776200458" alt="Փեսայի տուն">
-          <div class="schedule-desc">Փեսայի տուն</div>
-          <div class="schedule-time">16:00</div>
+        <div class="schedule-item">
+          <div class="schedule-card">
+            <img class="schedule-img" src="https://cdn.shopify.com/s/files/1/0991/8038/0469/files/5.png?v=1776200459" alt="Պսակադրության արարողություն">
+            <div class="schedule-desc">Պսակադրության արարողություն</div>
+            <div class="schedule-time">14:00</div>
+          </div>
         </div>
-      </div>
-      <div class="schedule-item-reveal">
-        <div class="schedule-item-card">
-          <img class="schedule-img" src="https://cdn.shopify.com/s/files/1/0991/8038/0469/files/8.png?v=1776200459" alt="Հյուրերի դիմավորում">
-          <div class="schedule-desc">Հյուրերի դիմավորում</div>
-          <div class="schedule-time">17:30</div>
+        <div class="schedule-item">
+          <div class="schedule-card">
+            <img class="schedule-img" src="https://cdn.shopify.com/s/files/1/0991/8038/0469/files/one-continuous-single-drawing-black-line-art-doodle-groom-outline-vector-illustration_1098986-7584.avif?v=1776200458" alt="Փեսայի տուն">
+            <div class="schedule-desc">Փեսայի տուն</div>
+            <div class="schedule-time">16:00</div>
+          </div>
         </div>
-      </div>
-      <div class="schedule-item-reveal">
-        <div class="schedule-item-card">
-          <img class="schedule-img" src="https://cdn.shopify.com/s/files/1/0991/8038/0469/files/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvdjE2OS1mYWgtYXVtLTQ2LW5ld3llYXItc2ljb25zXzIuanBn.jpg?v=1776200458" alt="Հարսանեկան խնջույք">
-          <div class="schedule-desc">Հարսանեկան խնջույք</div>
-          <div class="schedule-time">18:00</div>
+        <div class="schedule-item">
+          <div class="schedule-card">
+            <img class="schedule-img" src="https://cdn.shopify.com/s/files/1/0991/8038/0469/files/8.png?v=1776200459" alt="Հյուրերի դիմավորում">
+            <div class="schedule-desc">Հյուրերի դիմավորում</div>
+            <div class="schedule-time">17:30</div>
+          </div>
         </div>
-      </div>
-      <div class="schedule-item-reveal">
-        <div class="schedule-item-card">
-          <img class="schedule-img" src="https://cdn.shopify.com/s/files/1/0991/8038/0469/files/one-line-illustration-of-wedding-couple-minimalist-one-line-illustration-of-wedding-couple-3AD8XRT.jpg?v=1776249548" alt="Հանդիսության ավարտ">
-          <div class="schedule-desc">Հանդիսության ավարտ</div>
-          <div class="schedule-time">00:00</div>
+        <div class="schedule-item">
+          <div class="schedule-card">
+            <img class="schedule-img" src="https://cdn.shopify.com/s/files/1/0991/8038/0469/files/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvdjE2OS1mYWgtYXVtLTQ2LW5ld3llYXItc2ljb25zXzIuanBn.jpg?v=1776200458" alt="Հարսանեկան խնջույք">
+            <div class="schedule-desc">Հարսանեկան խնջույք</div>
+            <div class="schedule-time">18:00</div>
+          </div>
+        </div>
+        <div class="schedule-item">
+          <div class="schedule-card">
+            <img class="schedule-img" src="https://cdn.shopify.com/s/files/1/0991/8038/0469/files/one-line-illustration-of-wedding-couple-minimalist-one-line-illustration-of-wedding-couple-3AD8XRT.jpg?v=1776249548" alt="Հանդիսության ավարտ">
+            <div class="schedule-desc">Հանդիսության ավարտ</div>
+            <div class="schedule-time">00:00</div>
+          </div>
         </div>
       </div>
     </div>
     <div class="scroll-down" data-next="invitationPage"><i class="fas fa-angle-double-down"></i></div>
   </section>
 
-  <!-- INVITATION TEXT PAGE (using Dancing Script) -->
+  <!-- INVITATION TEXT PAGE -->
   <section class="page page-dark" id="invitationPage">
     <div class="parallax-bg"></div>
     <div class="page-content stagger-parent">
-      <div class="stagger-child ornament-icon">❁ ✿ ❁</div>
-      <div class="stagger-child handwriting-text" style="font-size:1.2rem;">Ընտանիքների հետ միասին</div>
+      <div class="stagger-child">❁ ✿ ❁</div>
+      <div class="stagger-child handwriting" style="font-size:1.2rem;">Ընտանիքների հետ միասին</div>
       <div class="stagger-child script-name" style="font-size:2.6rem;">Վրերժ & Քրիստինե</div>
-      <div class="stagger-child handwriting-text" style="font-size:1.05rem; max-width:500px;">պատիվ ունեն հրավիրել Ձեզ իրենց հարսանեկան արարողությանը</div>
+      <div class="stagger-child handwriting" style="font-size:1.05rem; max-width:500px;">պատիվ ունեն հրավիրել Ձեզ իրենց հարսանեկան արարողությանը</div>
       <div class="stagger-child gold-border"></div>
-      <div class="stagger-child handwriting-text" style="font-size:1.2rem;">Շաբաթ, 16 Օգոստոսի, 2026</div>
-      <div class="stagger-child handwriting-text">Արարողությունը՝ ժամը 16:00</div>
-      <div class="stagger-child handwriting-text"><i class="fas fa-map-marker-alt gold-text"></i> Երևանյան փող., 101/1, "ԱՇՏԱՐԱԿ ՀՈԼԼ"</div>
+      <div class="stagger-child handwriting" style="font-size:1.2rem;">Շաբաթ, 16 Օգոստոսի, 2026</div>
+      <div class="stagger-child handwriting">Արարողությունը՝ ժամը 16:00</div>
+      <div class="stagger-child handwriting"><i class="fas fa-map-marker-alt gold-text"></i> Երևանյան փող., 101/1, "ԱՇՏԱՐԱԿ ՀՈԼԼ"</div>
     </div>
     <div class="scroll-down" data-next="countdownPage"><i class="fas fa-angle-double-down"></i></div>
   </section>
@@ -537,8 +532,8 @@
   <section class="page page-warm" id="countdownPage">
     <div class="parallax-bg"></div>
     <div class="page-content stagger-parent">
-      <div class="stagger-child serif-heading" style="font-size:2rem;">ՀԱՐՍԱՆԻՔԻՆ ՄՆԱՑ</div>
-      <div class="stagger-child handwriting-text" style="font-size:1.3rem;">16 Օգոստոսի, 2026</div>
+      <div class="stagger-child" style="font-size:2rem; font-family:'Playfair Display';">ՀԱՐՍԱՆԻՔԻՆ ՄՆԱՑ</div>
+      <div class="stagger-child handwriting" style="font-size:1.3rem;">16 Օգոստոսի, 2026</div>
       <div class="stagger-child gold-border"></div>
       <div class="stagger-child" id="countdownTimer" style="display:flex; justify-content:center; gap:1rem; flex-wrap:wrap; margin-top:1rem;">
         <div class="countdown-item"><div class="countdown-number" id="days">00</div><div class="countdown-label">Օր</div></div>
@@ -556,8 +551,8 @@
     <div class="page-content stagger-parent">
       <div class="stagger-child glass-card" style="background:rgba(255,245,235,0.15); backdrop-filter:blur(10px); border-radius:48px; padding:2rem;">
         <i class="fas fa-feather-alt" style="color:#c6a43b; font-size:1.8rem;"></i>
-        <p class="stagger-child handwriting-text" style="font-size:1.2rem; margin-top:1rem;">Հարգելի հյուրեր, մենք ուրախ կլինենք կիսել մեր կյանքի ամենաերջանիկ օրը Ձեզ հետ։</p>
-        <p class="stagger-child handwriting-text" style="margin-top:1rem;">Բերեք Ձեզ հետ տոնական տրամադրություն և հարմար կոշիկներ պարելու համար։</p>
+        <p class="stagger-child handwriting" style="font-size:1.2rem; margin-top:1rem;">Հարգելի հյուրեր, մենք ուրախ կլինենք կիսել մեր կյանքի ամենաերջանիկ օրը Ձեզ հետ։</p>
+        <p class="stagger-child handwriting" style="margin-top:1rem;">Բերեք Ձեզ հետ տոնական տրամադրություն և հարմար կոշիկներ պարելու համար։</p>
         <div class="stagger-child gold-border"></div>
         <i class="fas fa-heart stagger-child" style="color:#c6a43b;"></i>
       </div>
@@ -573,7 +568,7 @@
         <img class="hero-image" src="https://cdn.shopify.com/s/files/1/0991/8038/0469/files/5_dfc41136-aa54-4b9c-b869-7dec8d88faa1.png?v=1776247204" alt="Final romantic illustration">
       </div>
       <div class="stagger-child script-name" style="font-size:3rem;">Վ & Ք</div>
-      <div class="stagger-child handwriting-text">✨ Հավերժ միասին ✨</div>
+      <div class="stagger-child handwriting">✨ Հավերժ միասին ✨</div>
     </div>
   </section>
 </div>
@@ -604,7 +599,7 @@
   });
   
   // STAGGERED REVEAL FOR OTHER PAGES
-  const sections = document.querySelectorAll('.page:not(#schedulePage)');
+  const pagesExceptSchedule = document.querySelectorAll('.page:not(#schedulePage)');
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -615,19 +610,19 @@
       }
     });
   }, { threshold: 0.3 });
-  sections.forEach(section => observer.observe(section));
+  pagesExceptSchedule.forEach(section => observer.observe(section));
   
   // Progressive reveal for schedule section
-  const scheduleSection = document.getElementById('scheduleRevealSection');
+  const scheduleWrapper = document.getElementById('scheduleWrapper');
   const scheduleObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        scheduleSection.classList.add('revealed');
+        scheduleWrapper.classList.add('revealed');
         scheduleObserver.unobserve(entry.target);
       }
     });
   }, { threshold: 0.4 });
-  if (scheduleSection) scheduleObserver.observe(scheduleSection);
+  if (scheduleWrapper) scheduleObserver.observe(scheduleWrapper);
   
   // manually reveal cover
   setTimeout(() => {
