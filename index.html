@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
   <title>Վրերժ & Քրիստինե — Հարսանեկան հրավեր</title>
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&family=Great+Vibes&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&family=Great+Vibes&family=Inter:wght@300;400;500;600&family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
   <!-- Font Awesome 6 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
@@ -38,7 +38,7 @@
       pointer-events: none;
     }
 
-    /* ENVELOPE OVERLAY */
+    /* ENVELOPE OVERLAY - LUXURY VERSION */
     .envelope-overlay {
       position: fixed;
       top: 0;
@@ -54,13 +54,13 @@
     }
     .envelope {
       position: relative;
-      width: 300px;
-      height: 200px;
+      width: 320px;
+      height: 210px;
       background: #f8ede0;
-      border-radius: 12px;
-      box-shadow: 0 30px 40px -20px rgba(0,0,0,0.4), 0 0 0 1px rgba(212,175,55,0.3);
+      border-radius: 14px;
+      box-shadow: 0 40px 50px -25px rgba(0,0,0,0.5), 0 0 0 1px rgba(212,175,55,0.4);
       cursor: pointer;
-      transition: all 0.6s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      transition: all 0.7s cubic-bezier(0.2, 0.9, 0.4, 1.1);
       transform-style: preserve-3d;
     }
     .envelope-flap {
@@ -69,11 +69,12 @@
       left: 0;
       width: 100%;
       height: 50%;
-      background: #f2e2d0;
+      background: linear-gradient(145deg, #f2e2d0, #e8d5c0);
       transform-origin: top;
-      transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
-      border-radius: 12px 12px 0 0;
+      transition: transform 0.9s cubic-bezier(0.23, 1, 0.32, 1);
+      border-radius: 14px 14px 0 0;
       clip-path: polygon(0% 0%, 100% 0%, 50% 100%);
+      box-shadow: inset 0 -2px 8px rgba(0,0,0,0.05);
       z-index: 2;
     }
     .envelope-body {
@@ -82,30 +83,30 @@
       left: 0;
       width: 100%;
       height: 50%;
-      background: #f4e6d8;
-      border-radius: 0 0 12px 12px;
+      background: linear-gradient(145deg, #f4e6d8, #ecdccb);
+      border-radius: 0 0 14px 14px;
     }
     .envelope-card {
       position: absolute;
       width: 85%;
       background: #fffcf5;
       left: 7.5%;
-      bottom: 10px;
-      padding: 20px 12px;
-      border-radius: 8px;
+      bottom: 12px;
+      padding: 22px 12px;
+      border-radius: 10px;
       text-align: center;
-      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+      box-shadow: 0 15px 25px rgba(0,0,0,0.15);
       opacity: 0;
       transform: translateY(40px);
-      transition: opacity 0.5s ease 0.3s, transform 0.6s cubic-bezier(0.2, 0.9, 0.4, 1.1) 0.3s;
+      transition: opacity 0.6s ease 0.4s, transform 0.7s cubic-bezier(0.2, 0.9, 0.4, 1.1) 0.4s;
       font-family: 'Great Vibes', cursive;
-      font-size: 1.4rem;
+      font-size: 1.6rem;
       color: #b1623a;
       pointer-events: none;
       z-index: 3;
     }
     .envelope.open {
-      transform: scale(1.8) translateY(-20px);
+      transform: scale(1.8) translateY(-25px);
       opacity: 0;
       pointer-events: none;
     }
@@ -114,12 +115,12 @@
     }
     .envelope.open .envelope-card {
       opacity: 1;
-      transform: translateY(-30px);
+      transform: translateY(-35px);
     }
     .envelope-overlay.hide {
       opacity: 0;
       visibility: hidden;
-      transition: visibility 0s 1.2s, opacity 1.2s ease;
+      transition: visibility 0s 1.3s, opacity 1.3s ease;
     }
 
     /* MAIN SCROLL CONTAINER */
@@ -148,7 +149,6 @@
       background: rgba(254, 247, 240, 0.96);
       transition: background 0.3s;
     }
-    /* different background for alternating sections */
     .page-dark {
       background: rgba(35, 28, 26, 0.94);
       color: #f5e2c1;
@@ -166,7 +166,7 @@
       z-index: 2;
     }
 
-    /* LARGE CENTERED IMAGE STYLES (for schedule events & hero) */
+    /* LARGE CENTERED IMAGE STYLES */
     .event-image {
       max-width: 85%;
       width: auto;
@@ -201,7 +201,6 @@
       letter-spacing: 2px;
       color: #c6a43b;
     }
-    /* for dark pages */
     .page-dark .event-title { color: #f5e2c1; }
     .page-dark .event-time { color: #e9c57b; }
 
@@ -235,7 +234,7 @@
       transition: transform 0.2s ease-out;
     }
 
-    /* Buttons, calendar, etc. (keep from original but simplified) */
+    /* Calendar */
     .calendar-grid {
       display: grid;
       grid-template-columns: repeat(7, 1fr);
@@ -285,10 +284,35 @@
       z-index: 200;
       cursor: pointer;
       transition: all 0.3s;
+      display: none; /* hidden, music starts automatically */
     }
     .music-toggle:hover {
       transform: scale(1.05);
     }
+
+    /* Hand-drawn heart */
+    .drawn-heart {
+      width: 80px;
+      height: 80px;
+      display: inline-block;
+      filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
+    }
+    .drawn-heart svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    /* Pencil style for couple names */
+    .pencil-name {
+      font-family: 'Caveat', cursive;
+      font-size: clamp(3rem, 10vw, 5.5rem);
+      font-weight: 600;
+      color: #1a1a1a;
+      text-shadow: 0.5px 0.5px 0 rgba(0,0,0,0.1), 1px 1px 0 rgba(0,0,0,0.05), 2px 2px 2px rgba(0,0,0,0.05);
+      letter-spacing: -0.5px;
+      transform: rotate(-0.5deg);
+    }
+
     .script-name {
       font-family: 'Great Vibes', cursive;
       font-size: clamp(2.8rem, 10vw, 5rem);
@@ -303,6 +327,7 @@
       .event-title { font-size: 1.6rem; }
       .event-time { font-size: 1rem; }
       .hero-image { max-width: 95%; }
+      .drawn-heart { width: 60px; height: 60px; }
     }
   </style>
 </head>
@@ -318,14 +343,18 @@
   </div>
 </div>
 
-<!-- MAIN INVITATION (initially hidden) -->
+<!-- MAIN INVITATION -->
 <div class="scroll-container" id="scrollContainer">
-  <!-- PAGE 1 - COVER (welcome) -->
+  <!-- PAGE 1 - COVER with hand-drawn heart and pencil names -->
   <section class="page page-warm" id="pageCover">
     <div class="parallax-bg"></div>
     <div class="page-content stagger-parent">
-      <div class="stagger-child"><i class="fas fa-heart" style="color:#d4af37; font-size:2rem;"></i></div>
-      <div class="stagger-child script-name">Վրերժ & Քրիստինե</div>
+      <div class="stagger-child drawn-heart">
+        <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M50 30 C50 30, 30 10, 15 25 C0 40, 10 60, 50 85 C90 60, 100 40, 85 25 C70 10, 50 30, 50 30Z" fill="#d4af37" stroke="#b87a4b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill-opacity="0.9"/>
+        </svg>
+      </div>
+      <div class="stagger-child pencil-name">Վրերժ & Քրիստինե</div>
       <div class="stagger-child gold-border"></div>
       <div class="stagger-child" style="font-size:1.3rem; font-family:'Playfair Display';">16 Օգոստոսի, 2026</div>
       <div class="stagger-child" style="margin-top:2rem;"><i class="fas fa-chevron-down"></i> ճամփորդություն սկսվում է</div>
@@ -342,10 +371,24 @@
       </div>
       <div class="stagger-child" style="margin-top:2rem; font-family:'Cormorant Garamond'; font-size:1.2rem;">Մեր սիրո պատմությունը</div>
     </div>
-    <div class="scroll-down" data-next="scheduleStart"><i class="fas fa-angle-double-down"></i></div>
+    <div class="scroll-down" data-next="calendarPage"><i class="fas fa-angle-double-down"></i></div>
   </section>
 
-  <!-- SCHEDULE EVENT PAGES (each event = one full page with large image, text below) -->
+  <!-- CALENDAR PAGE (second section, before schedule) -->
+  <section class="page page-warm" id="calendarPage">
+    <div class="parallax-bg"></div>
+    <div class="page-content stagger-parent">
+      <div class="stagger-child serif-heading" style="font-size:2rem;">✨ Հատուկ օրացույց ✨</div>
+      <div class="stagger-child" style="margin-top:1rem;">
+        <div class="calendar-header" style="font-family:'Playfair Display'; font-size:1.4rem;">Օգոստոս 2026</div>
+        <div class="calendar-grid" id="calendarGrid"></div>
+      </div>
+      <div class="stagger-child gold-text" style="margin-top:1rem;"><i class="fas fa-heart"></i> Սիրտը նշում է մեր մեծ օրը</div>
+    </div>
+    <div class="scroll-down" data-next="event1"><i class="fas fa-angle-double-down"></i></div>
+  </section>
+
+  <!-- SCHEDULE EVENT PAGES (each event one full page) -->
   <!-- Event 1 -->
   <section class="page page-warm" id="event1">
     <div class="parallax-bg"></div>
@@ -401,27 +444,13 @@
     <div class="scroll-down" data-next="event6"><i class="fas fa-angle-double-down"></i></div>
   </section>
 
-  <!-- Event 6 -->
+  <!-- Event 6 (updated image) -->
   <section class="page page-dark" id="event6">
     <div class="parallax-bg"></div>
     <div class="page-content stagger-parent">
-      <img class="event-image" src="https://cdn.shopify.com/s/files/1/0991/8038/0469/files/bride-holding-a-bouquet-line-art-free-vector.jpg?v=1776200458" alt="Հանդիսության ավարտ">
+      <img class="event-image" src="https://cdn.shopify.com/s/files/1/0991/8038/0469/files/one-line-illustration-of-wedding-couple-minimalist-one-line-illustration-of-wedding-couple-3AD8XRT.jpg?v=1776249548" alt="Հանդիսության ավարտ">
       <div class="stagger-child event-title">Հանդիսության ավարտ</div>
       <div class="stagger-child event-time">00:00</div>
-    </div>
-    <div class="scroll-down" data-next="calendarPage"><i class="fas fa-angle-double-down"></i></div>
-  </section>
-
-  <!-- CALENDAR PAGE (as requested, kept but simplified) -->
-  <section class="page page-warm" id="calendarPage">
-    <div class="parallax-bg"></div>
-    <div class="page-content stagger-parent">
-      <div class="stagger-child serif-heading" style="font-size:2rem;">✨ Հատուկ օրացույց ✨</div>
-      <div class="stagger-child" style="margin-top:1rem;">
-        <div class="calendar-header" style="font-family:'Playfair Display'; font-size:1.4rem;">Օգոստոս 2026</div>
-        <div class="calendar-grid" id="calendarGrid"></div>
-      </div>
-      <div class="stagger-child gold-text" style="margin-top:1rem;"><i class="fas fa-heart"></i> Սիրտը նշում է մեր մեծ օրը</div>
     </div>
     <div class="scroll-down" data-next="invitationPage"><i class="fas fa-angle-double-down"></i></div>
   </section>
@@ -474,7 +503,7 @@
     <div class="scroll-down" data-next="finalImagePage"><i class="fas fa-angle-double-down"></i></div>
   </section>
 
-  <!-- FINAL IMAGE PAGE (second URL) -->
+  <!-- FINAL IMAGE PAGE -->
   <section class="page page-warm" id="finalImagePage">
     <div class="parallax-bg"></div>
     <div class="page-content stagger-parent">
@@ -487,18 +516,16 @@
   </section>
 </div>
 
-<!-- MUSIC TOGGLE (optional but kept for manual control; auto-starts after envelope click) -->
-<div class="music-toggle" id="musicToggle" style="display: none;"> <!-- hidden by default, but can be shown if needed -->
+<!-- MUSIC TOGGLE (hidden, auto-starts) -->
+<div class="music-toggle" id="musicToggle" style="display: none;">
   <i class="fas fa-music" id="musicIcon"></i> <span id="musicText">Music On</span>
 </div>
 
 <script>
-  // ENVELOPE INTERACTION
+  // ENVELOPE INTERACTION & MUSIC AUTOPLAY
   const envelopeOverlay = document.getElementById('envelopeOverlay');
   const envelope = document.getElementById('envelope');
   const mainContainer = document.getElementById('scrollContainer');
-  
-  // MUSIC (auto-starts after envelope click, no toggle needed)
   let audio = null;
   let isPlaying = false;
   
@@ -514,7 +541,7 @@
   
   envelope.addEventListener('click', () => {
     envelope.classList.add('open');
-    startMusic(); // starts immediately after click
+    startMusic();
     setTimeout(() => {
       envelopeOverlay.classList.add('hide');
       mainContainer.classList.add('visible');
@@ -536,7 +563,6 @@
   }, { threshold: 0.3 });
   sections.forEach(section => observer.observe(section));
   
-  // manually reveal cover after a tiny delay (since it's visible from start)
   setTimeout(() => {
     const coverParent = document.querySelector('#pageCover .stagger-parent');
     if (coverParent) coverParent.classList.add('section-revealed');
@@ -607,7 +633,7 @@
   }
   buildCalendar();
   
-  // SCROLL ARROWS (smooth navigation)
+  // SCROLL ARROWS
   document.querySelectorAll('.scroll-down').forEach(arrow => {
     arrow.addEventListener('click', () => {
       const nextId = arrow.getAttribute('data-next');
