@@ -282,7 +282,7 @@
       transition: transform 0.2s ease-out;
     }
 
-    /* Calendar styles (unchanged) */
+    /* Calendar styles */
     .calendar-container {
       background: rgba(255, 248, 240, 0.5);
       backdrop-filter: blur(8px);
@@ -502,7 +502,7 @@ color:#b58a5a;
     <div class="scroll-down" data-next="invitationTextPage"><i class="fas fa-angle-double-down"></i></div>
   </section>
 
-  <!-- PAGE 2 - INVITATION TEXT (new page) -->
+  <!-- PAGE 2 - INVITATION TEXT -->
   <section class="page page-warm" id="invitationTextPage">
     <div class="parallax-bg"></div>
     <div class="page-content">
@@ -519,7 +519,7 @@ color:#b58a5a;
     <div class="scroll-down" data-next="calendarPage"><i class="fas fa-angle-double-down"></i></div>
   </section>
 
-  <!-- CALENDAR PAGE (unchanged) -->
+  <!-- CALENDAR PAGE -->
   <section class="page page-warm" id="calendarPage">
     <div class="parallax-bg"></div>
     <div class="page-content">
@@ -532,7 +532,7 @@ color:#b58a5a;
     <div class="scroll-down" data-next="event1"><i class="fas fa-angle-double-down"></i></div>
   </section>
 
-  <!-- SCHEDULE EVENT PAGES (unchanged) -->
+  <!-- SCHEDULE EVENT PAGES -->
   <section class="page page-warm" id="event1">
     <div class="parallax-bg"></div>
     <div class="page-content">
@@ -662,13 +662,20 @@ color:#b58a5a;
 </div>
 
 <script>
-  // ENVELOPE INTERACTION (no music)
+  // ENVELOPE INTERACTION WITH MUSIC (auto-plays when envelope is clicked)
   const envelopeOverlay = document.getElementById('envelopeOverlay');
   const envelope = document.getElementById('envelope');
   const mainContainer = document.getElementById('scrollContainer');
   
   envelope.addEventListener('click', () => {
     envelope.classList.add('open');
+    
+    // Create audio element and play the romantic wedding piano track
+    const audio = new Audio('https://cdn.pixabay.com/download/audio/2022/04/25/audio_629d834db7.mp3?filename=music_for_videos-wedding-love-story-110055.mp3');
+    audio.loop = true;
+    audio.volume = 0.35;
+    audio.play().catch(err => console.warn("Music autoplay blocked:", err));
+    
     setTimeout(() => {
       envelopeOverlay.classList.add('hide');
       mainContainer.classList.add('visible');
