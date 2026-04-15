@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
-  <title>Վրերժ & Քրիստինե — Հարսանեկան հրավեր</title>
+  <title>Վրեժ & Քրիստինե — Հարսանեկան հրավեր</title>
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&family=Great+Vibes&family=Inter:wght@300;400;500;600&family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
   <!-- Font Awesome 6 -->
@@ -32,7 +32,7 @@
       pointer-events: none;
       z-index: 300;
       opacity: 0.05;
-      background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJmIj48ZmVUdXJidWxlbmNlIHR5cGU9ImZyYWN0YWxOb2lzZSIgYmFzZUZyZXF1ZW5jeT0iLjUiIG51bU9jdGF2ZXM9IjMiLz48L2ZpbHRlcj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWx0ZXI9InVybCgjZikiIG9wYWNpdHk9IjAuNCIvPjwvc3ZnPg==');
+      background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJmIj48ZmVUdXJidWxlbmNlIHR5cGU9ImZyYWN0YWxOb2lzZSIgYmFzZUZyZXF1ZW5jeT0iLjUiIG51bU9jdGF2ZXM9IjMiLz48L2ZmlsdGVyPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbHRlcj0idXJsKCNmKSIgb3BhY2l0eT0iMC40Ii8+PC9zdmc+');
       background-repeat: repeat;
       mix-blend-mode: multiply;
       pointer-events: none;
@@ -201,7 +201,7 @@
       z-index: 2;
     }
 
-    /* CINEMATIC REVEAL (for all sections except first page soft emergence) */
+    /* CINEMATIC REVEAL (fade, scale, gold glow) */
     .reveal-item {
       opacity: 0;
       transform: translateY(25px) scale(0.98);
@@ -224,93 +224,51 @@
       transform: translateY(0) scale(1.03);
       filter: blur(0);
     }
-    .gold-glow {
-      position: relative;
-    }
-    .gold-glow::before {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 120%;
-      height: 120%;
-      transform: translate(-50%, -50%);
-      background: radial-gradient(circle, rgba(212,175,55,0.15), transparent 70%);
-      pointer-events: none;
-      z-index: -1;
-      opacity: 0;
-      transition: opacity 0.6s;
-    }
-    .gold-glow.revealed::before {
-      opacity: 1;
-    }
 
-    /* SOFT EMERGENCE for first page texts (staggered, no sharp jumps) */
-    .soft-emerge {
-      opacity: 0;
-      transform: translateY(18px);
-      transition: opacity 0.7s cubic-bezier(0.2, 0.9, 0.4, 1.1), transform 0.7s ease;
-      transition-delay: 0s;
-    }
-    .first-page-triggered .soft-emerge {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    /* Stagger delays for soft emergence */
-    .first-page-triggered .soft-emerge:nth-child(1) { transition-delay: 0.1s; }
-    .first-page-triggered .soft-emerge:nth-child(2) { transition-delay: 0.2s; }
-    .first-page-triggered .soft-emerge:nth-child(3) { transition-delay: 0.3s; }
-    .first-page-triggered .soft-emerge:nth-child(4) { transition-delay: 0.4s; }
-    .first-page-triggered .soft-emerge:nth-child(5) { transition-delay: 0.5s; }
-
-    /* First page image */
-    .couple-logo {
-      width: 90%;
-      max-width: 1500px;
-      height: auto;
-      margin-bottom: 1.5rem;
-      filter: drop-shadow(0 8px 20px rgba(0,0,0,0.1));
-    }
-
-    /* LARGE CENTERED IMAGE STYLES */
-    .event-image {
-      max-width: 85%;
-      width: auto;
-      max-height: 60vh;
-      object-fit: contain;
-      margin-bottom: 2rem;
-      border-radius: 32px;
-      box-shadow: 0 25px 45px -12px rgba(0,0,0,0.3);
-      transition: transform 0.5s ease, box-shadow 0.5s;
-    }
-    .event-image:hover {
-      transform: scale(1.02);
-      box-shadow: 0 35px 55px -12px rgba(0,0,0,0.4);
-    }
-    .hero-image {
+    /* Couple image on first page */
+    .couple-portrait {
       max-width: 90%;
-      max-height: 70vh;
+      max-height: 60vh;
+      width: auto;
       border-radius: 48px;
-      box-shadow: 0 30px 50px -20px rgba(0,0,0,0.4), 0 0 0 8px rgba(212,175,55,0.2), 0 0 0 16px rgba(212,175,55,0.1);
-      transition: all 0.6s;
+      box-shadow: 0 30px 50px -20px rgba(0,0,0,0.4), 0 0 0 8px rgba(212,175,55,0.2);
+      margin-bottom: 1.5rem;
     }
-    .event-title {
-      font-size: 2rem;
-      font-family: 'Playfair Display', serif;
-      font-weight: 600;
-      margin: 1rem 0 0.5rem;
+    .elegant-names {
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(2.5rem, 8vw, 4rem);
+      color: #9e5a3a;
+      margin: 0.5rem 0;
     }
-    .event-time {
-      font-size: 1.3rem;
-      font-family: 'Inter', sans-serif;
-      font-weight: 300;
-      letter-spacing: 2px;
+    .save-date {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      letter-spacing: 6px;
+      text-transform: uppercase;
       color: #c6a43b;
+      margin-top: 1rem;
     }
-    .page-dark .event-title { color: #f5e2c1; }
-    .page-dark .event-time { color: #e9c57b; }
 
-    /* Parallax background movement */
+    /* Invitation text card */
+    .invitation-card {
+      background: rgba(255, 248, 240, 0.7);
+      backdrop-filter: blur(10px);
+      border-radius: 48px;
+      padding: 2rem 1.8rem;
+      box-shadow: 0 20px 35px -12px rgba(0,0,0,0.1);
+      border: 1px solid #e8d5b5;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      line-height: 1.6;
+      color: #3e2a24;
+    }
+    .page-dark .invitation-card {
+      background: rgba(50, 40, 35, 0.8);
+      color: #f5e2c1;
+      border-color: #b89a6a;
+    }
+
+    /* Parallax background */
     .parallax-bg {
       position: absolute;
       top: 0;
@@ -324,7 +282,7 @@
       transition: transform 0.2s ease-out;
     }
 
-    /* PREMIUM CALENDAR */
+    /* Calendar styles (unchanged) */
     .calendar-container {
       background: rgba(255, 248, 240, 0.5);
       backdrop-filter: blur(8px);
@@ -368,7 +326,7 @@
       100% { box-shadow: 0 0 0 6px #e6b86e, 0 0 0 10px rgba(212,175,55,0.6); }
     }
 
-    /* BEAUTIFUL FRAME FOR COUNTDOWN SECTION */
+    /* Countdown frame */
     .countdown-frame {
       background: rgba(255, 248, 240, 0.5);
       backdrop-filter: blur(8px);
@@ -396,6 +354,7 @@
       letter-spacing: 1px;
     }
 
+    /* Scroll arrow */
     .scroll-down {
       position: absolute;
       bottom: 30px;
@@ -414,19 +373,6 @@
       0%,100% { transform: translateX(-50%) translateY(0); opacity: 0.7; }
       50% { transform: translateX(-50%) translateY(8px); opacity: 1; }
     }
-    .music-toggle {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: rgba(255,245,235,0.9);
-      backdrop-filter: blur(12px);
-      border-radius: 60px;
-      padding: 10px 18px;
-      z-index: 200;
-      cursor: pointer;
-      transition: all 0.3s;
-      display: none;
-    }
 
     .gold-border {
       border-bottom: 1px solid #e5c687;
@@ -434,7 +380,7 @@
       margin: 1.2rem auto;
     }
 
-    /* BEAUTIFUL BEIGE FRAME FOR TIMELINE CARDS */
+    /* Schedule cards */
     .schedule-card {
       background: rgba(255, 248, 235, 0.85);
       backdrop-filter: blur(6px);
@@ -486,12 +432,8 @@
     }
 
     @media (max-width: 550px) {
-      .event-title { font-size: 1.6rem; }
-      .event-time { font-size: 1rem; }
-      .hero-image { max-width: 95%; }
-      .wax-stamp { width: 55px; height: 55px; top: 55px; }
-      .open-text { top: 130px; font-size: 0.85rem; white-space: nowrap; }
-      .couple-logo { width: 100%; }
+      .couple-portrait { max-width: 95%; }
+      .invitation-card { font-size: 1rem; padding: 1.5rem; }
       .schedule-desc { font-size: 1.3rem; }
       .schedule-img { max-width: 85%; }
       .calendar-weekday { font-size: 0.65rem; }
@@ -508,7 +450,7 @@
   <div class="envelope" id="envelope">
     <div class="envelope-flap"></div>
     <div class="envelope-body"></div>
-    <div class="envelope-card">Վրերժ & Քրիստինե<br><span style="font-size:0.8rem;">16.08.2026</span></div>
+    <div class="envelope-card">Վրեժ & Քրիստինե<br><span style="font-size:0.8rem;">16.08.2026</span></div>
     <!-- Wax stamp -->
     <div class="wax-stamp">
       <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -526,37 +468,42 @@
 
 <!-- MAIN INVITATION -->
 <div class="scroll-container" id="scrollContainer">
-  <!-- PAGE 1 - COVER with image instead of names, soft emergence for texts -->
-  <section class="page page-warm" id="pageCover">
-    <div class="parallax-bg"></div>
-    <div class="page-content" id="firstPageContent">
-      <!-- Image replaces couple names -->
-      <img src="https://cdn.shopify.com/s/files/1/0991/8038/0469/files/9.png?v=1776264944" alt="Վրերժ & Քրիստինե" class="couple-logo soft-emerge">
-      <div class="soft-emerge gold-border"></div>
-      <div class="soft-emerge" style="font-size:1.3rem; font-family:'Playfair Display';">16 Օգոստոսի, 2026</div>
-      <div class="soft-emerge" style="margin-top:2rem;"><i class="fas fa-chevron-down"></i> Հարսանեկան Հրավիրատոմս</div>
-    </div>
-    <div class="scroll-down" data-next="heroImagePage"><i class="fas fa-angle-double-down"></i></div>
-  </section>
-
-  <!-- HERO IMAGE PAGE -->
-  <section class="page page-warm" id="heroImagePage">
+  <!-- PAGE 1 - COUPLE INTRODUCTION (after envelope opens) -->
+  <section class="page page-warm" id="coupleIntroPage">
     <div class="parallax-bg"></div>
     <div class="page-content">
       <div class="reveal-image">
-        <img class="hero-image" src="https://cdn.shopify.com/s/files/1/0991/8038/0469/files/1_d145255e-0a7d-4cf5-b595-d7069466fd1d.png?v=1776197045" alt="Hero floral couple">
+        <img class="couple-portrait" src="https://cdn.shopify.com/s/files/1/0991/8038/0469/files/1_d145255e-0a7d-4cf5-b595-d7069466fd1d.png?v=1776197045" alt="Վրեժ & Քրիստինե">
       </div>
-     <div class="reveal-item" style="margin-top:2rem; font-family:'Cormorant Garamond', serif; font-size:1rem; letter-spacing:6px; text-transform:uppercase; color:#c6a43b;">
-  SAVE THE DATE
+      <div class="reveal-item elegant-names">Վրեժ & Քրիստինե</div>
+      <div class="reveal-item save-date">SAVE THE DATE</div>
+      <div class="reveal-item gold-border"></div>
+      <div class="reveal-item" style="font-family:'Playfair Display'; font-size:1.2rem;">16 Օգոստոսի, 2026</div>
+    </div>
+    <div class="scroll-down" data-next="invitationTextPage"><i class="fas fa-angle-double-down"></i></div>
+  </section>
+
+  <!-- PAGE 2 - INVITATION TEXT (new page) -->
+  <section class="page page-warm" id="invitationTextPage">
+    <div class="parallax-bg"></div>
+    <div class="page-content">
+      <div class="reveal-item invitation-card">
+        <i class="fas fa-heart" style="color:#c6a43b; font-size:2rem; margin-bottom:1rem; display:block;"></i>
+        <p>Հարգելի հյուրեր,</p>
+        <p style="margin-top:1rem;">մոտենում է մեր կյանքի ամենագեղեցիկ ու հիշարժան պահերից մեկը։</p>
+        <p style="margin-top:1rem;">Մենք ընտանիք ենք կազմում և մեծ սիրով հրավիրում ենք Ձեզ կիսելու մեր երջանկությունը։</p>
+        <p style="margin-top:1rem;">Ձեր ներկայությունը մեր կողքին շատ կարևոր է։</p>
+        <div class="gold-border" style="margin:1.5rem auto;"></div>
+        <i class="fas fa-feather-alt" style="color:#c6a43b; font-size:1.5rem;"></i>
+      </div>
     </div>
     <div class="scroll-down" data-next="calendarPage"><i class="fas fa-angle-double-down"></i></div>
   </section>
 
-  <!-- CALENDAR PAGE -->
+  <!-- CALENDAR PAGE (unchanged) -->
   <section class="page page-warm" id="calendarPage">
     <div class="parallax-bg"></div>
     <div class="page-content">
-      <div class="reveal-item" style="font-size:2rem; font-family:'Playfair Display';"></div>
       <div class="reveal-item calendar-container">
         <div class="calendar-header">Օգոստոս 2026</div>
         <div class="calendar-grid" id="calendarGrid"></div>
@@ -566,7 +513,7 @@
     <div class="scroll-down" data-next="event1"><i class="fas fa-angle-double-down"></i></div>
   </section>
 
-  <!-- SCHEDULE EVENT PAGES -->
+  <!-- SCHEDULE EVENT PAGES (unchanged) -->
   <section class="page page-warm" id="event1">
     <div class="parallax-bg"></div>
     <div class="page-content">
@@ -637,10 +584,10 @@
         <div class="schedule-time">00:00</div>
       </div>
     </div>
-    <div class="scroll-down" data-next="invitationPage"><i class="fas fa-angle-double-down"></i></div>
+    <div class="scroll-down" data-next="countdownPage"><i class="fas fa-angle-double-down"></i></div>
   </section>
 
-  <!-- COUNTDOWN PAGE with beautiful frame -->
+  <!-- COUNTDOWN PAGE -->
   <section class="page page-warm" id="countdownPage">
     <div class="parallax-bg"></div>
     <div class="page-content">
@@ -686,23 +633,13 @@
 </div>
 
 <script>
-  // ENVELOPE INTERACTION & MUSIC AUTOPLAY
+  // ENVELOPE INTERACTION (no music)
   const envelopeOverlay = document.getElementById('envelopeOverlay');
   const envelope = document.getElementById('envelope');
   const mainContainer = document.getElementById('scrollContainer');
-  let audio = null;
-  
-  function startMusic() {
-    if (audio) return;
-    audio = new Audio('https://cdn.pixabay.com/download/audio/2022/02/22/audio_bb2d9c8b6c.mp3?filename=ed-sheeran-perfect-instrumental-piano-version-14410.mp3');
-    audio.loop = true;
-    audio.volume = 0.35;
-    audio.play().catch(err => console.warn("Music autoplay blocked:", err));
-  }
   
   envelope.addEventListener('click', () => {
     envelope.classList.add('open');
-    startMusic();
     setTimeout(() => {
       envelopeOverlay.classList.add('hide');
       mainContainer.classList.add('visible');
@@ -710,7 +647,7 @@
     }, 900);
   });
   
-  // CINEMATIC REVEAL FOR ALL SECTIONS (except first page soft emergence)
+  // CINEMATIC REVEAL FOR ALL SECTIONS
   const revealItems = document.querySelectorAll('.reveal-item, .reveal-image');
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -721,34 +658,6 @@
     });
   }, { threshold: 0.2 });
   revealItems.forEach(item => observer.observe(item));
-  
-  // SOFT EMERGENCE FOR FIRST PAGE (staggered, trigger on hover desktop / scroll mobile)
-  const firstPageContainer = document.getElementById('firstPageContent');
-  const isMobile = window.matchMedia("(max-width: 768px)").matches;
-  
-  function triggerSoftEmergence() {
-    if (!firstPageContainer.classList.contains('first-page-triggered')) {
-      firstPageContainer.classList.add('first-page-triggered');
-    }
-  }
-  
-  if (!isMobile) {
-    // Desktop: trigger on hover
-    firstPageContainer.addEventListener('mouseenter', triggerSoftEmergence, { once: true });
-  } else {
-    // Mobile: trigger when visible
-    const softObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          triggerSoftEmergence();
-          softObserver.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.2 });
-    softObserver.observe(firstPageContainer);
-  }
-  
-  // Also reveal cover elements that are not part of soft emergence (none needed)
   
   // COUNTDOWN
   const weddingDate = new Date(2026, 7, 16, 16, 0, 0);
